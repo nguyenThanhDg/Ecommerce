@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/layout/user/userbase.jsp">
+        <put-attribute name="title" value="..." />
+        <put-attribute name="header" value="/WEB-INF/layout/user/userheader.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/user/userfooter.jsp" />
+        <put-attribute name="content" value="..." />
+    </definition>
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Home Page" />
+        <put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
+    </definition>
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+    <definition name="register" extends="baseLayout">
+        <put-attribute name="title" value="Register" />
+        <put-attribute name="content" value="/WEB-INF/jsp/register.jsp" />
+    </definition>
+    <definition name="products" extends="baseLayout">
+        <put-attribute name="title" value="danh sach sp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/products.jsp" />
+    </definition>
+    <definition name="detail" extends="baseLayout">
+        <put-attribute name="title" value="chi tiet" />
+        <put-attribute name="content" value="/WEB-INF/jsp/product-detail.jsp" />
+    </definition>
+    <definition name="cart" extends="baseLayout">
+        <put-attribute name="title" value="gio hang" />
+        <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp" />
+    </definition>
+    <definition name="baseSellerLayout" template="/WEB-INF/layout/admin/adminbase.jsp">
+        <put-attribute name="title" value="..." />
+        <put-attribute name="header" value="/WEB-INF/layout/admin/adminheader.jsp" />
+        <put-attribute name="nav" value="/WEB-INF/layout/admin/adminnav.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/admin/adminfooter.jsp" />
+        <put-attribute name="content" value="..." />
+    </definition>
+    <definition name="add-product" extends="baseSellerLayout">
+        <put-attribute name="title" value="Them san pham" />
+        <put-attribute name="content" value="/WEB-INF/jsp/add-product.jsp" />
+    </definition>
+    <definition name="seller-home" extends="baseSellerLayout">
+        <put-attribute name="title" value="admin" />
+        <put-attribute name="content" value="/WEB-INF/jsp/seller-home.jsp" />
+    </definition>
+</tiles-definitions>
+
