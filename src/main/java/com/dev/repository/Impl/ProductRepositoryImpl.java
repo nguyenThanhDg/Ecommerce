@@ -85,10 +85,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public long countProduct() {
+    public long countProduct(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("Select count(*) from Product where status = :status");
-        q.setParameter("status", "ON");
+        Query q = session.createQuery("Select count(*) from Product where seller_id = :seller_id");
+        q.setParameter("seller_id", id);
         return Long.parseLong(q.getSingleResult().toString());
     }
 
@@ -114,7 +114,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         CriteriaQuery<Product> query = builder.createQuery(Product.class);
         Root root = query.from(Product.class);
         query = query.select(root);
-        Predicate p = builder.equal(root.get("customer"), user.getId());
+        Predicate p = builder.equal(root.get("sellerId"), user.getId());
         query = query.where(p);
         Query q = session.createQuery(query);
         return q.getResultList();

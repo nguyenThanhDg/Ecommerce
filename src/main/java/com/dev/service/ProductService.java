@@ -20,7 +20,7 @@ public interface ProductService {
 
     Product getProductById(int productId);
 
-    long countProduct();
+    long countProduct(int id);
 
     boolean addOrUpdate(Product product);
     boolean addProduct(Product p);

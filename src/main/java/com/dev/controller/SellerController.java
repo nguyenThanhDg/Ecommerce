@@ -6,6 +6,7 @@ package com.dev.controller;
 
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
+import com.dev.service.OrderDetailService;
 import com.dev.service.ProductService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,14 @@ public class SellerController {
     @Autowired
     private ProductService productService;
     
+    @Autowired
+    private OrderDetailService orderDetailService;
+    
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("countProduct", this.productService.countProduct());
+        User seller = (User) model.getAttribute("currentUser");
+        model.addAttribute("countProduct", this.productService.countProduct(seller.getId()));
+        model.addAttribute("countOrder", this.orderDetailService.getAmountProduct(seller));
         return "seller-home";
     }
 
