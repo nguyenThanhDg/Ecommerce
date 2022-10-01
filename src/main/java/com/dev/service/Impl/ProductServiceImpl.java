@@ -34,9 +34,10 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getNewProducts() {
         return this.productRepository.getNewProducts();
     }
+    
     @Override
-    public long countProduct() {
-        return this.productRepository.countProduct();
+    public long countProduct(int id) {
+        return this.productRepository.countProduct(id);
     }
 
     @Override
