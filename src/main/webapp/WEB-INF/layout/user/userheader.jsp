@@ -41,7 +41,11 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    <div class="logo"> <a href="home.html"> <img src="<c:url value="/user/assets/images/logo.png"/>" alt="logo"> </a> </div>
+                    <div class="logo"> 
+                        <a href="<c:url value="/" />">
+                            <img src="<c:url value="/user/assets/images/logo.png"/>" alt="logo">
+                        </a>
+                    </div>
                     <!-- /.logo -->
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
@@ -118,7 +122,7 @@
                                 <li class="dropdown"> <a href="<c:url value="/products" />">Danh sách</a> </li>
                                 <li class="dropdown mega-menu">
                                     <a href="category.html" data-hover="dropdown" class="dropdown-toggle"
-                                       data-toggle="dropdown">Electronics <span class="menu-label hot-menu hidden-xs">hot</span> </a>
+                                       data-toggle="dropdown">Điện tử <span class="menu-label hot-menu hidden-xs">hot</span> </a>
                                     <ul class="dropdown-menu container">
                                         <li>
                                             <div class="yamm-content">
@@ -127,21 +131,18 @@
                                                         <h2 class="title">Laptops</h2>
                                                         <ul class="links">
                                                             <li><a href="#">Gaming</a></li>
-                                                            <li><a href="#">Laptop Skins</a></li>
                                                             <li><a href="#">Apple</a></li>
                                                             <li><a href="#">Dell</a></li>
                                                             <li><a href="#">Lenovo</a></li>
                                                             <li><a href="#">Microsoft</a></li>
                                                             <li><a href="#">Asus</a></li>
-                                                            <li><a href="#">Adapters</a></li>
-                                                            <li><a href="#">Batteries</a></li>
-                                                            <li><a href="#">Cooling Pads</a></li>
+                                                            <li><a href="#">Acer</a></li>
                                                         </ul>
                                                     </div>
                                                     <!-- /.col -->
 
                                                     <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
-                                                        <h2 class="title">Desktops</h2>
+                                                        <h2 class="title">Phụ kiện</h2>
                                                         <ul class="links">
                                                             <li><a href="#">Routers & Modems</a></li>
                                                             <li><a href="#">CPUs, Processors</a></li>
@@ -158,7 +159,7 @@
                                                     <!-- /.col -->
 
                                                     <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
-                                                        <h2 class="title">Cameras</h2>
+                                                        <h2 class="title">Máy ảnh</h2>
                                                         <ul class="links">
                                                             <li><a href="#">Accessories</a></li>
                                                             <li><a href="#">Binoculars</a></li>
@@ -174,18 +175,15 @@
                                                     </div>
                                                     <!-- /.col -->
                                                     <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
-                                                        <h2 class="title">Mobile Phones</h2>
+                                                        <h2 class="title">Di động</h2>
                                                         <ul class="links">
                                                             <li><a href="#">Apple</a></li>
                                                             <li><a href="#">Samsung</a></li>
-                                                            <li><a href="#">Lenovo</a></li>
-                                                            <li><a href="#">Motorola</a></li>
-                                                            <li><a href="#">LeEco</a></li>
+                                                            <li><a href="#">Huawei</a></li>
                                                             <li><a href="#">Asus</a></li>
-                                                            <li><a href="#">Acer</a></li>
-                                                            <li><a href="#">Accessories</a></li>
-                                                            <li><a href="#">Headphones</a></li>
-                                                            <li><a href="#">Memory Cards</a></li>
+                                                            <li><a href="#">Xiaomi</a></li>
+                                                           
+                                                            
                                                         </ul>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner"> <a href="#"><img alt=""
@@ -197,43 +195,12 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown hidden-sm"> <a href="category.html">Health & Beauty <span
+                                <li class="dropdown hidden-sm"> <a href="category.html">Giày <span
                                             class="menu-label new-menu hidden-xs">new</span> </a> </li>
-                                <li class="dropdown hidden-sm"> <a href="category.html">Watches</a> </li>
-                                <li class="dropdown"> <a href="contact.html">Jewellery</a> </li>
-                                <li class="dropdown"> <a href="contact.html">Shoes</a> </li>
-                                <li class="dropdown"> <a href="contact.html">Kids & Girls</a> </li>
-                                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-hover="dropdown"
-                                                         data-toggle="dropdown">Pages</a>
-                                    <ul class="dropdown-menu pages">
-                                        <li>
-                                            <div class="yamm-content">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-menu">
-                                                        <ul class="links">
-                                                            <li><a href="home.html">Home</a></li>
-                                                            <li><a href="category.html">Category</a></li>
-                                                            <li><a href="detail.html">Detail</a></li>
-                                                            <li><a href="shopping-cart.html">Shopping Cart Summary</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="blog.html">Blog</a></li>
-                                                            <li><a href="blog-details.html">Blog Detail</a></li>
-                                                            <li><a href="contact.html">Contact</a></li>
-                                                            <li><a href="sign-in.html">Sign In</a></li>
-                                                            <li><a href="my-wishlist.html">Wishlist</a></li>
-                                                            <li><a href="terms-conditions.html">Terms and Condition</a></li>
-                                                            <li><a href="track-orders.html">Track Orders</a></li>
-                                                            <li><a href="product-comparison.html">Product-Comparison</a></li>
-                                                            <li><a href="faq.html">FAQ</a></li>
-                                                            <li><a href="404.html">404</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown  navbar-right special-menu"> <a href="#">Get 30% off on selected items</a> </li>
+                                <li class="dropdown hidden-sm"> <a href="category.html">Đồng hồ</a> </li>
+                               
+                                
+<!--                                <li class="dropdown  navbar-right special-menu"> <a href="#">Get 30% off on selected items</a> </li>-->
                             </ul>
                             <!-- /.navbar-nav -->
                             <div class="clearfix"></div>

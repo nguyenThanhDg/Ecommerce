@@ -4,6 +4,7 @@
  */
 package com.dev.service;
 
+import com.dev.pojo.Comment;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface ProductService {
     void deleteProduct(int id);
     List<Product> getProducts(String kw);
     List<Product> getProducts(Map<String, String> params, int page);
+    List<Comment> getComments(int productId);
+    Comment addComment(String content, int productId);
 }

@@ -60,4 +60,7 @@
         <script src="<c:url value="/user/assets/js/wow.min.js"/>"></script>
         <script src="<c:url value="/user/assets/js/scripts.js"/>"></script>
         <script src="<c:url value="/user/cart.js"/>"></script>
+        <script src="<c:url value="/user/product.js" />"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
     </body>

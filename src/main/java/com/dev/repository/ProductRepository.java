@@ -4,6 +4,7 @@
  */
 package com.dev.repository;
 
+import com.dev.pojo.Comment;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import java.util.List;
@@ -23,4 +24,6 @@ public interface ProductRepository {
     List<Product> getProducts(String kw);
     boolean addProduct(Product p);
     List<Product> getProducts(Map<String, String> params, int page);
+    List<Comment> getComments(int productId);
+    Comment addComment(String content, int productId);
 }

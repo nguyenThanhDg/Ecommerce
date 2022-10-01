@@ -94,4 +94,113 @@
                 </div>
             </div></div>
 
-    </div></div>
+        <br>
+        <div class="product-tabs inner-bottom-xs">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3"> 
+                    <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
+                        <a data-toggle="tab" href="#review">REVIEW</a>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="tab-content">
+                        <div id="review" class="tab-pane">
+                            <div class="product-tab">
+
+                                <div class="product-reviews">
+                                    <h4 class="title">Đánh giá của khách hàng</h4>
+
+                                    <div class="reviews">
+                                        <div class="review"
+                                             <ul id="comments" class="list-group"">
+                                            </ul>
+                                        </div>
+
+                                    </div><!-- /.reviews -->
+                                </div><!-- /.product-reviews -->
+
+
+                                <div class="product-add-review">
+                                    <sec:authorize access="isAuthenticated()">
+                                        <h4 class="title">Viết nhận xét của bạn</h4>
+                                        <div class="review-table">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="cell-label">&nbsp;</th>
+                                                            <th>1 star</th>
+                                                            <th>2 stars</th>
+                                                            <th>3 stars</th>
+                                                            <th>4 stars</th>
+                                                            <th>5 stars</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="cell-label">Chất lượng</td>
+                                                            <td><input type="radio" name="quality" class="radio" value="1"></td>
+                                                            <td><input type="radio" name="quality" class="radio" value="2"></td>
+                                                            <td><input type="radio" name="quality" class="radio" value="3"></td>
+                                                            <td><input type="radio" name="quality" class="radio" value="4"></td>
+                                                            <td><input type="radio" name="quality" class="radio" value="5"></td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table><!-- /.table .table-bordered -->
+                                            </div><!-- /.table-responsive -->
+                                        </div><!-- /.review-table -->
+
+                                        <div class="review-form">
+                                            <div class="form-container">
+
+                                                <form class="cnt-form">
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputReview">Nhận xét <span class="astk">*</span></label>
+                                                            <textarea class="form-control txt txt-review" placeholder="Nhap noi dung binh luan" id="contentId"></textarea>
+                                                        </div><!-- /.form-group -->                                       
+                                                    </div><!-- /.row -->
+                                                    <c:url value="/api/products/${product.id}/comments" var="endpoint" />
+                                                    <div class="action text-right">
+                                                        <button class="btn btn-primary btn-upper" onclick="addComment('${endpoint}', ${product.id})">Thêm nhận xét</button>
+                                                    </div><!-- /.action -->
+
+                                                </form><!-- /.cnt-form -->
+
+                                            </div><!-- /.form-container -->
+                                        </div><!-- /.review-form -->
+                                    </sec:authorize>
+                                </div><!-- /.product-add-review -->
+
+                            </div><!-- /.product-tab -->
+                        </div><!-- /.tab-pane -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <br>
+    
+
+    <sec:authorize access="!isAuthenticated()">
+        <strong>Vui long <a href="<c:url value="/login" />">dang nhap</a> de binh luan!!!</strong>
+    </sec:authorize>
+
+
+
+
+
+    <script>
+        window.onload = function () {
+            loadComments('${endpoint}');
+        };
+    </script>

@@ -6,11 +6,14 @@ package com.dev.repository.Impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.dev.pojo.Comment;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.repository.ProductRepository;
+import com.dev.repository.UserRepository;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -24,6 +27,8 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +47,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Autowired
     private Cloudinary cloudinary;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<Product> getNewProducts() {
@@ -183,5 +191,34 @@ public class ProductRepositoryImpl implements ProductRepository {
         query.setFirstResult((page - 1) * max);
 
         return query.getResultList();
+    }
+
+    @Override
+    public List<Comment> getComments(int productId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Comment> q = b.createQuery(Comment.class);
+        Root root = q.from(Comment.class);
+        q.select(root);
+
+        q.where(b.equal(root.get("productId"), productId));
+
+        Query query = session.createQuery(q);
+        return query.getResultList();
+    }
+
+    @Override
+    public Comment addComment(String content, int productId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Comment c = new Comment();
+        c.setContent(content);
+        c.setProductId(this.getProductById(productId));
+        c.setCreatedDate(new Date());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        c.setCustomerId(this.userRepository.getUserByUsername(authentication.getName()));
+        
+        session.save(c);
+
+        return c;
     }
 }

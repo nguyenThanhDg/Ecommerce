@@ -14,4 +14,5 @@ public interface UserRepository {
     boolean updateUser(User user, int id);
     boolean checkUserName(String username);
     User findById(int id);
+    User getUserByUsername(String username);
 }

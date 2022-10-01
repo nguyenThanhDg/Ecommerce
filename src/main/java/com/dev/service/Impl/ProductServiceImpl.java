@@ -6,6 +6,7 @@ package com.dev.service.Impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.dev.pojo.Comment;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.repository.ProductRepository;
@@ -94,5 +95,15 @@ public class ProductServiceImpl implements ProductService{
        
         return false;
         
+    }
+
+    @Override
+    public List<Comment> getComments(int productId) {
+        return this.productRepository.getComments(productId);
+    }
+
+    @Override
+    public Comment addComment(String content, int productId) {
+        return this.productRepository.addComment(content, productId);
     }
 }

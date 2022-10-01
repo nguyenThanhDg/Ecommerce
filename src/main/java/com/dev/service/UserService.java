@@ -19,4 +19,5 @@ public interface UserService extends UserDetailsService {
     boolean updateUser(User user, int id);
     User findById(int id);
     boolean checkUserName(String username);
+    User getUserByUsername(String username);
 }
