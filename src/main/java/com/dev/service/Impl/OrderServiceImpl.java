@@ -5,6 +5,7 @@
 package com.dev.service.Impl;
 
 import com.dev.pojo.Cart;
+import com.dev.pojo.SaleOrder;
 import com.dev.repository.OrderRepository;
 import com.dev.service.OrderService;
 import java.util.Map;
@@ -23,6 +24,12 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public boolean addReceipt(Map<Integer, Cart> cart, int id) {
         return this.orderRepository.addReceipt(cart, id);
+    }
+
+    
+    @Override
+    public SaleOrder getSaleOrderById(int id) {
+        return this.orderRepository.getSaleOrderById(id);
     }
     
 }

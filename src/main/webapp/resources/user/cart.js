@@ -4,26 +4,6 @@
  */
 /* global fetch */
 
-//function addCart(productId, productName, price) {
-//    $.ajax({
-//        url: "/WebFood/api/cart",
-//        type: "POST",
-//        data: {
-//            productId: productId,
-//            productName: productName,
-//            price: price,
-//            quantity: 1
-//        },
-//        success: function (data) {
-//            var a = $(".cartCounter").text();
-//            a = a === "" ? 0:parseInt(a);
-//            $(".cartCounter").text(a + 1);
-//        },
-//        error: function (jqXHR) {
-//            console.info(jqXHR);
-//        }
-//    });
-//}
 
 
 function addToCart(endpoint, productId, productName, price, image) {
@@ -48,7 +28,7 @@ function addToCart(endpoint, productId, productName, price, image) {
         counter.innerText = data.quantity;
         let total = document.getElementById("cartTotal");
         total.innerText = data.total;
-        
+
     });
 }
 
@@ -93,19 +73,35 @@ function deleteCartItem(productId) {
     }
 }
 
-function pay(id) {
+function pay(endpoint) {
     event.preventDefault();
     if (confirm("Ban chac chan thanh toan?") === true) {
-        fetch(`/Ecommerce/api/pay/${id}`, {
+        fetch(endpoint, {
             method: "post"
         }).then(function (res) {
-            return res.json();
+            return res;
         }).then(function (code) {
             console.info(code);
             location.reload();
         });
         alert("Bạn đã mua hàng thành công");
-    } 
-    else
+    } else
         alert("Bạn chưa đặt hàng!!!");
 }
+
+//function payConfirm() {
+//    
+//    if (confirm("Ban chac chan thanh toan?") === true) {
+//        fetch(`/Ecommerce/api/pay/payConfirm`, {
+//            method: "post"
+//        }).then(function (res) {
+//            return res.json();
+//        }).then(function (code) {
+//            console.info(code);
+//            location.reload();
+//        });
+//        alert("Bạn đã mua hàng thành công");
+//    } else
+//        alert("Bạn chưa đặt hàng!!!");
+//}
+
