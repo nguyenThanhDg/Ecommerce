@@ -8,6 +8,11 @@ import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.service.OrderDetailService;
 import com.dev.service.ProductService;
+import com.dev.service.StatsService;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -30,13 +36,35 @@ public class SellerController {
     private ProductService productService;
     
     @Autowired
+    private StatsService statsService;
+    
+    @Autowired
     private OrderDetailService orderDetailService;
     
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model,@RequestParam(required = false) Map<String, String> params) {
         User seller = (User) model.getAttribute("currentUser");
         model.addAttribute("countProduct", this.productService.countProduct(seller.getId()));
         model.addAttribute("countOrder", this.orderDetailService.getAmountProduct(seller));
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String kw = params.getOrDefault("kw", null);
+
+        Date fromDate = null, toDate = null;
+
+        try {
+            String from = params.getOrDefault("fromDate", null);
+            if (from != null) {
+                fromDate = f.parse(from);
+            }
+
+            String to = params.getOrDefault("toDate", null);
+            if (to != null) {
+                toDate = f.parse(to);
+            }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        model.addAttribute("products", this.statsService.stats(kw, fromDate, toDate, seller.getId()));
         return "seller-home";
     }
 
