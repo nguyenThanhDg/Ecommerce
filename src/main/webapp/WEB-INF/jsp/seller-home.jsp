@@ -42,29 +42,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="statistic-block block">
                         <div class="progress-details d-flex align-items-end justify-content-between">
                             <div class="title">
-                                <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>New Invoices</strong>
+                                <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Doanh thu</strong>
                             </div>
-                            <div class="number dashtext-3">140</div>
+                            <div class="number dashtext-3">${totalRevenue}</div>
                         </div>
                         <div class="progress progress-template">
                             <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="statistic-block block">
-                        <div class="progress-details d-flex align-items-end justify-content-between">
-                            <div class="title">
-                                <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>All Projects</strong>
-                            </div>
-                            <div class="number dashtext-4">41</div>
-                        </div>
-                        <div class="progress progress-template">
-                            <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
                         </div>
                     </div>
                 </div>
@@ -182,60 +169,76 @@
                     </div>
                 </div>
             </div>
-            <div class="public-user-block block">
-                <div class="row d-flex align-items-center">                   
-                    <div class="col-lg-4 d-flex align-items-center">
-                        <div class="order">4th</div>
-                        <div class="avatar"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Tomas Hecktor</strong><span class="d-block">@tomhecktor</span></a>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <div class="contributions">410 Contributions</div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="details d-flex">
-                            <div class="item"><i class="icon-info"></i><strong>110</strong></div>
-                            <div class="item"><i class="fa fa-gg"></i><strong>200</strong></div>
-                            <div class="item"><i class="icon-flow-branch"></i><strong>100</strong></div>
+            <div class="row">
+                <div class="col-lg-12">                           
+                    <div class="block">
+                        <div class="title"><strong>Tim kiem san pham da ban theo thoi gian va tu khoa</strong></div>
+                        <div class="block-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input name="fromDate" type="date" placeholder="tu ngay" class="mr-sm-3 form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input name="toDate" type="date" placeholder="den ngay" class="mr-sm-3 form-control form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inlineFormInput" class="sr-only">Name</label>
+                                    <input name="kw" type="text" placeholder="nhap tu khoa can tim" class="mr-sm-1 form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="tim" class="btn btn-primary">
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="public-user-block block">
-                <div class="row d-flex align-items-center">                   
-                    <div class="col-lg-4 d-flex align-items-center">
-                        <div class="order">5th</div>
-                        <div class="avatar"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Alexander Shelby</strong><span class="d-block">@alexshelby</span></a>
+            <c:if test="${!products.isEmpty()}">
+                <div class="public-user-block block">
+                    <div class="row d-flex align-items-center">                   
+                            <div class="col-lg-4 d-flex align-items-center">
+                                <h4>Ten san pham</h4>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <h4>Ngay mua</h4>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="details d-flex">
+                                    <h4 class="item">Don gia</h4>
+                                    <h4 class="item">So luong</h4>
+                                    <h4 class="item">Tong tien</h4>
+                                </div>
+                            </div>
                     </div>
-                    <div class="col-lg-4 text-center">
-                        <div class="contributions">320 Contributions</div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="details d-flex">
-                            <div class="item"><i class="icon-info"></i><strong>150</strong></div>
-                            <div class="item"><i class="fa fa-gg"></i><strong>120</strong></div>
-                            <div class="item"><i class="icon-flow-branch"></i><strong>50</strong></div>
+                    <c:forEach items="${products}" var="p" >
+
+                        <div class="row d-flex align-items-center">                   
+                            <div class="col-lg-4 d-flex align-items-center">
+                                <div class="avatar"> <img src="${p[1]}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">${p[0]}</strong><span class="d-block">${p[2]} ${p[3]}</span></a>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <div class="contributions">${p[6]}</div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="details d-flex">
+                                    <div class="item"><i class="icon-info"></i><strong>${p[4]}</strong></div>
+                                    <div class="item"><i class="fa fa-gg"></i><strong>${p[5]}</strong></div>
+                                    <div class="item"><i class="icon-flow-branch"></i><strong>${p[7]}</strong></div>
+                                </div>
+                            </div>
                         </div>
+                        <br>
+                    </c:forEach>
+                </div>
+            </c:if>
+            <c:if test="${products.isEmpty()}">
+                <div class="public-user-block block">
+                    <div class="row d-flex align-items-center">                   
+                        <strong class="d-block">khong co ket qua</strong>
                     </div>
                 </div>
-            </div>
-            <div class="public-user-block block">
-                <div class="row d-flex align-items-center">                   
-                    <div class="col-lg-4 d-flex align-items-center">
-                        <div class="order">6th</div>
-                        <div class="avatar"> <img src="img/avatar-6.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Arther Kooper</strong><span class="d-block">@artherkooper</span></a>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <div class="contributions">170 Contributions</div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="details d-flex">
-                            <div class="item"><i class="icon-info"></i><strong>60</strong></div>
-                            <div class="item"><i class="fa fa-gg"></i><strong>70</strong></div>
-                            <div class="item"><i class="icon-flow-branch"></i><strong>40</strong></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </c:if>
         </div>
     </section>
     <section class="margin-bottom-sm">

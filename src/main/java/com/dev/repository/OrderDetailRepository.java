@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface OrderDetailRepository {
     int amountProductByProductId(int id);
+    long totalRevenue(int id);
 }

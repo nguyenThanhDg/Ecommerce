@@ -9,7 +9,9 @@ import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.repository.OrderDetailRepository;
 import com.dev.repository.ProductRepository;
+import com.dev.repository.UserRepository;
 import com.dev.service.OrderDetailService;
+import com.dev.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Autowired
     private ProductRepository productRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public int getAmountProduct(User user) {
@@ -36,5 +41,17 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         }
         return sum;
     }
+
+    @Override
+    public long totalRevenue(int id) {
+        
+        List<Product> products = this.productRepository.getProductsByUser(this.userRepository.findById(id));
+        long sum = 0;
+        for (Product p : products) {
+            sum = sum + this.orderDetailRepository.totalRevenue(p.getId());
+        }
+        System.out.println("sum" + sum);
+        return sum;
+     }
 
 }

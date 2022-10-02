@@ -46,6 +46,7 @@ public class SellerController {
         User seller = (User) model.getAttribute("currentUser");
         model.addAttribute("countProduct", this.productService.countProduct(seller.getId()));
         model.addAttribute("countOrder", this.orderDetailService.getAmountProduct(seller));
+        model.addAttribute("totalRevenue", this.orderDetailService.totalRevenue(seller.getId()));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String kw = params.getOrDefault("kw", null);
 
@@ -73,6 +74,14 @@ public class SellerController {
         model.addAttribute("product", new Product());
 
         return "add-product";
+    }
+    
+    @GetMapping("/listProducts")
+    public String listProducts(Model model) {
+        User seller = (User) model.getAttribute("currentUser");
+        model.addAttribute("products", this.productService.getProductsByUser(seller));
+
+        return "listProducts";
     }
 
     @PostMapping("/add-product")
