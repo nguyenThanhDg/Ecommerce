@@ -51,7 +51,7 @@ public class StatsRepositoryImpl implements StatsRepository{
         predicates.add(b.equal(rootOd.get("orderProduct"), rootP.get("id")));
         predicates.add(b.equal(rootOd.get("orderId"), rootSo.get("id")));
         predicates.add(b.equal(rootSo.get("customerId"), rootU.get("id")));
-        q.multiselect(rootP.get("name"),rootP.get("image"), rootU.get("firstName"),rootU.get("lastName"),rootOd.get("unitPrice"),rootOd.get("num"),rootSo.get("createdDate"));
+        q.multiselect(rootP.get("name"),rootP.get("image"), rootU.get("firstName"),rootU.get("lastName"),rootOd.get("unitPrice"),rootOd.get("num"),rootSo.get("createdDate"),b.prod(rootOd.get("unitPrice"), rootOd.get("num")));
         
         if (kw != null && !kw.isEmpty())
             predicates.add(b.like(rootP.get("name"), String.format("%%%s%%", kw)));

@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface OrderDetailService {
     int getAmountProduct(User user);
+    long totalRevenue(int id);
 }

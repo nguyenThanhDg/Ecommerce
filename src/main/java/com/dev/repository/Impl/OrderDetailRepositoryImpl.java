@@ -6,9 +6,12 @@ package com.dev.repository.Impl;
 
 import com.dev.pojo.OrderDetail;
 import com.dev.pojo.Product;
+import com.dev.pojo.SaleOrder;
+import com.dev.pojo.User;
 import com.dev.repository.OrderDetailRepository;
 import com.dev.repository.ProductRepository;
 import com.dev.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -53,6 +56,22 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
             return 0;
         
         return Integer.parseInt(q.getSingleResult().toString());
+    }
+
+    @Override
+    public long totalRevenue(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root root = query.from(OrderDetail.class);
+        query = query.select(root);
+        Predicate p = builder.equal(root.get("orderProduct"), id);
+        query = query.where(p);
+        query.select(builder.sum(builder.prod(root.get("unitPrice"), root.get("num"))));
+        Query q = session.createQuery(query);
+        if (q.getSingleResult() == null)
+            return 0;
+        return Long.parseLong(q.getSingleResult().toString());
     }
 
 }

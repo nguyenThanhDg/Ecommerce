@@ -48,5 +48,9 @@
         <put-attribute name="title" value="admin" />
         <put-attribute name="content" value="/WEB-INF/jsp/seller-home.jsp" />
     </definition>
+    <definition name="listProducts" extends="baseSellerLayout">
+        <put-attribute name="title" value="Danh sach san pham" />
+        <put-attribute name="content" value="/WEB-INF/jsp/list-products.jsp" />
+    </definition>
 </tiles-definitions>
 
