@@ -41,7 +41,7 @@
                     <h3 class="section-title">Sản phẩm nổi bật</h3>
                     <div class="sidebar-widget-body outer-top-xs">
                         <div class="tag-list"> <a class="item" title="Phone" href="category.html">Phone</a> 
-                            <a class="item active" title="Vest" href="category.html">Laptop</a>
+                            <a class="item" title="Vest" href="category.html">Laptop</a>
                             <a class="item" title="Smartphone" href="category.html">Máy tính bảng</a>
                             <a class="item" title="Furniture" href="category.html">Quần áo</a>
                             <a class="item" title="Sweatpants" href="category.html">Đồng hồ</a>
@@ -90,7 +90,7 @@
                         <div class="item" style="background-image: url(https://bloganchoi.com/wp-content/uploads/2019/03/anh-dai-dien-19.jpg);">
                             <div class="container-fluid">
                                 <div class="caption bg-color vertical-center text-left">
-                                    <div class="slider-header fadeInDown-1">Mua he 2022</div>
+                                    <div class="slider-header fadeInDown-1">Mùa hè 2022</div>
                                     <div class="big-text fadeInDown-1" style="color: white"> Tưng bừng mua sắm </div>
                                     <div class="excerpt fadeInDown-2 hidden-xs"> <span>Việc gì khó cứ để mình lo.</span> </div>
                                     <div class="button-holder fadeInDown-3"> <a href="href="<c:url value="/products" />""
@@ -114,7 +114,7 @@
                     <div class="more-info-tab clearfix ">
                         <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
                         <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-                            <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Tất cả</a></li>
+                            <li class="active"><a href="<c:url value="/products" />">Tất cả</a></li>
                             <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Quần áo</a></li>
                             <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Điện tử</a></li>
                             <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Giày</a></li>
@@ -141,7 +141,7 @@
                                                         </div>
                                                         <!-- /.image -->
 
-                                                        <div class="tag new"><span>new</span></div>
+                                                        <div class="tag new"><span>Mới</span></div>
                                                     </div>
                                                     <!-- /.product-image -->
 
@@ -161,7 +161,7 @@
                                                                 <li class="add-cart-button btn-group">
                                                                     <button data-toggle="tooltip" class="btn btn-primary icon" type="button"
                                                                             title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
-                                                                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                                    <button class="btn btn-primary cart-btn" type="button">Thêm sản phẩm</button>
                                                                 </li>
                                                                 <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart"
                                                                                              href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
@@ -243,7 +243,7 @@
                                     </div>
                                 </div>
                                 <div class="new-label">
-                                    <div class="text">NEW</div>
+                                    <div class="text">MỚI</div>
                                 </div>
                                 <!-- /.new-label -->
                             </div>
@@ -285,26 +285,26 @@
             <li>
                 <div class="feature-box">
                     <div class="icon-truck"></div>
-                    <div class="content-blocks">We ship worldwide</div>
+                    <div class="content-blocks">Giao hàng tận nơi</div>
                 </div>
             </li>
             <li>
                 <div class="feature-box">
                     <div class="icon-support"></div>
                     <div class="content-blocks">call
-                        +1 800 789 0000</div>
+                        +84 935 584 294</div>
                 </div>
             </li>
             <li>
                 <div class="feature-box">
                     <div class="icon-money"></div>
-                    <div class="content-blocks">Money Back Guarantee</div>
+                    <div class="content-blocks">Chính sách đổi trả</div>
                 </div>
             </li>
             <li>
                 <div class="feature-box">
                     <div class="icon-return"></div>
-                    <div class="content">30 days return</div>
+                    <div class="content">Hoàn trả trong 30 ngày</div>
                 </div>
             </li>
 

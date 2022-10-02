@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -124,5 +125,7 @@ public class SaleOrder implements Serializable {
     public String toString() {
         return "com.dev.pojo.Order1[ id=" + id + " ]";
     }
+
+    
     
 }

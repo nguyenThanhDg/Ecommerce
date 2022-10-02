@@ -5,6 +5,7 @@
 package com.dev.service;
 
 import com.dev.pojo.Cart;
+import com.dev.pojo.SaleOrder;
 import java.util.Map;
 
 /**
@@ -13,4 +14,6 @@ import java.util.Map;
  */
 public interface OrderService {
     boolean addReceipt(Map<Integer, Cart> cart, int id);
+   
+    SaleOrder getSaleOrderById(int id);
 }

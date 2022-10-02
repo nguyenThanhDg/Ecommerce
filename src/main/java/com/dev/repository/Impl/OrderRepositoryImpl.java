@@ -68,4 +68,12 @@ public class OrderRepositoryImpl implements OrderRepository {
         return false;
     }
 
+   
+
+    @Override
+    public SaleOrder getSaleOrderById(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        return session.get(SaleOrder.class, id);
+    }
+
 }
