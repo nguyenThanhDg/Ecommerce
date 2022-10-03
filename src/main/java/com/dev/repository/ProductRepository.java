@@ -21,9 +21,11 @@ public interface ProductRepository {
     boolean addOrUpdate(Product product);
     List<Product> getProductsByUser(User user);
     void deleteProduct(int id);
+    void pauseProduct(int id);
     List<Product> getProducts(String kw);
     boolean addProduct(Product p);
     List<Product> getProducts(Map<String, String> params, int page);
     List<Comment> getComments(int productId);
     Comment addComment(String content, int productId);
+    List<Object[]> getHotProducts(int num, int id);
 }

@@ -49,5 +49,7 @@
         <script src="<c:url value="/admin/vendor/jquery-validation/jquery.validate.min.js"/>"></script>
         <script src="<c:url value="/admin/js/charts-home.js"/>"></script>
         <script src="<c:url value="/admin/js/front.js"/>"></script>
+        <script src="<c:url value="/admin/js/product.js"/>"></script>
+        
     </body>
 </html>

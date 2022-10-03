@@ -42,34 +42,41 @@
             <c:if test="${!products.isEmpty()}">
                 <div class="public-user-block block">
                     <div class="row d-flex align-items-center">                   
-                            <div class="col-lg-4 d-flex align-items-center">
-                                <h4>Ten san pham</h4>
+                        <div class="col-lg-3 d-flex align-items-center">
+                            <h4>San pham</h4>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="details d-flex">
+                                <h5 class="item">Don gia</h5>
+                                <h5 class="item">Danh muc</h5>
+                                <h5 class="item">Trang thai</h5>
+                                <h5 class="item">Ngày dang</h5>
                             </div>
-                            <div class="col-lg-4 text-center">
-                                <h4>Ngay mua</h4>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="details d-flex">
-                                    <h4 class="item">Don gia</h4>
-                                    <h4 class="item">So luong</h4>
-                                    <h4 class="item">Tong tien</h4>
-                                </div>
-                            </div>
+                        </div>
+                       
                     </div>
                     <c:forEach items="${products}" var="p" >
 
                         <div class="row d-flex align-items-center">                   
-                            <div class="col-lg-4 d-flex align-items-center">
-                                <div class="avatar"> <img src="${p.image}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block"></strong><span class="d-block"></span></a>
+                            <div class="col-lg-3 d-flex align-items-center">
+                                <div class="avatar"> <img src="${p.image}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">${p.name}</strong><span class="d-block"></span></a>
                             </div>
-                            <div class="col-lg-4 text-center">
-                                <div class="contributions"></div>
-                            </div>
-                            <div class="col-lg-4">
+
+                            <div class="col-lg-6">
                                 <div class="details d-flex">
-                                    <div class="item"><i class="icon-info"></i><strong></strong></div>
-                                    <div class="item"><i class="fa fa-gg"></i><strong></strong></div>
-                                    <div class="item"><i class="icon-flow-branch"></i><strong></strong></div>
+                                    <div class="item"><strong>${p.price}</strong></div>
+                                    <div class="item"><strong>${p.categoryId.name}</strong></div>
+                                    <div class="item"><strong>${p.status}</strong></div>
+                                    <div class="item">${p.createdDate}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 text-center">
+                                <div class="details d-flex">
+                                    <div class="item"><a class="btn btn-info" href="<c:url value="/seller/products/${p.id}" />">Xem</a></div>
+                                    <c:url value="/api/products/${p.id}" var="endpoint" />
+                                    <div class="item"><button class="btn btn-success" onclick="pauseProduct('${endpoint}')">dung</button></div>
+                                    <div class="item"><button class="btn btn-danger" onclick="delProduct('${endpoint}')">Xoa</button></div>
                                 </div>
                             </div>
                         </div>

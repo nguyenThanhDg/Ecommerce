@@ -11,7 +11,7 @@ function loadComments(endpoint) {
         let h = '';
         for (let d of data) {
             h += `
-                <li class="list-group-item"><em>${d.content}</em> duoc binh luan boi <strong>${d.customerId.lastName}</strong> vao luc <strong>${moment(d.createDate).locale("vi").fromNow()}</strong></li>
+                <li class="list-group-item"><em>${d.content}</em> duoc binh luan boi <strong>${d.customerId.lastName}</strong> vao luc <strong>${moment(d.createdDate).locale("vi").fromNow()}</strong></li>
             `;
     }
         c.innerHTML = h;

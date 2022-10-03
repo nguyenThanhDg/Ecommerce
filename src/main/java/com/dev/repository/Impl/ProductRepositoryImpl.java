@@ -7,6 +7,7 @@ package com.dev.repository.Impl;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.dev.pojo.Comment;
+import com.dev.pojo.OrderDetail;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.repository.ProductRepository;
@@ -126,7 +127,21 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         try {
             Product p = session.get(Product.class, id);
+           
             session.delete(p);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @Override
+    public void pauseProduct(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        try {
+            Product p = session.get(Product.class, id);
+            p.setStatus(Product.PAUSE);
+            session.save(p);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -220,5 +235,24 @@ public class ProductRepositoryImpl implements ProductRepository {
         session.save(c);
 
         return c;
+    }
+
+    @Override
+    public List<Object[]> getHotProducts(int num, int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootP = query.from(Product.class);
+        Root rootOd = query.from(OrderDetail.class);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootP.get("sellerId"), id));
+        predicates.add(builder.equal(rootOd.get("orderProduct"), rootP.get("id")));
+        query.multiselect(rootP.get("name"),rootP.get("image"), rootOd.get("unitPrice"),rootP.get("categoryId"),rootP.get("createdDate"),builder.sum(rootOd.get("num")),rootP.get("status"));
+        query = query.groupBy(rootP.get("id"));
+        query = query.orderBy(builder.desc(builder.sum(rootOd.get("num"))));
+        query.where(predicates.toArray(new Predicate[] {}));
+        Query q = session.createQuery(query);
+        q.setMaxResults(num);
+        return q.getResultList();
     }
 }
