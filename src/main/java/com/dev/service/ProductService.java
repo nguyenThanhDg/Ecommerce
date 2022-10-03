@@ -19,9 +19,9 @@ public interface ProductService {
     List<Product> getNewProducts();
 
     Product getProductById(int productId);
-
+    void pauseProduct(int id);
     long countProduct(int id);
-
+    List<Object[]> getHotProducts(int num, int id);
     boolean addOrUpdate(Product product);
     boolean addProduct(Product p);
     List<Product> getProductsByUser(User user);

@@ -46,7 +46,9 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status"),
     @NamedQuery(name = "Product.findByDescription", query = "SELECT p FROM Product p WHERE p.description = :description")})
 public class Product implements Serializable {
-
+    public static String ON = "Đang bán";
+    public static String PAUSE = "Tạm ngưng";
+    public static String DELETE = "Ngừng bán";
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

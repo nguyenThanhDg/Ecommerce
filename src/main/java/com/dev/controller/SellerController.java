@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +49,7 @@ public class SellerController {
         model.addAttribute("countProduct", this.productService.countProduct(seller.getId()));
         model.addAttribute("countOrder", this.orderDetailService.getAmountProduct(seller));
         model.addAttribute("totalRevenue", this.orderDetailService.totalRevenue(seller.getId()));
+        model.addAttribute("hotProducts", this.productService.getHotProducts(3,seller.getId()));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String kw = params.getOrDefault("kw", null);
 
@@ -76,7 +79,7 @@ public class SellerController {
         return "add-product";
     }
     
-    @GetMapping("/listProducts")
+    @GetMapping("/products")
     public String listProducts(Model model) {
         User seller = (User) model.getAttribute("currentUser");
         model.addAttribute("products", this.productService.getProductsByUser(seller));
@@ -99,5 +102,12 @@ public class SellerController {
             return "redirect:/";
         }
         return "/login";
+    }
+    
+    @GetMapping("/products/{productId}")
+    public String detail(Model model, @PathVariable(value = "productId") int productId, HttpSession session) {
+        model.addAttribute("product", this.productService.getProductById(productId));
+        
+        return "seller-detail";
     }
 }

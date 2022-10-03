@@ -107,4 +107,14 @@ public class ProductServiceImpl implements ProductService{
     public Comment addComment(String content, int productId) {
         return this.productRepository.addComment(content, productId);
     }
+
+    @Override
+    public List<Object[]> getHotProducts(int num, int id) {
+        return this.productRepository.getHotProducts(num, id);
+    }
+
+    @Override
+    public void pauseProduct(int id) {
+        this.productRepository.pauseProduct(id);
+    }
 }
