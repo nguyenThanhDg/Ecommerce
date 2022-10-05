@@ -4,6 +4,7 @@
  */
 package com.dev.service;
 
+import com.dev.pojo.User;
 import java.util.Date;
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
  */
 public interface StatsService {
     List<Object[]> stats(String kw,Date fromDate, Date toDate, int id);
-    List<Object[]> revenueStats(int y);
+    List<Object[]> revenueStats(int y, User user);
 }

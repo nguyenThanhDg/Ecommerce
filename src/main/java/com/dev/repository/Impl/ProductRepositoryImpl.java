@@ -107,6 +107,38 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         return false;
     }
+    
+    @Override
+    public boolean updateProduct(Product product, int id, User seller) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+
+            Product p = session.get(Product.class, id);
+            if (!product.getFile().isEmpty()) {
+                Map r;
+                try {
+                    r = this.cloudinary.uploader().upload(product.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+                    p.setImage((String) r.get("secure_url"));
+                } catch (IOException ex) {
+                    Logger.getLogger(ProductRepositoryImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            p.setName(product.getName());
+            p.setPrice(product.getPrice());
+            p.setDescription(product.getDescription());
+            p.setCategoryId(product.getCategoryId());
+            System.out.println(product.getSellerId());
+            p.setSellerId(seller);
+            session.update(p);
+
+            return true;
+        } catch (HibernateException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return false;
+    }
 
     @Override
     public List<Product> getProductsByUser(User user) {

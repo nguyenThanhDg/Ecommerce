@@ -117,4 +117,9 @@ public class ProductServiceImpl implements ProductService{
     public void pauseProduct(int id) {
         this.productRepository.pauseProduct(id);
     }
+
+    @Override
+    public boolean updateProduct(Product product, int id, User seller) {
+        return this.productRepository.updateProduct(product, id, seller);
+    }
 }

@@ -28,4 +28,5 @@ public interface ProductRepository {
     List<Comment> getComments(int productId);
     Comment addComment(String content, int productId);
     List<Object[]> getHotProducts(int num, int id);
+    boolean updateProduct(Product product, int id, User seller);
 }

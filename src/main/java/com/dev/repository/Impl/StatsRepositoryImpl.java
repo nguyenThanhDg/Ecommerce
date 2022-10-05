@@ -70,17 +70,21 @@ public class StatsRepositoryImpl implements StatsRepository{
     }
 
     @Override
-    public List<Object[]> revenueStats(int y) {
+    public List<Object[]> revenueStats(int y, User seller) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         
         CriteriaBuilder b = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
         
-        Root root = q.from(Product.class);
-        q.where(b.equal(root.get("active1"), 2),
-                b.equal(b.function("YEAR", Integer.class, root.get("updatedDate")), y));
-        q.multiselect(b.function("MONTH", Integer.class, root.get("updatedDate")),b.function("YEAR", Integer.class, root.get("updatedDate")),b.count(root.get("id")), b.sum(root.get("cost")));
-        q.groupBy(b.function("MONTH", Integer.class, root.get("updatedDate")),b.function("YEAR", Integer.class, root.get("updatedDate")));
+        Root rootP = q.from(Product.class);
+        Root rootOd = q.from(OrderDetail.class);
+        Root rootSo = q.from(SaleOrder.class);
+        q.where(b.equal(rootP.get("sellerId"), seller),
+                b.equal(rootOd.get("orderProduct"), rootP.get("id")),
+                b.equal(rootOd.get("orderId"), rootSo.get("id")),
+                b.equal(b.function("YEAR", Integer.class, rootSo.get("createdDate")), y));
+        q.multiselect(b.function("MONTH", Integer.class, rootSo.get("createdDate")),b.function("YEAR", Integer.class, rootSo.get("createdDate")),b.sum(b.prod(rootOd.get("unitPrice"), rootOd.get("num"))), b.sum(rootOd.get("num")));
+        q.groupBy(b.function("MONTH", Integer.class, rootSo.get("createdDate")),b.function("YEAR", Integer.class, rootSo.get("createdDate")));
         Query query = session.createQuery(q);
         return query.getResultList();
     }

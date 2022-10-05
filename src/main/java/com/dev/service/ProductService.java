@@ -30,4 +30,5 @@ public interface ProductService {
     List<Product> getProducts(Map<String, String> params, int page);
     List<Comment> getComments(int productId);
     Comment addComment(String content, int productId);
+    boolean updateProduct(Product product, int id, User seller);
 }

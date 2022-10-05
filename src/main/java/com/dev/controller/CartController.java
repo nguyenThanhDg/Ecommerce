@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CartController {
-    //HttpSession bộ dữ liệu để nạp session
     @GetMapping("/cart")
     public String gioHang(Model model, HttpSession session){
         

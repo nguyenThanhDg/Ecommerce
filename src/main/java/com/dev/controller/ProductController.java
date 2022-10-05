@@ -44,5 +44,6 @@ public class ProductController {
         model.addAttribute("product", this.productService.getProductById(productId));
         return "detail";
     }
+    
 
 }
