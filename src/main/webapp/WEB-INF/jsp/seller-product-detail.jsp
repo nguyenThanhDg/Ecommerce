@@ -28,7 +28,7 @@
                     <div class="block">
                         <div class="title"><strong>Chỉnh sửa</strong></div>
                         <div class="block-body">
-                            <c:url value="/seller/add-product" var="action" />
+                            <c:url value="/seller/products/update/${product.id}" var="action" />
                             <form:form method="post" action="${action}"  enctype="multipart/form-data" modelAttribute="product" class="form-horizontal">
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">Tên</label>
@@ -53,7 +53,12 @@
                                     <div class="col-sm-9">
                                         <form:select path="categoryId" class="form-control mb-3 mb-3">
                                             <c:forEach items="${category}" var="c">
-                                                <option value="${c.id}">${c.name}</option>
+                                                <c:if test="${product.categoryId == c}">
+                                                    <option selected value="${c.id}">${c.name}</option>
+                                                </c:if>
+                                                <c:if test="${product.categoryId != c}">
+                                                    <option value="${c.id}">${c.name}</option>
+                                                </c:if>
                                             </c:forEach>
 
                                         </form:select>

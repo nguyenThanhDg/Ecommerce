@@ -44,12 +44,13 @@ public class SellerController {
     private OrderDetailService orderDetailService;
     
     @GetMapping("/")
-    public String index(Model model,@RequestParam(required = false) Map<String, String> params) {
+    public String index(Model model,@RequestParam(required = false) Map<String, String> params,@RequestParam(value = "year", defaultValue = "2022") int year) {
         User seller = (User) model.getAttribute("currentUser");
         model.addAttribute("countProduct", this.productService.countProduct(seller.getId()));
         model.addAttribute("countOrder", this.orderDetailService.getAmountProduct(seller));
         model.addAttribute("totalRevenue", this.orderDetailService.totalRevenue(seller.getId()));
         model.addAttribute("hotProducts", this.productService.getHotProducts(3,seller.getId()));
+        model.addAttribute("chart", this.statsService.revenueStats(year,seller));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String kw = params.getOrDefault("kw", null);
 
@@ -109,5 +110,14 @@ public class SellerController {
         model.addAttribute("product", this.productService.getProductById(productId));
         
         return "seller-detail";
+    }
+    
+    @PostMapping("/products/update/{productId}")
+    public String updateShipper(Model model, @ModelAttribute(value = "product") Product product, @PathVariable(value = "productId") int productId) {
+        User seller = (User) model.getAttribute("currentUser");
+        if (this.productService.updateProduct(product, productId, seller) == true) {
+            return "redirect:/seller/products/";
+        }
+        return "redirect:/seller/";
     }
 }

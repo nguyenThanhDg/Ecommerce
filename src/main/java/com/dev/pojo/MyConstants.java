@@ -4,10 +4,6 @@
  */
 package com.dev.pojo;
 
-/**
- *
- * @author anhtuan
- */
 public class MyConstants {
     public static final String MY_EMAIL = "tinas15102016@gmail.com";
 
