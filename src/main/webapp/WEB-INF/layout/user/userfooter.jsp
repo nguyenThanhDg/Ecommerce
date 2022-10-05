@@ -6,6 +6,38 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="row our-features-box">
+    <div class="container">
+        <ul>
+            <li>
+                <div class="feature-box">
+                    <div class="icon-truck"></div>
+                    <div class="content-blocks">Giao hàng tận nơi</div>
+                </div>
+            </li>
+            <li>
+                <div class="feature-box">
+                    <div class="icon-support"></div>
+                    <div class="content-blocks">call
+                        +84 935 584 294</div>
+                </div>
+            </li>
+            <li>
+                <div class="feature-box">
+                    <div class="icon-money"></div>
+                    <div class="content-blocks">Chính sách đổi trả</div>
+                </div>
+            </li>
+            <li>
+                <div class="feature-box">
+                    <div class="icon-return"></div>
+                    <div class="content">Hoàn trả trong 30 ngày</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
 <footer id="footer" class="footer color-bg">
     <div class="footer-bottom">
       <div class="container">

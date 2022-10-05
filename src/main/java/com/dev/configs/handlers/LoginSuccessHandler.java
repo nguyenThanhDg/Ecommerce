@@ -26,8 +26,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication a) throws IOException, ServletException {
         User u = this.userDetailsService.getUsers(a.getName()).get(0);
+        
         request.getSession().setAttribute("currentUser", u);
-        response.sendRedirect("/Ecommerce");
+        if("seller".equals(u.getUserRole())){
+            response.sendRedirect("/Ecommerce/seller/");
+        }
+        else 
+            response.sendRedirect("/Ecommerce");
     }
     
 }

@@ -10,7 +10,7 @@
 <div class="page-content">
     <div class="page-header">
         <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Thong ke</h2>
+            <h2 class="h5 no-margin-bottom">Thống kê</h2>
         </div>
     </div>
     <section class="no-padding-top no-padding-bottom">
@@ -20,7 +20,7 @@
                     <div class="statistic-block block">
                         <div class="progress-details d-flex align-items-end justify-content-between">
                             <div class="title">
-                                <div class="icon"><i class="icon-user-1"></i></div><strong>So san pham</strong>
+                                <div class="icon"><i class="icon-user-1"></i></div><strong>Số sản phẩm</strong>
                             </div>
                             <div class="number dashtext-1">${countProduct}</div>
                         </div>
@@ -33,7 +33,7 @@
                     <div class="statistic-block block">
                         <div class="progress-details d-flex align-items-end justify-content-between">
                             <div class="title">
-                                <div class="icon"><i class="icon-contract"></i></div><strong>san pham da ban</strong>
+                                <div class="icon"><i class="icon-contract"></i></div><strong>Sản phẩm đã bán</strong>
                             </div>
                             <div class="number dashtext-2">${countOrder}</div>
                         </div>
@@ -145,21 +145,21 @@
             <div class="row">
                 <div class="col-lg-12">                           
                     <div class="block">
-                        <div class="title"><strong>Tim kiem san pham da ban theo thoi gian va tu khoa</strong></div>
+                        <div class="title"><strong>Tìm kiếm sản phẩm theo thời gian và từ khoá</strong></div>
                         <div class="block-body">
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <input name="fromDate" type="date" placeholder="tu ngay" class="mr-sm-3 form-control">
+                                    <input name="fromDate" type="date" class="mr-sm-3 form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input name="toDate" type="date" placeholder="den ngay" class="mr-sm-3 form-control form-control">
+                                    <input name="toDate" type="date" class="mr-sm-3 form-control form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inlineFormInput" class="sr-only">Name</label>
-                                    <input name="kw" type="text" placeholder="nhap tu khoa can tim" class="mr-sm-1 form-control">
+                                   
+                                    <input name="kw" type="text" placeholder="Nhập từ khoá cần tìm" class="mr-sm-1 form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="tim" class="btn btn-primary">
+                                    <input type="submit" value="Tìm" class="btn btn-primary">
                                 </div>
 
                             </form>
@@ -171,16 +171,16 @@
                 <div class="public-user-block block">
                     <div class="row d-flex align-items-center">                   
                             <div class="col-lg-4 d-flex align-items-center">
-                                <h4>Ten san pham</h4>
+                                <h4>Tên sản phẩm</h4>
                             </div>
                             <div class="col-lg-4 text-center">
-                                <h4>Ngay mua</h4>
+                                <h4>Ngày mua</h4>
                             </div>
                             <div class="col-lg-4">
                                 <div class="details d-flex">
-                                    <h4 class="item">Don gia</h4>
-                                    <h4 class="item">So luong</h4>
-                                    <h4 class="item">Tong tien</h4>
+                                    <h4 class="item">Đơn giá</h4>
+                                    <h4 class="item">Số lượng</h4>
+                                    <h4 class="item">Tổng tiền</h4>
                                 </div>
                             </div>
                     </div>
@@ -208,7 +208,7 @@
             <c:if test="${products.isEmpty()}">
                 <div class="public-user-block block">
                     <div class="row d-flex align-items-center">                   
-                        <strong class="d-block">khong co ket qua</strong>
+                        <strong class="d-block">Không có kết quả</strong>
                     </div>
                 </div>
             </c:if>
