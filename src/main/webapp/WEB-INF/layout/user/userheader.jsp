@@ -20,6 +20,7 @@
                                     </c:if>
                             <c:if test="${pageContext.request.userPrincipal.name == null}">
                             <li class="login"><a href="<c:url value="/login" />"><span>Đăng nhập</span></a></li>
+                            <li class="login"><a href="<c:url value="/register" />"><span>Đăng ký</span></a></li>
                             </c:if>
                             <c:if test="${pageContext.request.userPrincipal.name != null}">
                             <li class="login"><a href="<c:url value="/logout" />"><span>Đăng xuất</span></a></li>
@@ -82,9 +83,10 @@
                     <div class=" dropdown-cart"> <a href="<c:url value="/cart"/>" class="dropdown-toggle lnk-cart">
                             <div class="items-cart-inner">
                                 <div class="basket">
-                                    <div class="basket-item-count"><span class="count" id="cartCounter">0</span></div>
-                                    <div class="total-price-basket"> <span class="lbl">Giỏ hàng</span> <span
-                                            class="value"  id="cartTotal">0</span> </div>
+                                    <div class="basket-item-count"><span class="count" id="cartCounter">${cartCounter}</span></div>
+                                    <div class="total-price-basket"> <span class="lbl">Giỏ hàng</span>
+                                        <span class="value"  id="cartTotal">${cartTotal.total}</span>
+                                    </div>
                                 </div>
                             </div>
                         </a>

@@ -7,17 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!-- ============================================== HEADER : END ============================================== -->
-<div class="breadcrumb">
-    <div class="container">
-        <div class="breadcrumb-inner">
-            <ul class="list-inline list-unstyled">
-                <li><a href="home.html">Home</a></li>
-                <li class='active'>Register</li>
-            </ul>
-        </div><!-- /.breadcrumb-inner -->
-    </div><!-- /.container -->
-</div><!-- /.breadcrumb -->
 
 <div class="body-content">
     <div class="container">
@@ -26,8 +15,8 @@
 
                 <!-- create a new account -->
                 <div class="col-md-8 col-sm-6 create-new-account">
-                    <h4 class="checkout-subtitle">Create a new account</h4>
-                    <p class="text title-tag-line">Create your new account.</p>
+                    <h4 class="checkout-subtitle">Tạo một tài khoản mới</h4>
+                    <p class="text title-tag-line">Tạo tài khoản mới</p>
                     <c:url value="/register" var="action" />
                     <form:form method="post" action="${action}"  enctype="multipart/form-data" modelAttribute="user" class="register-form outer-top-xs" role="form">
                         <div class="form-group">
@@ -79,7 +68,7 @@
                             <form:input type="file" id="avatar" path="file" class="form-control unicase-form-control text-input" />
                             <form:errors path="file" cssClass="text-danger" element="div" />
                         </div>
-                        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
+                        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng ký</button>
                         
                     </form:form>
 
@@ -88,84 +77,5 @@
                 <!-- create a new account -->
             </div><!-- /.row -->
         </div><!-- /.sigin-in-->
-        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-        <div id="brands-carousel" class="logo-slider wow fadeInUp">
-
-            <div class="logo-slider-inner">
-                <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                    <div class="item m-t-15">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item m-t-10">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-                </div><!-- /.owl-carousel #logo-slider -->
-            </div><!-- /.logo-slider-inner -->
-
-        </div><!-- /.logo-slider -->
-        <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     </div><!-- /.container -->
 </div><!-- /.body-content -->

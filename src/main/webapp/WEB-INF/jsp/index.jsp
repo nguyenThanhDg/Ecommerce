@@ -47,7 +47,8 @@
                             <a class="item" title="Sweatpants" href="category.html">Đồng hồ</a>
                             <a class="item" title="Sneaker" href="category.html">Giày</a>
                             <a class="item" title="Toys" href="category.html">Tai nghe</a>
-                            <a class="item" title="Rose" href="category.html">Nước hoa</a> </div>
+                            <a class="item" title="Rose" href="category.html">Nước hoa</a>
+                        </div>
                         <!-- /.tag-list -->
                     </div>
                     <!-- /.sidebar-widget-body -->
@@ -55,7 +56,7 @@
                 <!-- /.sidebar-widget -->
                 <!-- ============================================== PRODUCT TAGS : END ============================================== -->
                 <!-- ============================================== NEWSLETTER ============================================== -->
-                
+
                 <!-- /.sidebar-widget -->
                 <!-- ============================================== NEWSLETTER: END ============================================== -->
 
@@ -155,18 +156,20 @@
 
                                                     </div>
                                                     <!-- /.product-info -->
+                                                    <c:url value="/api/cart" var="u" />
                                                     <div class="cart clearfix animate-effect">
                                                         <div class="action">
+                                                            
                                                             <ul class="list-unstyled">
-                                                                <li class="add-cart-button btn-group">
-                                                                    <button data-toggle="tooltip" class="btn btn-primary icon" type="button"
-                                                                            title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+                                                                <li class="add-cart-button btn-group">  
+                                                                    <button onclick="addToCart('${u}',${p.id}, '${p.name}', ${p.price}, '${p.image}')" data-toggle="tooltip" class="btn btn-primary icon" type="button"
+                                                                            title="Thêm"> <i class="fa fa-shopping-cart"></i> </button>
                                                                     <button class="btn btn-primary cart-btn" type="button">Thêm sản phẩm</button>
                                                                 </li>
                                                                 <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart"
-                                                                                             href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                                                             href="detail.html" title="Yêu thích"> <i class="icon fa fa-heart"></i> </a> </li>
                                                                 <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html"
-                                                                                    title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                                                                                    title="So sánh"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                                                             </ul>
                                                         </div>
                                                         <!-- /.action -->
@@ -186,7 +189,7 @@
                             <!-- /.product-slider -->
                         </div>
                         <!-- /.tab-pane -->
-                        
+
                     </div>
                     <!-- /.tab-content -->
                 </div>
@@ -279,35 +282,4 @@
 <!-- /#top-banner-and-menu -->
 
 <!-- ============================================== INFO BOXES ============================================== -->
-<div class="row our-features-box">
-    <div class="container">
-        <ul>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-truck"></div>
-                    <div class="content-blocks">Giao hàng tận nơi</div>
-                </div>
-            </li>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-support"></div>
-                    <div class="content-blocks">call
-                        +84 935 584 294</div>
-                </div>
-            </li>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-money"></div>
-                    <div class="content-blocks">Chính sách đổi trả</div>
-                </div>
-            </li>
-            <li>
-                <div class="feature-box">
-                    <div class="icon-return"></div>
-                    <div class="content">Hoàn trả trong 30 ngày</div>
-                </div>
-            </li>
 
-        </ul>
-    </div>
-</div>

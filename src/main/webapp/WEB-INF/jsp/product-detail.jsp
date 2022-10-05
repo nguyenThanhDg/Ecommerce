@@ -82,13 +82,13 @@
 
                     <div class="quantity-container info-container">
                         <div class="row">
-
-
-
-                            <div class="add-btn1">
-                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO
-                                    CART</a>
-                            </div>
+                            <c:url value="/api/cart" var="u" />
+                                <div class="add-btn1">
+                                    <a href="javascript:;"
+                                       onclick="addToCart('${u}',${product.id}, '${product.name}', ${product.price})"
+                                       class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO GIỎ
+                                    </a>
+                                </div>
                         </div><!-- /.row -->
                     </div><!-- /.quantity-container -->
                 </div>
@@ -145,7 +145,7 @@
                                                             <td><input type="radio" name="quality" class="radio" value="4"></td>
                                                             <td><input type="radio" name="quality" class="radio" value="5"></td>
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table><!-- /.table .table-bordered -->
                                             </div><!-- /.table-responsive -->
@@ -189,7 +189,7 @@
 
 
     <br>
-    
+
 
     <sec:authorize access="!isAuthenticated()">
         <strong>Vui long <a href="<c:url value="/login" />">dang nhap</a> de binh luan!!!</strong>
