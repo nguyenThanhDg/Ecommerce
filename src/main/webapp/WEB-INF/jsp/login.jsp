@@ -27,14 +27,13 @@
             <h4 class="">Đăng nhập</h4>
             <c:if test="${param.error != null}">
                     <div class="alert alert-danger">
-                        Login Failure
-
+                        Đăng nhập thất bại
                     </div>
 
                 </c:if>
                 <c:if test="${param.accessDenied != null}">
                     <div class="alert alert-danger">
-                        You have not permission to access
+                        Bạn không có quyền truy cập
                     </div>
                 </c:if>
                 <!-- Login Form s-->
@@ -50,9 +49,9 @@
               </div>
               <div class="radio outer-xs">
                 <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Nhớ mật khẩu
                 </label>
-                <a href="#" class="forgot-password pull-right">Forgot your Password?</a>
+                <a href="#" class="forgot-password pull-right">Quên mật khẩu</a>
               </div>
               <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập</button>
             </form>
@@ -60,85 +59,6 @@
           <!-- Sign-in -->
         </div><!-- /.row -->
       </div><!-- /.sigin-in-->
-      <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-      <div id="brands-carousel" class="logo-slider wow fadeInUp">
-
-        <div class="logo-slider-inner">
-          <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-            <div class="item m-t-15">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item m-t-10">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-
-            <div class="item">
-              <a href="#" class="image">
-                <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-              </a>
-            </div>
-            <!--/.item-->
-          </div><!-- /.owl-carousel #logo-slider -->
-        </div><!-- /.logo-slider-inner -->
-
-      </div><!-- /.logo-slider -->
-      <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     </div><!-- /.container -->
   </div><!-- /.body-content -->
 

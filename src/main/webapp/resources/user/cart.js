@@ -67,6 +67,8 @@ function deleteCartItem(productId) {
             quantity.innerText = data.quantity;
             let total = document.getElementById("totalCart");
             total.innerText = data.total;
+            let total2 = document.getElementById("cartTotal");
+            total2.innerText = data.total;            
             let row = document.getElementById(`productId${productId}`);
             row.style.display = "none";
         });

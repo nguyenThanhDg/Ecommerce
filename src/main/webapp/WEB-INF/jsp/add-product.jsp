@@ -11,14 +11,13 @@
     <!-- Page Header-->
     <div class="page-header no-margin-bottom">
         <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Basic forms</h2>
+            <h2 class="h5 no-margin-bottom">Thêm sản phẩm</h2>
         </div>
     </div>
     <!-- Breadcrumb-->
     <div class="container-fluid">
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Basic forms            </li>
+            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
         </ul>
     </div>
     <section class="no-padding-top">
@@ -26,12 +25,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="block">
-                        <div class="title"><strong>them san pham</strong></div>
+                        <div class="title"><strong>Thêm sản phẩm</strong></div>
                         <div class="block-body">
                             <c:url value="/seller/add-product" var="action" />
                             <form:form method="post" action="${action}"  enctype="multipart/form-data" modelAttribute="product" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">Ten</label>
+                                    <label class="col-sm-3 form-control-label">Tên</label>
                                     <div class="col-sm-9">
                                         <form:input type="text" id="name" path="name" class="form-control"  />
                                         <form:errors path="name" cssClass="text-danger" element="div" />
@@ -39,7 +38,7 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">thong tin</label>
+                                    <label class="col-sm-3 form-control-label"> Thông tin sản phẩm</label>
                                     <div class="col-sm-9">
                                         <form:input type="text" id="description" path="description" class="form-control"  />
                                         <form:errors path="description" cssClass="text-danger" element="div" />
@@ -77,7 +76,7 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">Control sizing</label>
+                                    <label class="col-sm-3 form-control-label">Hình ảnh</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
 
@@ -91,7 +90,7 @@
                                 <div class="line"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-9 ml-auto">
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Lưu</button>
                                     </div>
                                 </div>
                             </form:form>

@@ -39,7 +39,10 @@
                                 <c:url value="/api/cart" var="u" />
                                 <c:forEach items="${carts}" var="cart">
                                     <tr id="productId${cart.productId}">
-                                        <td class="romove-item"><a onclick="deleteCartItem(${cart.productId})" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a>
+                                        <td class="romove-item">
+                                            <a onclick="deleteCartItem(${cart.productId})" title="cancel" class="icon">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
                                         </td>
                                         <td class="cart-image">
                                             <a class="entry-thumbnail" href="detail.html">
@@ -47,7 +50,10 @@
                                             </a>
                                         </td>
                                         <td class="cart-product-name-info">
-                                            <h4 class='cart-product-description'><a href="detail.html">${cart.productName}</a></h4>
+                                            <h4 class='cart-product-description' style="text-align: center">
+                                                <a href="<c:url value="/products/${cart.productId}" />">${cart.productName}
+                                                </a>
+                                            </h4>
                                             <!--                                            <div class="row">
                                                                                             <div class="col-sm-12">
                                                                                                 <div class="rating rateit-small"></div>
@@ -79,7 +85,7 @@
                                     <td colspan="7">
                                         <div class="shopping-cart-btn">
                                             <span class="">
-                                                <a href="<c:url value="/products"/>" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
+                                                <a href="<c:url value="/products"/>" class="btn btn-upper btn-primary outer-left-xs">Tiếp tục mua sắm</a>
 
                                             </span>
                                         </div><!-- /.shopping-cart-btn -->
