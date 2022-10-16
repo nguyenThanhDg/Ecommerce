@@ -9,14 +9,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="breadcrumb">
     <div class="container">
-      <div class="breadcrumb-inner">
-        <ul class="list-inline list-unstyled">
-          <li><a href="home.html">Home</a></li>
-          <li class='active'>Wishlist</li>
-        </ul>
-      </div><!-- /.breadcrumb-inner -->
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="home.html">Home</a></li>
+                <li class='active'>Wishlist</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->
-  </div>
+</div>
 <div class="body-content">
     <div class="container">
         <div class="my-wishlist-page">
@@ -26,142 +26,49 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th colspan="4" class="heading-title">My Wishlist</th>
+                                    <th colspan="4" class="heading-title">lich su mua</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="col-md-2 col-sm-6 col-xs-6"><img src="assets/images/products/p1.jpg" alt="imga"></td>
-                                    <td class="col-md-7 col-sm-6 col-xs-6">
-                                        <div class="product-name"><a href="#">Floral Print Buttoned</a></div>
-                                        <div class="rating">
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star non-rate"></i>
-                                            <span class="review">( 06 Reviews )</span>
-                                        </div>
-                                        <div class="price">
-                                            $400.00
-                                            <span>$900.00</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-md-2 ">
-                                        <a href="#" class="btn-upper btn btn-primary">Add to cart</a>
-                                    </td>
-                                    <td class="col-md-1 close-btn">
-                                        <a href="#" class=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-2"><img src="assets/images/products/p2.jpg" alt="phoro"></td>
-                                    <td class="col-md-7">
-                                        <div class="product-name"><a href="#">Floral Print Buttoned</a></div>
-                                        <div class="rating">
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star rate"></i>
-                                            <i class="fa fa-star non-rate"></i>
-                                            <span class="review">( 06 Reviews )</span>
-                                        </div>
-                                        <div class="price">
-                                            $450.00
-                                            <span>$900.00</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-md-2">
-                                        <a href="#" class="btn-upper btn btn-default">Add to cart</a>
-                                    </td>
-                                    <td class="col-md-1 close-btn">
-                                        <a href="#" class=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
+                                <c:forEach items="${orders}" var="o">
+                                    <c:url value="/api/orders/cancel/${o[6]}" var="endpoint" />
+                                    <tr>
+                                        <td class="col-md-2"><img src="${o[4]}" alt="phoro"></td>
+                                        <td class="col-md-3">
+                                            <div class="product-name"><a href="#">${o[5]}</a></div>
+                                            <div class="rating">
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star non-rate"></i>
+                                            </div>
+                                            <div class="price">
+                                                ${o[1]}
+                                            </div>
+                                        </td>
+                                        <td class="col-md-2 price">
+                                            ${o[2]}
+                                        </td>
+                                        <td class="col-md-2">
+                                            ${o[0]}
+                                        </td>
+                                        <td class="col-md-2">
+                                            <a href="#" class="btn-upper btn btn-info">${o[3]}</a>
+                                        </td>
+                                         <c:if test="${o[3] == ('Đang chờ')}" var="e">
+                                        <td class="col-md-1">
+                                            <btn class="btn btn-danger" onclick="cancelOrder('${endpoint}')">Hủy</btn>
+                                        </td>
+                                        </c:if>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div><!-- /.row -->
         </div><!-- /.sigin-in-->
-        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-        <div id="brands-carousel" class="logo-slider wow fadeInUp">
 
-            <div class="logo-slider-inner">
-                <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                    <div class="item m-t-15">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item m-t-10">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-
-                    <div class="item">
-                        <a href="#" class="image">
-                            <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-                        </a>
-                    </div>
-                    <!--/.item-->
-                </div><!-- /.owl-carousel #logo-slider -->
-            </div><!-- /.logo-slider-inner -->
-
-        </div><!-- /.logo-slider -->
-        <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     </div><!-- /.container -->
 </div>

@@ -50,6 +50,6 @@
         <script src="<c:url value="/admin/js/charts-home.js"/>"></script>
         <script src="<c:url value="/admin/js/front.js"/>"></script>
         <script src="<c:url value="/admin/js/product.js"/>"></script>
-        
+        <script src="<c:url value="/user/cart.js"/>"></script>
     </body>
 </html>

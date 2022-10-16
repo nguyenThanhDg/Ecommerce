@@ -35,9 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class SaleOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static String WAIT = "Đang chờ";
-    public static String COMPLETE = "Hoàn thành";
-    public static String CANCEL = "Hủy";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
