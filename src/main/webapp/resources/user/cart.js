@@ -68,7 +68,7 @@ function deleteCartItem(productId) {
             let total = document.getElementById("totalCart");
             total.innerText = data.total;
             let total2 = document.getElementById("cartTotal");
-            total2.innerText = data.total;            
+            total2.innerText = data.total;
             let row = document.getElementById(`productId${productId}`);
             row.style.display = "none";
         });
@@ -89,6 +89,30 @@ function pay(endpoint) {
         alert("Bạn đã mua hàng thành công");
     } else
         alert("Bạn chưa đặt hàng!!!");
+}
+
+function commitOrder(endpoint) {
+    event.preventDefault();
+    fetch(endpoint, {
+        method: "post"
+    }).then(function (res) {
+        return res;
+    }).then(function (code) {
+        console.info(code);
+        location.reload();
+    })
+}
+
+function cancelOrder(endpoint) {
+    event.preventDefault();
+    fetch(endpoint, {
+        method: "post"
+    }).then(function (res) {
+        return res;
+    }).then(function (code) {
+        console.info(code);
+        location.reload();
+    })
 }
 
 

@@ -7,6 +7,7 @@ package com.dev.controller;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.service.OrderDetailService;
+import com.dev.service.OrderService;
 import com.dev.service.ProductService;
 import com.dev.service.StatsService;
 import java.text.ParseException;
@@ -43,6 +44,9 @@ public class SellerController {
     @Autowired
     private OrderDetailService orderDetailService;
     
+    @Autowired
+    private OrderService orderService;
+    
     @GetMapping("/")
     public String index(Model model,@RequestParam(required = false) Map<String, String> params,@RequestParam(value = "year", defaultValue = "2022") int year) {
         User seller = (User) model.getAttribute("currentUser");
@@ -51,6 +55,7 @@ public class SellerController {
         model.addAttribute("totalRevenue", this.orderDetailService.totalRevenue(seller.getId()));
         model.addAttribute("hotProducts", this.productService.getHotProducts(3,seller.getId()));
         model.addAttribute("chart", this.statsService.revenueStats(year,seller));
+        model.addAttribute("waitOd", this.orderService.getWaitOrderBySeller(seller.getId()));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String kw = params.getOrDefault("kw", null);
 

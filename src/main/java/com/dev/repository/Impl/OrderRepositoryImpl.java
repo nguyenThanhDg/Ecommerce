@@ -8,6 +8,7 @@ import com.dev.pojo.Cart;
 import com.dev.pojo.OrderDetail;
 import com.dev.pojo.Product;
 import com.dev.pojo.SaleOrder;
+import com.dev.pojo.User;
 import com.dev.repository.ProductRepository;
 import com.dev.repository.UserRepository;
 import com.dev.utils.Utils;
@@ -95,8 +96,31 @@ public class OrderRepositoryImpl implements OrderRepository {
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(builder.equal(rootSo.get("customerId"), id));
         predicates.add(builder.equal(rootOd.get("orderId"), rootSo.get("id")));
-        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("status"));
-        query = query.groupBy(rootSo.get("id"));
+        predicates.add(builder.equal(rootP.get("id"), rootOd.get("orderProduct")));
+        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("status"),rootP.get("image"),rootP.get("name"),rootOd.get("id"));
+        query = query.orderBy(builder.desc(rootSo.get("createdDate")));
+        query.where(predicates.toArray(new Predicate[] {}));
+        Query q = session.createQuery(query);
+        System.out.println(q.getResultList());
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> getWaitOrderBySeller(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootSo = query.from(SaleOrder.class);
+        Root rootOd = query.from(OrderDetail.class);
+        Root rootP = query.from(Product.class);
+        Root rootU = query.from(User.class);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootOd.get("orderId"), rootSo.get("id")));
+        predicates.add(builder.equal(rootOd.get("status"), OrderDetail.WAIT));
+        predicates.add(builder.equal(rootU.get("id"), rootSo.get("customerId")));
+        predicates.add(builder.equal(rootP.get("id"), rootOd.get("orderProduct")));
+        predicates.add(builder.equal(rootP.get("sellerId"), id));
+        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("id"),rootP.get("image"),rootP.get("name"),rootU.get("firstName"),rootU.get("lastName"));
         query = query.orderBy(builder.desc(rootSo.get("createdDate")));
         query.where(predicates.toArray(new Predicate[] {}));
         Query q = session.createQuery(query);

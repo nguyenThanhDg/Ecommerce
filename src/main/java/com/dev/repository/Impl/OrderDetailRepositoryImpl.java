@@ -49,8 +49,10 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         CriteriaQuery<OrderDetail> query = builder.createQuery(OrderDetail.class);
         Root root = query.from(OrderDetail.class);
         query = query.select(builder.sum(root.get("num")));
-        Predicate p = builder.equal(root.get("orderProduct"), id);
-        query = query.where(p);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(root.get("orderProduct"), id));
+        predicates.add(builder.equal(root.get("status"), OrderDetail.COMPLETE));
+        query.where(predicates.toArray(new Predicate[] {}));
         Query q = session.createQuery(query);
         if (q.getSingleResult() == null)
             return 0;
@@ -65,13 +67,45 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
         Root root = query.from(OrderDetail.class);
         query = query.select(root);
-        Predicate p = builder.equal(root.get("orderProduct"), id);
-        query = query.where(p);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(root.get("orderProduct"), id));
+        predicates.add(builder.equal(root.get("status"), OrderDetail.COMPLETE));
+        query.where(predicates.toArray(new Predicate[] {}));
         query.select(builder.sum(builder.prod(root.get("unitPrice"), root.get("num"))));
         Query q = session.createQuery(query);
         if (q.getSingleResult() == null)
             return 0;
         return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public boolean waitOrder(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        try {
+            OrderDetail p = session.get(OrderDetail.class, id);
+            p.setStatus(OrderDetail.COMPLETE);
+            session.save(p);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean cancelOrder(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        try {
+            OrderDetail p = session.get(OrderDetail.class, id);
+            p.setStatus(OrderDetail.CANCEL);
+            session.save(p);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
 }

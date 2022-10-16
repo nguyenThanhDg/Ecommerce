@@ -4,14 +4,12 @@
  */
 package com.dev.service.Impl;
 
-import com.dev.pojo.OrderDetail;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.repository.OrderDetailRepository;
 import com.dev.repository.ProductRepository;
 import com.dev.repository.UserRepository;
 import com.dev.service.OrderDetailService;
-import com.dev.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +51,15 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         System.out.println("sum" + sum);
         return sum;
      }
+
+    @Override
+    public boolean waitOrder(int id) {
+        return this.orderDetailRepository.waitOrder(id);
+    }
+
+    @Override
+    public boolean cancelOrder(int id) {
+        return this.orderDetailRepository.cancelOrder(id);
+    }
 
 }

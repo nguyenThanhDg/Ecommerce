@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class OrderDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static String WAIT = "Đang chờ";
+    public static String COMPLETE = "Hoàn thành";
+    public static String CANCEL = "Đã hủy";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
