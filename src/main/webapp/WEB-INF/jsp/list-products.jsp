@@ -46,7 +46,7 @@
                             <h4>Sản phẩm</h4>
                         </div>
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <div class="details d-flex">
                                 <h5 class="item">Đơn giá</h5>
                                 <h5 class="item">Danh mục</h5>
@@ -63,7 +63,7 @@
                                 <div class="avatar"> <img src="${p.image}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">${p.name}</strong><span class="d-block"></span></a>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-5">
                                 <div class="details d-flex">
                                     <div class="item"><strong>${p.price}</strong></div>
                                     <div class="item"><strong>${p.categoryId.name}</strong></div>
@@ -71,12 +71,14 @@
                                     <div class="item">${p.createdDate}</div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 text-center">
+                            <div class="col-lg-4 text-center">
                                 <div class="details d-flex">
                                     <div class="item"><a class="btn btn-info" href="<c:url value="/seller/products/${p.id}" />">Xem</a></div>
                                     <c:url value="/api/products/${p.id}" var="endpoint" />
                                     <div class="item"><button class="btn btn-success" onclick="pauseProduct('${endpoint}')">Dừng</button></div>
                                     <div class="item"><button class="btn btn-danger" onclick="delProduct('${endpoint}')">Xoá</button></div>
+                                    <div class="item"><a class="btn btn-secondary" href="<c:url value="/seller/products/${p.id}/comments" />">Binh luan</a></div>
+                                    
                                 </div>
                             </div>
                         </div>

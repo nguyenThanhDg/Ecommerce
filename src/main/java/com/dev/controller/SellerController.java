@@ -80,6 +80,13 @@ public class SellerController {
         return "add-product";
     }
     
+    @GetMapping("/products/{productId}/comments")
+    public String viewCmt(Model model,@PathVariable(value = "productId") int id) {
+        model.addAttribute("product", this.productService.getProductById(id));
+        model.addAttribute("cmts", this.productService.getComments(id));
+        return "sellerComment";
+    }
+    
     @GetMapping("/products")
     public String listProducts(Model model) {
         User seller = (User) model.getAttribute("currentUser");

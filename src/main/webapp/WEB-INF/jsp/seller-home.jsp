@@ -115,7 +115,7 @@
                                     <input name="toDate" type="date" class="mr-sm-3 form-control form-control">
                                 </div>
                                 <div class="form-group">
-                                   
+
                                     <input name="kw" type="text" placeholder="Nhập từ khoá cần tìm" class="mr-sm-1 form-control">
                                 </div>
                                 <div class="form-group">
@@ -127,24 +127,25 @@
                     </div>
                 </div>
             </div>
-            <c:if test="${!products.isEmpty()}">
-                <div class="public-user-block block">
+
+            <div class="public-user-block block">
+                <c:if test="${!products.isEmpty()}">
                     <div class="row d-flex align-items-center">                   
-                            <div class="col-lg-4 d-flex align-items-center">
-                                <h4>Tên sản phẩm</h4>
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <h4>Ngày mua</h4>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="details d-flex">
-                                    <h4 class="item">Đơn giá</h4>
-                                    <h4 class="item">Số lượng</h4>
-                                    <h4 class="item">Tổng tiền</h4>
-                                </div>
+                        <div class="col-lg-4 d-flex align-items-center">
+                            <h4>Tên sản phẩm</h4>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <h4>Ngày mua</h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="details d-flex">
+                                <h4 class="item">Đơn giá</h4>
+                                <h4 class="item">Số lượng</h4>
+                                <h4 class="item">Tổng tiền</h4>
                             </div>
                         </div>
                     </div>
+
                     <c:forEach items="${products}" var="p" >
 
                         <div class="row d-flex align-items-center">                   
@@ -164,8 +165,9 @@
                         </div>
                         <br>
                     </c:forEach>
-                </div>
-            </c:if>
+                </c:if>
+            </div>
+
             <c:if test="${products.isEmpty()}">
                 <div class="public-user-block block">
                     <div class="row d-flex align-items-center">                   

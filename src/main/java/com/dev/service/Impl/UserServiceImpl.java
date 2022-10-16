@@ -44,11 +44,6 @@ public class UserServiceImpl implements UserService {
                     ObjectUtils.asMap("resource_type", "auto"));
             user.setAvatar((String) r.get("secure_url"));
             user.setCreatedDate(new Date());
-            if (user.getUserRole().equals("seller")) {
-                user.setActive(Boolean.FALSE);
-            }
-            else
-                user.setActive(Boolean.TRUE);
             return this.userRepository.addUser(user);
 
         } catch (IOException ex) {
@@ -99,6 +94,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsername(String username) {
         return this.userRepository.getUserByUsername(username);
+    }
+
+    @Override
+    public List<User> getSeller() {
+        return this.userRepository.getSeller();
+    }
+
+    @Override
+    public List<User> getRegisterSeller() {
+        return this.userRepository.getRegisterSeller();
     }
 
 }

@@ -44,7 +44,4 @@ public class HomeController {
         model.addAttribute("products", this.productService.getNewProducts());
         return "index";
     }
-    
-
-    
 }

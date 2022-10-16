@@ -6,6 +6,7 @@ package com.dev.repository;
 
 import com.dev.pojo.Cart;
 import com.dev.pojo.SaleOrder;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,6 +15,6 @@ import java.util.Map;
  */
 public interface OrderRepository {
     boolean addReceipt(Map<Integer, Cart> cart, int id);
-   
+    List<Object[]> getOrderDetailById(int id);
     SaleOrder getSaleOrderById(int id);
 }

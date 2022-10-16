@@ -38,9 +38,13 @@ public class OrderDetail implements Serializable {
     private Integer unitPrice;
     @Column(name = "num")
     private Integer num;
+    @Column(name = "status")
+    private String status;
+    @JsonIgnore
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SaleOrder orderId;
+    @JsonIgnore
     @JoinColumn(name = "order_product", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Product orderProduct;;
@@ -115,6 +119,20 @@ public class OrderDetail implements Serializable {
     @Override
     public String toString() {
         return "com.dev.pojo.OrderDetail[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
 
   

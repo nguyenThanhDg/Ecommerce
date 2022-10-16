@@ -11,6 +11,8 @@ public interface UserRepository {
     User getUserById(int userId);
     boolean addUser(User user);
     List<User> getUsers(String username);
+    List<User> getSeller();
+    List<User> getRegisterSeller();
     boolean updateUser(User user, int id);
     boolean checkUserName(String username);
     User findById(int id);

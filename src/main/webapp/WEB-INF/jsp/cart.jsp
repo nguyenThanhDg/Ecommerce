@@ -114,9 +114,19 @@
                                     <c:url value="/api/pay" var="u" />
                                     <div class="cart-checkout-btn pull-right">
                                         <button type="submit" onclick="pay('${u}')" class="btn btn-primary checkout-btn">Thanh toán</button>
+                                        
                                     </div>
                                 </td>
-                            </tr>
+                        <form action="pay-momo" method="post">
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary btn-block"
+                                onclick="this.form.action = 'pay-momo';"
+                                >
+                                Thanh toán qua momo
+                            </button>
+                        </form>
+                        </tr>
                         </tbody><!-- /tbody -->
                     </table><!-- /table -->
                 </div><!-- /.cart-shopping-total -->

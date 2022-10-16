@@ -7,6 +7,12 @@ package com.dev.utils;
 import com.dev.pojo.Cart;
 import java.util.HashMap;
 import java.util.Map;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import org.apache.commons.codec.binary.Hex;
 
 /**
  *
@@ -40,5 +46,20 @@ public class Utils {
         result.put("quantity", String.valueOf(count));
         
         return result;
+    }
+    
+    public static String toSHA256(String secretkey, String data) {
+        try {
+            Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secret_key = new SecretKeySpec(secretkey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+            sha256_HMAC.init(secret_key);
+
+            return Hex.encodeHexString(sha256_HMAC.doFinal(data.getBytes(StandardCharsets.UTF_8)));
+
+        } catch (NoSuchAlgorithmException | InvalidKeyException  e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
