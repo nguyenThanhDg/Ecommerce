@@ -91,19 +91,4 @@ function pay(endpoint) {
         alert("Bạn chưa đặt hàng!!!");
 }
 
-//function payConfirm() {
-//    
-//    if (confirm("Ban chac chan thanh toan?") === true) {
-//        fetch(`/Ecommerce/api/pay/payConfirm`, {
-//            method: "post"
-//        }).then(function (res) {
-//            return res.json();
-//        }).then(function (code) {
-//            console.info(code);
-//            location.reload();
-//        });
-//        alert("Bạn đã mua hàng thành công");
-//    } else
-//        alert("Bạn chưa đặt hàng!!!");
-//}
 

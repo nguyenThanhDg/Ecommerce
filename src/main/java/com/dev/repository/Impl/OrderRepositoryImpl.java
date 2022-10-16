@@ -6,6 +6,7 @@ package com.dev.repository.Impl;
 
 import com.dev.pojo.Cart;
 import com.dev.pojo.OrderDetail;
+import com.dev.pojo.Product;
 import com.dev.pojo.SaleOrder;
 import com.dev.repository.ProductRepository;
 import com.dev.repository.UserRepository;
@@ -20,6 +21,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import com.dev.repository.OrderRepository;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -74,6 +82,25 @@ public class OrderRepositoryImpl implements OrderRepository {
     public SaleOrder getSaleOrderById(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         return session.get(SaleOrder.class, id);
+    }
+
+    @Override
+    public List<Object[]> getOrderDetailById(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootSo = query.from(SaleOrder.class);
+        Root rootOd = query.from(OrderDetail.class);
+        Root rootP = query.from(Product.class);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootSo.get("customerId"), id));
+        predicates.add(builder.equal(rootOd.get("orderId"), rootSo.get("id")));
+        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("status"));
+        query = query.groupBy(rootSo.get("id"));
+        query = query.orderBy(builder.desc(rootSo.get("createdDate")));
+        query.where(predicates.toArray(new Predicate[] {}));
+        Query q = session.createQuery(query);
+        return q.getResultList();
     }
 
 }

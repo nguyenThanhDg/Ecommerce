@@ -43,7 +43,7 @@
                             <label class="info-title">Loại tài khoản</label>
                             <form:select path="userRole" class="form-control unicase-form-control text-input">
                                 <option value="customer">Người mua</option>
-                                <option value="seller">Người bán</option>
+                                <option value="reseller">Người bán</option>
 
                             </form:select>
                             <form:errors path="userRole" cssClass="text-danger" element="div" />

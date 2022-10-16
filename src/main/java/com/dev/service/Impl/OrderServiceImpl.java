@@ -8,6 +8,7 @@ import com.dev.pojo.Cart;
 import com.dev.pojo.SaleOrder;
 import com.dev.repository.OrderRepository;
 import com.dev.service.OrderService;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,11 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public SaleOrder getSaleOrderById(int id) {
         return this.orderRepository.getSaleOrderById(id);
+    }
+
+    @Override
+    public List<Object[]> getOrderDetailById(int id) {
+        return this.orderRepository.getOrderDetailById(id);
     }
     
 }

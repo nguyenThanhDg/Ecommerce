@@ -33,6 +33,10 @@
         <put-attribute name="title" value="Giỏ hàng" />
         <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp" />
     </definition>
+    <definition name="history" extends="baseLayout">
+        <put-attribute name="title" value="lich su" />
+        <put-attribute name="content" value="/WEB-INF/jsp/shopping-history.jsp" />
+    </definition>
     <definition name="baseSellerLayout" template="/WEB-INF/layout/admin/adminbase.jsp">
         <put-attribute name="title" value="..." />
         <put-attribute name="header" value="/WEB-INF/layout/admin/adminheader.jsp" />
@@ -52,9 +56,25 @@
         <put-attribute name="title" value="Danh sách sản phẩm" />
         <put-attribute name="content" value="/WEB-INF/jsp/list-products.jsp" />
     </definition>
+    <definition name="sellerComment" extends="baseSellerLayout">
+        <put-attribute name="title" value="Danh sách cmt" />
+        <put-attribute name="content" value="/WEB-INF/jsp/seller-cmt.jsp" />
+    </definition>
     <definition name="seller-detail" extends="baseSellerLayout">
         <put-attribute name="title" value="Chỉnh sửa sản phẩm" />
         <put-attribute name="content" value="/WEB-INF/jsp/seller-product-detail.jsp" />
+    </definition>
+    <definition name="baseAdminLayout" template="/WEB-INF/layout/adminpage/adminpagebase.jsp">
+        <put-attribute name="title" value="..." />
+        <put-attribute name="header" value="/WEB-INF/layout/adminpage/adminpageheader.jsp" />
+        <put-attribute name="nav" value="/WEB-INF/layout/adminpage/adminpagenav.jsp" />
+        <put-attribute name="btn" value="/WEB-INF/layout/adminpage/adminpagesettingbtn.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/adminpage/adminpagefooter.jsp" />
+        <put-attribute name="content" value="..." />
+    </definition>
+    <definition name="admin" extends="baseAdminLayout">
+        <put-attribute name="title" value="admin" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin.jsp" />
     </definition>
 </tiles-definitions>
 

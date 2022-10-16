@@ -118,4 +118,32 @@ public class UserRepositoryImpl implements UserRepository {
         return (User) query.getSingleResult();
     }
 
+    @Override
+    public List<User> getSeller() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<User> q = b.createQuery(User.class);
+        Root root = q.from(User.class);
+        q.select(root);
+        
+        q.where(b.equal(root.get("userRole"), "seller"));
+        
+        Query query = session.createQuery(q);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<User> getRegisterSeller() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<User> q = b.createQuery(User.class);
+        Root root = q.from(User.class);
+        q.select(root);
+        
+        q.where(b.equal(root.get("userRole"), "reseller"));
+        
+        Query query = session.createQuery(q);
+        return query.getResultList();
+    }
+
 }
