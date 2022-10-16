@@ -171,7 +171,7 @@
                                         <div class="product">
                                             <div class="product-image">
                                                 <div class="image">
-                                                    <a href="detail.html">
+                                                    <a href="<c:url value="/products/${p.id}" />">
                                                         <img src="${p.image}" alt="">
                                                     </a>
                                                 </div>

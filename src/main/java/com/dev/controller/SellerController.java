@@ -107,7 +107,7 @@ public class SellerController {
             
         }
         if (this.productService.addProduct(p) == true) {
-            return "redirect:/";
+            return "redirect:/seller/";
         }
         return "/login";
     }
