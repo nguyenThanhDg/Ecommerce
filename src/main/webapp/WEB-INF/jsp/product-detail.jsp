@@ -12,8 +12,7 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Clothing</a></li>
+                    <li><a href="<c:url value="/" />">Trang chủ</a></li>
                     <li class='active'>${product.name}</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
@@ -36,7 +35,7 @@
                                 </div>
                                 <div class="pull-left">
                                     <div class="reviews">
-                                        <a href="#" class="lnk">(13 Reviews)</a>
+                                        <a href="#" class="lnk">(13 đánh giá)</a>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +98,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3"> 
                     <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-                        <a data-toggle="tab" href="#review">REVIEW</a>
+                        <a data-toggle="tab" href="#review">Bình luận</a>
                     </ul>
                 </div>
                 <div class="col-sm-12 col-md-9 col-lg-9">
