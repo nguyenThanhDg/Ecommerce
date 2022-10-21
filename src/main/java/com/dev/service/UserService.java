@@ -22,4 +22,7 @@ public interface UserService extends UserDetailsService {
     boolean checkUserName(String username);
     User getUserByUsername(String username);
     List<User> getSeller();
+    List<User> getCustomer();
+    boolean acceptSeller(int id);
+    boolean cancelSeller(int id);
 }

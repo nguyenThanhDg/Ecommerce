@@ -17,4 +17,7 @@ public interface UserRepository {
     boolean checkUserName(String username);
     User findById(int id);
     User getUserByUsername(String username);
+    List<User> getCustomer();
+    boolean acceptSeller(int id);
+    boolean cancelSeller(int id);
 }

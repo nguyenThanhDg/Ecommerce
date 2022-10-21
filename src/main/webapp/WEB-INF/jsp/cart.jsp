@@ -113,7 +113,7 @@
                                 <td>
                                     <c:url value="/api/pay" var="u" />
                                     <div class="cart-checkout-btn pull-right">
-                                        <button type="submit" onclick="pay('${u}')" class="btn btn-primary checkout-btn">Thanh toán</button>
+                                        <button type="submit" onclick="pay('${u}')" class="btn btn-primary checkout-btn">Đặt hàng</button>
                                         
                                     </div>
                                 </td>

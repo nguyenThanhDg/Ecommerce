@@ -4,6 +4,7 @@
  */
 package com.dev.service.Impl;
 
+import com.dev.pojo.OrderDetail;
 import com.dev.pojo.Product;
 import com.dev.pojo.User;
 import com.dev.repository.OrderDetailRepository;
@@ -60,6 +61,16 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public boolean cancelOrder(int id) {
         return this.orderDetailRepository.cancelOrder(id);
+    }
+
+    @Override
+    public boolean payOrder(int id) {
+        return this.orderDetailRepository.payOrder(id);
+    }
+
+    @Override
+    public OrderDetail getOrderDetailById(int id) {
+        return this.orderDetailRepository.getOrderDetailById(id);
     }
 
 }

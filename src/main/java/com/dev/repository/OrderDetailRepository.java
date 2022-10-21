@@ -4,6 +4,8 @@
  */
 package com.dev.repository;
 
+import com.dev.pojo.OrderDetail;
+
 
 /**
  *
@@ -14,4 +16,6 @@ public interface OrderDetailRepository {
     long totalRevenue(int id);
     boolean waitOrder(int id);
     boolean cancelOrder(int id);
+    boolean payOrder(int id);
+    OrderDetail getOrderDetailById(int id);
 }

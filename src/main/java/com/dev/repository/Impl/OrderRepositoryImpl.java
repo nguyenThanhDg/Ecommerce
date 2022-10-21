@@ -55,7 +55,6 @@ public class OrderRepositoryImpl implements OrderRepository {
             SaleOrder o = new SaleOrder();
             
             o.setCreatedDate(new Date());
-            System.out.println(Long.parseLong(Utils.totalMoney(cart).get("total")));
             Map<String, String> totalMoney = Utils.totalMoney(cart);
             o.setTotal(Long.parseLong(totalMoney.get("total")));
             o.setCustomerId(this.userRepository.getUserById(id));
@@ -67,7 +66,7 @@ public class OrderRepositoryImpl implements OrderRepository {
                 orderDetail.setOrderProduct(this.productRepository.getProductById(c.getProductId()));
                 orderDetail.setUnitPrice(c.getPrice());
                 orderDetail.setNum(c.getQuantity());
-
+                orderDetail.setStatus(OrderDetail.WAIT);
                 session.save(orderDetail);
             }
             return true;

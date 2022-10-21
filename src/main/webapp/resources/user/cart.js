@@ -77,7 +77,7 @@ function deleteCartItem(productId) {
 
 function pay(endpoint) {
     event.preventDefault();
-    if (confirm("Ban chac chan thanh toan?") === true) {
+    if (confirm("Ban chac chan dat hang") === true) {
         fetch(endpoint, {
             method: "post"
         }).then(function (res) {
@@ -86,7 +86,7 @@ function pay(endpoint) {
             console.info(code);
             location.reload();
         });
-        alert("Bạn đã mua hàng thành công");
+        alert("Bạn đã dat mua hàng thành công");
     } else
         alert("Bạn chưa đặt hàng!!!");
 }
@@ -104,6 +104,18 @@ function commitOrder(endpoint) {
 }
 
 function cancelOrder(endpoint) {
+    event.preventDefault();
+    fetch(endpoint, {
+        method: "post"
+    }).then(function (res) {
+        return res;
+    }).then(function (code) {
+        console.info(code);
+        location.reload();
+    })
+}
+
+function payOrder(endpoint) {
     event.preventDefault();
     fetch(endpoint, {
         method: "post"

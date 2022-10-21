@@ -17,7 +17,7 @@ import java.util.Map;
 public interface ProductService {
 
     List<Product> getNewProducts();
-
+    List<Product> getAllProducts();
     Product getProductById(int productId);
     void pauseProduct(int id);
     long countProduct(int id);

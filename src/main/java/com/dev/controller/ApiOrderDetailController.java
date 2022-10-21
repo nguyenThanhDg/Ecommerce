@@ -35,4 +35,11 @@ public class ApiOrderDetailController {
     public void cancel(@PathVariable(value = "orderId") int id) {
         this.orderDetailService.cancelOrder(id);
     }
+    
+    @PostMapping("/orders/pay/{orderId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void pay(@PathVariable(value = "orderId") int id) {
+        this.orderDetailService.payOrder(id);
+    }
+    
 }

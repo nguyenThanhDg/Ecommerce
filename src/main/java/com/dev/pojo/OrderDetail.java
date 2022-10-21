@@ -32,6 +32,7 @@ public class OrderDetail implements Serializable {
     public static String WAIT = "Đang chờ";
     public static String COMPLETE = "Hoàn thành";
     public static String CANCEL = "Đã hủy";
+    public static String PAY = "Chờ thanh toán";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

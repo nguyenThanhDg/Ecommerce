@@ -44,8 +44,15 @@
         <script src="<c:url value="/adminpage/assets/bundles/apexcharts/apexcharts.min.js"/>"></script>
         <!-- Page Specific JS File -->
         <script src="<c:url value="/adminpage/assets/js/page/index.js"/>"></script>
-        <!-- Template JS File -->
+        <script src="<c:url value="/adminpage/admin.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/js/page/widget-chart.js"/>"></script>
         <script src="<c:url value="/adminpage/assets/js/scripts.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/bundles/chartjs/chart.min.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/bundles/jquery.sparkline.min.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/bundles/apexcharts/apexcharts.min.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/bundles/jqvmap/dist/jquery.vmap.min.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"/>"></script>
+        <script src="<c:url value="/adminpage/assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"/>"></script>
         <!-- Custom JS File -->
         <script src="<c:url value="/adminpage/assets/js/custom.js"/>"></script>
     </body>

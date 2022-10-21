@@ -287,4 +287,15 @@ public class ProductRepositoryImpl implements ProductRepository {
         q.setMaxResults(num);
         return q.getResultList();
     }
+
+    @Override
+    public List<Product> getAllProducts() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Product> query = builder.createQuery(Product.class);
+        Root root = query.from(Product.class);
+        query = query.select(root);
+        Query q = session.createQuery(query);
+        return q.getResultList();
+    }
 }
