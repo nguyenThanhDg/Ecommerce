@@ -17,4 +17,6 @@ public interface OrderDetailService {
     long totalRevenue(int id);
     boolean waitOrder(int id);
     boolean cancelOrder(int id);
+    boolean payOrder(int id);
+    OrderDetail getOrderDetailById(int id);
 }

@@ -99,7 +99,6 @@ public class User implements Serializable {
     private String avatar;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "user_role")
     private String userRole;
     @Transient

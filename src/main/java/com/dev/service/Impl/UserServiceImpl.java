@@ -106,4 +106,19 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.getRegisterSeller();
     }
 
+    @Override
+    public List<User> getCustomer() {
+        return this.userRepository.getCustomer();
+    }
+
+    @Override
+    public boolean acceptSeller(int id) {
+        return this.userRepository.acceptSeller(id);
+    }
+
+    @Override
+    public boolean cancelSeller(int id) {
+        return this.userRepository.cancelSeller(id);
+    }
+
 }

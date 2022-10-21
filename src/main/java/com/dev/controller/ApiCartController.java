@@ -105,7 +105,7 @@ public class ApiCartController {
            
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(user.getEmail());
-            message.setSubject("Xác nhận thanh toán");
+            message.setSubject("Xác nhận mua hàng");
             message.setText("Xin chào, đơn hàng của bạn đã được xác nhận. Cám ơn bạn đã đến !!!");
 
             // Send Message!
@@ -114,20 +114,37 @@ public class ApiCartController {
     }
     
     @ResponseBody
-    @PostMapping("/pay/payConfirm")
+    @PostMapping("/sellerConfirm/{sellerId}/accept")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void payConfirm() {
-        
-           
+    public void sellerConfirm(@PathVariable(value = "sellerId") int id) {
+        System.out.println(id);
+        User u = this.userService.findById(id);
+        if (this.userService.acceptSeller(id) == true) {
             SimpleMailMessage message = new SimpleMailMessage();
 
-            message.setTo("pvt15102016@gmail.com");
-            message.setSubject("Xác nhận lịch khám bệnh");
-            message.setText("Xin chào, lịch khám bệnh của bạn đã được xác nhận. Cám ơn bạn đã đến phòng khám Medic Care!!!");
+            message.setTo(u.getEmail());
+            message.setSubject("Thong bao tro thanh nguoi ban hang");
+            message.setText("Xin chào, thong tin của bạn đã được xác nhận. Ban co the dang ban san pham");
 
             // Send Message!
             this.emailSender.send(message);
-        
+        }
     }
     
+    @ResponseBody
+    @PostMapping("/sellerConfirm/{sellerId}/cancel")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void sellerCancel(@PathVariable(value = "sellerId") int id) {
+        User u = this.userService.findById(id);
+        if (this.userService.cancelSeller(id) == true) {
+            SimpleMailMessage message = new SimpleMailMessage();
+
+            message.setTo(u.getEmail());
+            message.setSubject("Thong bao tu choi");
+            message.setText("Xin chào, thong tin của bạn đã được xem qua. Ban chua du de tro thanh nguoi ban");
+
+            // Send Message!
+            this.emailSender.send(message);
+        }
+    }
 }

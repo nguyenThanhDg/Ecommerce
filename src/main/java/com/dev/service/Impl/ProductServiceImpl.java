@@ -122,4 +122,9 @@ public class ProductServiceImpl implements ProductService{
     public boolean updateProduct(Product product, int id, User seller) {
         return this.productRepository.updateProduct(product, id, seller);
     }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return this.productRepository.getAllProducts();
+    }
 }

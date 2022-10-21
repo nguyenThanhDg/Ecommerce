@@ -20,6 +20,7 @@ public interface ProductRepository {
     long countProduct(int id);
     boolean addOrUpdate(Product product);
     List<Product> getProductsByUser(User user);
+    List<Product> getAllProducts();
     void deleteProduct(int id);
     void pauseProduct(int id);
     List<Product> getProducts(String kw);

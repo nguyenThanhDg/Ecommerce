@@ -5,7 +5,9 @@
 package com.dev.controller;
 
 import com.dev.pojo.Cart;
+import com.dev.pojo.OrderDetail;
 import com.dev.pojo.User;
+import com.dev.service.OrderDetailService;
 import com.dev.service.OrderService;
 import com.dev.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +37,9 @@ public class MomoController {
 
     @Autowired
     private OrderService orderService;
+    
+    @Autowired
+    private OrderDetailService orderDetailService;
 
     @PostMapping("/pay-momo")
     public String payMomo(Model model,
@@ -42,15 +47,19 @@ public class MomoController {
             HttpServletRequest request,
             HttpSession session) throws Exception {
 
-        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        int orderDetailId = Integer.parseInt(params.getOrDefault("orderId", null));
+        
+        OrderDetail od = this.orderDetailService.getOrderDetailById(orderDetailId);
+        int sum = od.getNum() * od.getUnitPrice();
         //parameters
         String endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-        String amount = (Utils.totalMoney(cart).get("total"));
+        String amount = String.valueOf(sum);
+        System.err.println(amount);
         String partnerCode = "MOMO";
         String accessKey = "F8BBA842ECF85";
         String secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz";
         String requestId = partnerCode + new Date().getTime();
-        String orderId = requestId;
+        String orderId = od.getId().toString();
         String orderInfo = "Thanh toan san pham bang momo";
         String redirectUrl = "http://localhost:8080/Ecommerce/momo-notify";
         String ipnUrl = "https://callback.url/notify";
@@ -108,15 +117,14 @@ public class MomoController {
         System.err.println(params);
 
         int resultCode = Integer.parseInt(params.getOrDefault("resultCode", "1"));
+        int orderId = Integer.parseInt(params.getOrDefault("orderId", null));
         String errMsg = "";
 
         // Pojo
-        User user = (User) session.getAttribute("currentUser");
-        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
         // handle momo payment success 
         if (resultCode == 0) {
             // Set payment_status sang true
-            if (this.orderService.addReceipt(cart, user.getId()) == false) {
+            if (this.orderDetailService.waitOrder(orderId) == false) {
                 errMsg = "Đã có lỗi xảy ra";
                 model.addAttribute("errMsg", errMsg);
                 return "redirect:/cart";

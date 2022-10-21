@@ -108,4 +108,25 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         }
     }
 
+    @Override
+    public boolean payOrder(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        try {
+            OrderDetail p = session.get(OrderDetail.class, id);
+            p.setStatus(OrderDetail.PAY);
+            session.save(p);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public OrderDetail getOrderDetailById(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        return session.get(OrderDetail.class, id);
+    }
+
 }

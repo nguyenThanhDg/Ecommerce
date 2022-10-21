@@ -76,5 +76,13 @@
         <put-attribute name="title" value="admin" />
         <put-attribute name="content" value="/WEB-INF/jsp/admin.jsp" />
     </definition>
+    <definition name="stats" extends="baseAdminLayout">
+        <put-attribute name="title" value="stats" />
+        <put-attribute name="content" value="/WEB-INF/jsp/statbyseller.jsp" />
+    </definition>
+    <definition name="error404" extends="baseAdminLayout">
+        <put-attribute name="title" value="stats" />
+        <put-attribute name="content" value="/WEB-INF/jsp/404page.jsp" />
+    </definition>
 </tiles-definitions>
 

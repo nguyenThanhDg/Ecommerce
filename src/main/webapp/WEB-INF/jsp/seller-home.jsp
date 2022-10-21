@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <c:forEach items="${waitOd}" var="w" >
-                        <c:url value="/api/orders/commit/${w[3]}" var="endpoint1" />
+                        <c:url value="/api/orders/pay/${w[3]}" var="endpoint1" />
                         <c:url value="/api/orders/cancel/${w[3]}" var="endpoint2" />
                         <div class="row d-flex align-items-center">                   
                             <div class="col-lg-4 d-flex align-items-center">
@@ -97,7 +97,7 @@
                                     <div class="item"><i class="icon-info"></i><strong>${w[1]}</strong></div>
                                     <div class="item"><i class="fa fa-gg"></i><strong>${w[2]}</strong></div>
                                     
-                                    <div class="item"><button class="btn btn-success" onclick="commitOrder('${endpoint1}')">Xac nhan</button></div>
+                                    <div class="item"><button class="btn btn-success" onclick="payOrder('${endpoint1}')">Xac nhan</button></div>
                                     <div class="item"><button class="btn btn-danger" onclick="cancelOrder('${endpoint2}')">Tu choi</button></div>
                                 </div>
                             </div>
