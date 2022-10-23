@@ -190,4 +190,34 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
+    public boolean checkSuperAdmin(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        try {
+            User p = session.get(User.class, id);
+            if(p.getUserRole() == "superadmin")
+                return true;
+            else
+                return false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public List<User> getAdmin() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<User> q = b.createQuery(User.class);
+        Root root = q.from(User.class);
+        q.select(root);
+        
+        q.where(b.equal(root.get("userRole"), "admin"));
+        
+        Query query = session.createQuery(q);
+        return query.getResultList();
+    }
+
 }

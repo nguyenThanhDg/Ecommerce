@@ -48,6 +48,7 @@ public class AdminController {
 
     @GetMapping("/")
     public String products(Model model, HttpSession session) {
+        model.addAttribute("admins", this.userService.getAdmin());
         model.addAttribute("resellers", this.userService.getRegisterSeller());
         model.addAttribute("sellers", this.userService.getSeller());
         model.addAttribute("customers", this.userService.getCustomer());

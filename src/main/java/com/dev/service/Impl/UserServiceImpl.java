@@ -121,4 +121,14 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.cancelSeller(id);
     }
 
+    @Override
+    public boolean checkSuperAdmin(int id) {
+        return this.userRepository.checkSuperAdmin(id);
+    }
+
+    @Override
+    public List<User> getAdmin() {
+        return this.userRepository.getAdmin();
+    }
+
 }

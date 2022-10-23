@@ -92,6 +92,13 @@ public class ProductRepositoryImpl implements ProductRepository {
         q.setParameter("seller_id", id);
         return Long.parseLong(q.getSingleResult().toString());
     }
+    
+    @Override
+    public long countProduct() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("Select count(*) from Product");
+        return Long.parseLong(q.getSingleResult().toString());
+    }
 
     @Override
     public boolean addOrUpdate(Product product) {
@@ -233,7 +240,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         }
 
         Query query = session.createQuery(q);
-        int max = 12;
+        int max = 8;
         query.setMaxResults(max);
         query.setFirstResult((page - 1) * max);
 

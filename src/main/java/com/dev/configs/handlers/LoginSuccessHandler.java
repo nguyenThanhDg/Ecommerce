@@ -18,21 +18,23 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  *
  * @author Admin
  */
-public class LoginSuccessHandler implements AuthenticationSuccessHandler{
+public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
     private UserService userDetailsService;
-    
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication a) throws IOException, ServletException {
         User u = this.userDetailsService.getUsers(a.getName()).get(0);
-        
+
         request.getSession().setAttribute("currentUser", u);
-        if("seller".equals(u.getUserRole())){
+        if ("seller".equals(u.getUserRole())) {
             response.sendRedirect("/Ecommerce/seller/");
-        }
-        else 
+        } else if ("admin".equals(u.getUserRole()) || "superadmin".equals(u.getUserRole())) {
+            response.sendRedirect("/Ecommerce/admin/");
+        } else {
             response.sendRedirect("/Ecommerce");
+        }
     }
-    
+
 }

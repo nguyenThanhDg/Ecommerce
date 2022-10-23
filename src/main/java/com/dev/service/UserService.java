@@ -25,4 +25,6 @@ public interface UserService extends UserDetailsService {
     List<User> getCustomer();
     boolean acceptSeller(int id);
     boolean cancelSeller(int id);
+    boolean checkSuperAdmin(int id);
+    List<User> getAdmin();
 }

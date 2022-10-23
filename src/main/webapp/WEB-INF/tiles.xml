@@ -37,11 +37,11 @@
         <put-attribute name="title" value="lich su" />
         <put-attribute name="content" value="/WEB-INF/jsp/shopping-history.jsp" />
     </definition>
-    <definition name="baseSellerLayout" template="/WEB-INF/layout/admin/adminbase.jsp">
+    <definition name="baseSellerLayout" template="/WEB-INF/layout/seller/adminbase.jsp">
         <put-attribute name="title" value="..." />
-        <put-attribute name="header" value="/WEB-INF/layout/admin/adminheader.jsp" />
-        <put-attribute name="nav" value="/WEB-INF/layout/admin/adminnav.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/layout/admin/adminfooter.jsp" />
+        <put-attribute name="header" value="/WEB-INF/layout/seller/adminheader.jsp" />
+        <put-attribute name="nav" value="/WEB-INF/layout/seller/adminnav.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/seller/adminfooter.jsp" />
         <put-attribute name="content" value="..." />
     </definition>
     <definition name="add-product" extends="baseSellerLayout">

@@ -28,12 +28,10 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private UserService userService;
-
     @GetMapping("/products")
     public String products(Model model, @RequestParam(required = false) Map<String, String> params, HttpSession session) {
         model.addAttribute("products", this.productService.getNewProducts());
+        model.addAttribute("counter", this.productService.countProduct());
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
         model.addAttribute("products", this.productService.getProducts(params, page));
         return "products";
