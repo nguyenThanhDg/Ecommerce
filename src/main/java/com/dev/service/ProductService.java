@@ -31,4 +31,5 @@ public interface ProductService {
     List<Comment> getComments(int productId);
     Comment addComment(String content, int productId);
     boolean updateProduct(Product product, int id, User seller);
+    long countProduct();
 }

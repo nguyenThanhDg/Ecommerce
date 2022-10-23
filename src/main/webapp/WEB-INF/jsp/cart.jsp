@@ -117,15 +117,7 @@
                                         
                                     </div>
                                 </td>
-                        <form action="pay-momo" method="post">
-                            <button 
-                                type="submit" 
-                                class="btn btn-primary btn-block"
-                                onclick="this.form.action = 'pay-momo';"
-                                >
-                                Thanh toán qua momo
-                            </button>
-                        </form>
+                        
                         </tr>
                         </tbody><!-- /tbody -->
                     </table><!-- /table -->

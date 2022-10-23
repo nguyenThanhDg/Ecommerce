@@ -73,6 +73,12 @@ public class SpringSecurityConfig
         http.logout().logoutSuccessHandler(this.logoutHandler);
         http.exceptionHandling()
                 .accessDeniedPage("/login?accessDenied");
+        
+        http.authorizeRequests()
+                .antMatchers("/seller/**").hasAuthority("seller")
+                .antMatchers("/").permitAll()
+                .antMatchers("/history").authenticated()
+                .antMatchers("/admin/**").hasAnyAuthority("admin", "superadmin");
         http.csrf().disable();
     }
 
