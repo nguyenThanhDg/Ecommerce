@@ -16,6 +16,7 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <li class="login"><a href="<c:url value="/history" />"><span>Lịch sử mua hàng</span></a></li>
                             <li class="myaccount"><a href="#"><span>${currentUser.lastName}</span></a></li>
                                     </c:if>
                             <c:if test="${pageContext.request.userPrincipal.name == null}">

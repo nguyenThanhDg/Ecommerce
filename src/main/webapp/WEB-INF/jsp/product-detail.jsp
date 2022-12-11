@@ -84,7 +84,7 @@
                             <c:url value="/api/cart" var="u" />
                                 <div class="add-btn1">
                                     <a href="javascript:;"
-                                       onclick="addToCart('${u}',${product.id}, '${product.name}', ${product.price})"
+                                       onclick="addToCart('${u}',${product.id}, '${product.name}', '${product.price}', '${product.image}')"
                                        class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO GIỎ
                                     </a>
                                 </div>
