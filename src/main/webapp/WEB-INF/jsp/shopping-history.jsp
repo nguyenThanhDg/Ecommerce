@@ -67,7 +67,7 @@
                                     <btn class="btn btn-success" onclick="commitOrder('${endpoint2}')">Thanh toán</btn>
                                     </td>
                                     <form action="pay-momo" method="post">
-                                        <input type="hidden" name="orderId" value="${o[6]}"/>
+                                        <input type="hidden" name="myorderId" value="${o[6]}"/>
                                         <td class="col-md-1">
                                             <button 
                                                 type="submit" 
