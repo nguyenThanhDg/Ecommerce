@@ -151,7 +151,11 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="<c:url value="/logout" />" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+<<<<<<< HEAD
                     Đăng xuất
+=======
+                    Logout
+>>>>>>> 1eaea73e4cbd17e4fd47fcca37dea7ca2b39844a
                 </a>
             </div>
         </li>
