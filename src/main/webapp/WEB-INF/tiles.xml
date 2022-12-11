@@ -34,7 +34,7 @@
         <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp" />
     </definition>
     <definition name="history" extends="baseLayout">
-        <put-attribute name="title" value="lich su" />
+        <put-attribute name="title" value="Lịch sử mua hàng" />
         <put-attribute name="content" value="/WEB-INF/jsp/shopping-history.jsp" />
     </definition>
     <definition name="baseSellerLayout" template="/WEB-INF/layout/seller/adminbase.jsp">
@@ -77,11 +77,11 @@
         <put-attribute name="content" value="/WEB-INF/jsp/admin.jsp" />
     </definition>
     <definition name="stats" extends="baseAdminLayout">
-        <put-attribute name="title" value="stats" />
+        <put-attribute name="title" value="Thống kê" />
         <put-attribute name="content" value="/WEB-INF/jsp/statbyseller.jsp" />
     </definition>
     <definition name="error404" extends="baseAdminLayout">
-        <put-attribute name="title" value="stats" />
+        <put-attribute name="title" value="Trang không tồn tại" />
         <put-attribute name="content" value="/WEB-INF/jsp/404page.jsp" />
     </definition>
 </tiles-definitions>
