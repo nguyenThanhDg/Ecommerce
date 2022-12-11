@@ -10,11 +10,11 @@
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
             <a href="index.html"> <img alt="image" src="<c:url value="/adminpage/assets/img/logo.png"/>" class="header-logo" /> <span
-                    class="logo-name">Otika</span>
+                    class="logo-name">marazzo</span>
             </a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Main</li>
+            <li class="menu-header">Trang chủ</li>
             <li class="dropdown active">
                 <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
@@ -82,7 +82,7 @@
                 </ul>
             </li>
             <li><a class="nav-link" href="blank.html"><i data-feather="file"></i><span>Blank Page</span></a></li>
-            <li class="menu-header">Otika</li>
+            <li class="menu-header">marazzo</li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Forms</span></a>
                 <ul class="dropdown-menu">
@@ -163,11 +163,11 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="user-check"></i><span>Auth</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="auth-login.html">Login</a></li>
-                    <li><a href="auth-register.html">Register</a></li>
-                    <li><a href="auth-forgot-password.html">Forgot Password</a></li>
-                    <li><a href="auth-reset-password.html">Reset Password</a></li>
-                    <li><a href="subscribe.html">Subscribe</a></li>
+                    <li><a href="auth-login.html">Đăng nhập</a></li>
+                    <li><a href="auth-register.html">Đăng ký</a></li>
+                    <li><a href="auth-forgot-password.html">Quên mật khẩu</a></li>
+                    <li><a href="auth-reset-password.html">Đặt lại mật khẩu</a></li>
+                    <li><a href="subscribe.html">Đăng ký</a></li>
                 </ul>
             </li>
             <li class="dropdown">

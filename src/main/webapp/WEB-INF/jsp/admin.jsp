@@ -16,7 +16,7 @@
                         <div class="row ">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                 <div class="card-content">
-                                    <h5 class="font-15">So san pham</h5>
+                                    <h5 class="font-15">Số sản phẩm</h5>
                                     <h2 class="mb-3 font-18">${allproducts.size()}</h2>
                                     <p class="mb-0"><span class="col-green">10%</span> Increase</p>
                                 </div>
@@ -38,7 +38,7 @@
                         <div class="row ">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                 <div class="card-content">
-                                    <h5 class="font-15"> So nguoi ban</h5>
+                                    <h5 class="font-15">Số người bán</h5>
                                     <h2 class="mb-3 font-18">${customers.size()}</h2>
                                     <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
                                 </div>
@@ -105,7 +105,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Danh sach quan tri vien</h4>
+                    <h4>Danh sách quản trị viên</h4>
                     <div class="card-header-form">
                         <form>
                             <div class="input-group">
@@ -121,11 +121,11 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
-                                <th>Ten</th>
-                                <th>Anh</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
                                 <th>Email</th>
-                                <th>sdt</th>
-                                <th>Ngay tao</th>
+                                <th>SĐT</th>
+                                <th>Ngày tạo</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -149,9 +149,9 @@
                                     <td>${s.createdDate}</td>
 
                                     <td>
-                                        <button onclick="cancelSeller('${endpoint2}')" class="btn btn-outline-danger">tu choi</button>
+                                        <button onclick="cancelSeller('${endpoint2}')" class="btn btn-outline-danger">Từ chối</button>
                                     </td>
-                                    <td><button onclick="acceptSeller('${endpoint1}')" class="btn btn-outline-primary">Xac nhan 1</button></td>
+                                    <td><button onclick="acceptSeller('${endpoint1}')" class="btn btn-outline-primary">Xác nhận</button></td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -165,7 +165,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Danh sach dang ki ban hang</h4>
+                    <h4>Danh sách người bán đã đăng ký</h4>
                     <div class="card-header-form">
                         <form>
                             <div class="input-group">
@@ -181,11 +181,11 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
-                                <th>Ten</th>
-                                <th>Anh</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
                                 <th>Email</th>
-                                <th>sdt</th>
-                                <th>Ngay tao</th>
+                                <th>SĐT</th>
+                                <th>Ngày tạo</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -209,9 +209,9 @@
                                     <td>${s.createdDate}</td>
 
                                     <td>
-                                        <button onclick="cancelSeller('${endpoint2}')" class="btn btn-outline-danger">tu choi</button>
+                                        <button onclick="cancelSeller('${endpoint2}')" class="btn btn-outline-danger">Từ chối</button>
                                     </td>
-                                    <td><button onclick="acceptSeller('${endpoint1}')" class="btn btn-outline-primary">Xac nhan 1</button></td>
+                                    <td><button onclick="acceptSeller('${endpoint1}')" class="btn btn-outline-primary">Xác nhận</button></td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -224,7 +224,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Danh sach dang ki ban hang</h4>
+                    <h4>Danh sách người bán đã đăng ký</h4>
                     <div class="card-header-form">
                         <form>
                             <div class="input-group">
@@ -240,11 +240,11 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
-                                <th>Ten</th>
-                                <th>Anh</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
                                 <th>Email</th>
-                                <th>sdt</th>
-                                <th>Ngay tao</th>
+                                <th>SĐT</th>
+                                <th>Ngày tạo</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -266,9 +266,9 @@
                                     <td>${s.createdDate}</td>
 
                                     <td>
-                                        <a class="btn btn-outline-info" href="#">Xem thong tin</a>
+                                        <a class="btn btn-outline-info" href="#">Xem thông tin</a>
                                     </td>
-                                    <td><a href="#" class="btn btn-outline-primary">Xac nhan</a></td>
+                                    <td><a href="#" class="btn btn-outline-primary">Xác nhận</a></td>
                                 </tr>
                             </c:forEach>
                         </table>
