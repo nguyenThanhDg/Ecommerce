@@ -31,4 +31,5 @@ public interface ProductRepository {
     List<Object[]> getHotProducts(int num, int id);
     boolean updateProduct(Product product, int id, User seller);
     long countProduct();
+    List<Product> getProductsByDate(Map<String, String> params, User user);
 }

@@ -96,7 +96,6 @@ public class SellerController {
     public String listProducts(Model model) {
         User seller = (User) model.getAttribute("currentUser");
         model.addAttribute("products", this.productService.getProductsByUser(seller));
-
         return "listProducts";
     }
 

@@ -33,7 +33,6 @@
                                 <div class="form-group">
                                     <input type="submit" value="Tìm" class="btn btn-primary">
                                 </div>
-
                             </form>
                         </div>
                     </div>

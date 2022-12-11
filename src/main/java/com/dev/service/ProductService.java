@@ -32,4 +32,5 @@ public interface ProductService {
     Comment addComment(String content, int productId);
     boolean updateProduct(Product product, int id, User seller);
     long countProduct();
+    List<Product> getProductsByDate(Map<String, String> params, User user);
 }
