@@ -76,7 +76,7 @@
                                     <c:url value="/api/products/${p.id}" var="endpoint" />
                                     <div class="item"><button class="btn btn-success" onclick="pauseProduct('${endpoint}')">Dừng</button></div>
                                     <div class="item"><button class="btn btn-danger" onclick="delProduct('${endpoint}')">Xoá</button></div>
-                                    <div class="item"><a class="btn btn-secondary" href="<c:url value="/seller/products/${p.id}/comments" />">Binh luan</a></div>
+                                    <div class="item"><a class="btn btn-secondary" href="<c:url value="/seller/products/${p.id}/comments" />">Bình luận</a></div>
                                     
                                 </div>
                             </div>

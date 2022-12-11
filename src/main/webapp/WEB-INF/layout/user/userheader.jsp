@@ -57,7 +57,11 @@
                     <!-- /.contact-row -->
                     <!-- ============================================================= SEARCH AREA ============================================================= -->
                     <div class="search-area">
+<<<<<<< HEAD
                         <form action="<c:url value="/products" />">
+=======
+                        <form action="<c:url value="/products/" />">
+>>>>>>> efa557d96e97635cc51859bae09fc00b1d988675
                             <div class="control-group">
                                 <ul class="categories-filter animate-dropdown">
                                     <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"

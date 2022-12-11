@@ -97,8 +97,8 @@
                                     <div class="item"><i class="icon-info"></i><strong>${w[1]}</strong></div>
                                     <div class="item"><i class="fa fa-gg"></i><strong>${w[2]}</strong></div>
                                     
-                                    <div class="item"><button class="btn btn-success" onclick="payOrder('${endpoint1}')">Xac nhan</button></div>
-                                    <div class="item"><button class="btn btn-danger" onclick="cancelOrder('${endpoint2}')">Tu choi</button></div>
+                                    <div class="item"><button class="btn btn-success" onclick="payOrder('${endpoint1}')">Xác nhận</button></div>
+                                    <div class="item"><button class="btn btn-danger" onclick="cancelOrder('${endpoint2}')">Từ chối</button></div>
                                 </div>
                             </div>
                         </div>
