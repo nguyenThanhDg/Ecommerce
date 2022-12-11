@@ -29,10 +29,14 @@
             </div>
             <div class="right-menu list-inline no-margin-bottom">
                 <!-- Languages dropdown    -->
-                <div class="list-inline-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="<c:url value="/seller/img/flags/16/GB.png"/>" alt="English"><span class="d-none d-sm-inline-block">Tiếng Việt</span></a>
+                <div class="list-inline-item dropdown">
+                    <a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle">
+                        <img src="<c:url value="/seller/img/flags/16/VN.png"/>" alt="Tiếng Việt">
+                        <span class="d-none d-sm-inline-block">Tiếng Việt</span>
+                    </a>
                     <div aria-labelledby="languages" class="dropdown-menu">
                         <a rel="nofollow" href="#" class="dropdown-item">
-                            <img src="<c:url value="/seller/img/flags/16/DE.png"/>" alt="English" class="mr-2">
+                            <img src="<c:url value="/seller/img/flags/16/GB.png"/>" alt="English" class="mr-2">
                             <span>Tiếng Anh</span></a><a rel="nofollow" href="#" class="dropdown-item">
                             <img src="<c:url value="/seller/img/flags/16/FR.png"/>" alt="English" class="mr-2">
                             <span>Tiếng Pháp  </span>

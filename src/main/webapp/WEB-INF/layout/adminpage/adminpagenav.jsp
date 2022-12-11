@@ -17,7 +17,7 @@
             <li>
                 <form class="form-inline mr-auto">
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="200">
+                        <input class="form-control" type="search" placeholder="Tìm kiếm" aria-label="Search" data-width="200">
                         <button class="btn" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
@@ -93,7 +93,7 @@
             </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
-                    Notifications
+                    Thông báo
                     <div class="float-right">
                         <a href="#">Mark All As Read</a>
                     </div>
@@ -127,7 +127,7 @@
                         </span>
                     </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
                                                                                                                     fa-bell"></i>
-                        </span> <span class="dropdown-item-desc"> Welcome to Otika
+                        </span> <span class="dropdown-item-desc"> Welcome to marazzo
                             template! <span class="time">Yesterday</span>
                         </span>
                     </a>
@@ -143,15 +143,19 @@
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Hello Sarah Smith</div>
                 <a href="profile.html" class="dropdown-item has-icon"> <i class="far
-                                                                          fa-user"></i> Profile
+                                                                          fa-user"></i> Hồ sơ
                 </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                    Activities
+                    Hoạt động
                 </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                    Settings
+                    Cài đặt
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="<c:url value="/logout" />" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+<<<<<<< HEAD
+                    Đăng xuất
+=======
                     Logout
+>>>>>>> 1eaea73e4cbd17e4fd47fcca37dea7ca2b39844a
                 </a>
             </div>
         </li>
