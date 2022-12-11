@@ -47,27 +47,25 @@ public class MomoController {
             HttpServletRequest request,
             HttpSession session) throws Exception {
 
-        int orderDetailId = Integer.parseInt(params.getOrDefault("orderId", null));
-        
+        int orderDetailId = Integer.parseInt(params.getOrDefault("myorderId", null));
         OrderDetail od = this.orderDetailService.getOrderDetailById(orderDetailId);
         int sum = od.getNum() * od.getUnitPrice();
         //parameters
         String endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         String amount = String.valueOf(sum);
-        System.err.println(amount);
         String partnerCode = "MOMO";
         String accessKey = "F8BBA842ECF85";
         String secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz";
         String requestId = partnerCode + new Date().getTime();
-        String orderId = od.getId().toString();
-        String orderInfo = "Thanh toan san pham bang momo";
+        String myorderId = partnerCode + new Date().getTime();
+        String orderInfo = od.getId().toString();
         String redirectUrl = "http://localhost:8080/Ecommerce/momo-notify";
         String ipnUrl = "https://callback.url/notify";
         String requestType = "captureWallet";
         String extraData = ""; //pass empty value if your merchant does not have storesv
         //before sign HMAC SHA256 with format
-        //accessKey=$accessKey&amount=$amount&extraData=$extraData&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$requestId&requestType=$requestType
-        String rawSignature = "accessKey=" + accessKey + "&amount=" + amount + "&extraData=" + extraData + "&ipnUrl=" + ipnUrl + "&orderId=" + orderId + "&orderInfo=" + orderInfo + "&partnerCode=" + partnerCode + "&redirectUrl=" + redirectUrl + "&requestId=" + requestId + "&requestType=" + requestType;
+        //accessKey=$accessKey&amount=$amount&extraData=$extraData&ipnUrl=$ipnUrl&orderId=$myorderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$requestId&requestType=$requestType
+        String rawSignature = "accessKey=" + accessKey + "&amount=" + amount + "&extraData=" + extraData + "&ipnUrl=" + ipnUrl + "&orderId=" + myorderId +  "&orderInfo=" + orderInfo + "&partnerCode=" + partnerCode + "&redirectUrl=" + redirectUrl + "&requestId=" + requestId + "&requestType=" + requestType;
         //puts raw signature
        
         //signature
@@ -78,7 +76,7 @@ public class MomoController {
             requestBody.put("accessKey", accessKey);
             requestBody.put("requestId", requestId);
             requestBody.put("amount", amount);
-            requestBody.put("orderId", orderId);
+            requestBody.put("orderId", myorderId);
             requestBody.put("orderInfo", orderInfo);
             requestBody.put("redirectUrl", redirectUrl);
             requestBody.put("ipnUrl", ipnUrl);
@@ -86,7 +84,6 @@ public class MomoController {
             requestBody.put("requestType", requestType);
             requestBody.put("signature", signature);
         }
-        System.out.println(signature);
         String json = new ObjectMapper().writeValueAsString(requestBody);
 
         // Create a new RestTemplate instance
@@ -113,33 +110,29 @@ public class MomoController {
             @RequestParam Map<String, String> params,
             HttpSession session) {
 
-        System.out.println("test pay momo notify");
-        System.err.println(params);
 
         int resultCode = Integer.parseInt(params.getOrDefault("resultCode", "1"));
-        int orderId = Integer.parseInt(params.getOrDefault("orderId", null));
+        int myid = Integer.parseInt(params.getOrDefault("orderInfo", null));
         String errMsg = "";
 
         // Pojo
         // handle momo payment success 
         if (resultCode == 0) {
             // Set payment_status sang true
-            if (this.orderDetailService.waitOrder(orderId) == false) {
+            if (this.orderDetailService.waitOrder(myid) == false) {
                 errMsg = "Đã có lỗi xảy ra";
                 model.addAttribute("errMsg", errMsg);
-                return "redirect:/cart";
+                return "redirect:/history";
             } else {
-                return "redirect:/";
+                return "redirect:/history";
             }
         }
 
         // handle momo payment fail 
         if (resultCode != 0) {
-            errMsg = "Đã có lỗi xảy ra trong quá tình thanh toán qua momo";
-            model.addAttribute("errMsg", errMsg);
-            return "redirect:/cart";
+            return "redirect:/history";
         }
 
-        return "redirect:/cart";
+        return "redirect:/history";
     }
 }
