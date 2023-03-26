@@ -14,7 +14,7 @@ import com.dev.pojo.OrderDetail;
 public interface OrderDetailRepository {
     int amountProductByProductId(int id);
     long totalRevenue(int id);
-    boolean waitOrder(int id);
+    boolean waitOrder(int id, String type);
     boolean cancelOrder(int id);
     boolean payOrder(int id);
     OrderDetail getOrderDetailById(int id);

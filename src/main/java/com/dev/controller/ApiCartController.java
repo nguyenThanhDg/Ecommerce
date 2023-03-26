@@ -9,7 +9,7 @@ import com.dev.pojo.SaleOrder;
 import com.dev.pojo.User;
 import com.dev.service.OrderService;
 import com.dev.service.UserService;
-//import com.dev.service.OrderService;
+import com.dev.service.ProductService;
 import com.dev.utils.Utils;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,22 +46,23 @@ public class ApiCartController {
     @Autowired
     public UserService userService;
     
+    @Autowired
+    public ProductService productService;
+    
     @PostMapping("/cart")
     public Map<String, String> addToCart(@RequestBody Cart params, HttpSession session) {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
         if(cart == null)
             cart = new HashMap<>();
-        
         int productId = params.getProductId();
         if(cart.containsKey(productId) == true) {
             Cart c = cart.get(productId);
-            c.setQuantity(c.getQuantity() + 1);       
+            c.setQuantity(c.getQuantity() + 1);
         }else {
             cart.put(productId, params);
         }
-        
+        this.productService.decreaseQuantity(productId, params.getQuantity());
         session.setAttribute("cart", cart);
-        
         return Utils.totalMoney(cart);
     }
     
@@ -76,9 +77,7 @@ public class ApiCartController {
             Cart c = cart.get(productId);
             c.setQuantity(params.getQuantity());
         }
-        
         session.setAttribute("cart", cart);
-        
         return new ResponseEntity<>(Utils.totalMoney(cart), HttpStatus.OK);
     }
     
@@ -87,10 +86,8 @@ public class ApiCartController {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
         if (cart != null && cart.containsKey(id)) {
             cart.remove(id);
-            
             session.setAttribute("cart", cart);
         }
-        
         return new ResponseEntity<>(Utils.totalMoney(cart), HttpStatus.OK);
     }
     
@@ -102,12 +99,10 @@ public class ApiCartController {
         if(this.orderService.addReceipt((Map<Integer, Cart>) session.getAttribute("cart"), user.getId()) == true)
         {
             session.removeAttribute("cart");
-           
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(user.getEmail());
             message.setSubject("Xác nhận mua hàng");
             message.setText("Xin chào, đơn hàng của bạn đã được xác nhận. Cám ơn bạn đã đến !!!");
-
             // Send Message!
             this.emailSender.send(message);
         }
@@ -123,9 +118,8 @@ public class ApiCartController {
             SimpleMailMessage message = new SimpleMailMessage();
 
             message.setTo(u.getEmail());
-            message.setSubject("Thong bao tro thanh nguoi ban hang");
-            message.setText("Xin chào, thong tin của bạn đã được xác nhận. Ban co the dang ban san pham");
-
+            message.setSubject("Thông báo trở thành người bán hàng");
+            message.setText("Xin chào, thong tin của bạn đã được xác nhận. Bạn có thể đăng bán sản phảm");
             // Send Message!
             this.emailSender.send(message);
         }
@@ -138,11 +132,9 @@ public class ApiCartController {
         User u = this.userService.findById(id);
         if (this.userService.cancelSeller(id) == true) {
             SimpleMailMessage message = new SimpleMailMessage();
-
             message.setTo(u.getEmail());
-            message.setSubject("Thong bao tu choi");
-            message.setText("Xin chào, thong tin của bạn đã được xem qua. Ban chua du de tro thanh nguoi ban");
-
+            message.setSubject("Thông báo từ chối");
+            message.setText("Xin chào, thông tin của bạn đã được xem qua. Bạn không đủ điều kiện trở thành người bán");
             // Send Message!
             this.emailSender.send(message);
         }

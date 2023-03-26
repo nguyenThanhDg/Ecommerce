@@ -96,7 +96,7 @@
                                 <div class="details d-flex">
                                     <div class="item"><i class="icon-info"></i><strong>${w[1]}</strong></div>
                                     <div class="item"><i class="fa fa-gg"></i><strong>${w[2]}</strong></div>
-                                    
+
                                     <div class="item"><button class="btn btn-success" onclick="payOrder('${endpoint1}')">Xác nhận</button></div>
                                     <div class="item"><button class="btn btn-danger" onclick="cancelOrder('${endpoint2}')">Từ chối</button></div>
                                 </div>
@@ -181,11 +181,14 @@
             <div class="public-user-block block">
                 <c:if test="${!products.isEmpty()}">
                     <div class="row d-flex align-items-center">                   
-                        <div class="col-lg-4 d-flex align-items-center">
+                        <div class="col-lg-3 d-flex align-items-center">
                             <h4>Tên sản phẩm</h4>
                         </div>
-                        <div class="col-lg-4 text-center">
-                            <h4>Ngày mua</h4>
+                        <div class="col-lg-3 d-flex align-items-center">
+                                <h4 class="item">Ngày mua</h4>
+                        </div>
+                        <div class="col-lg-2 d-flex align-items-center">
+                                <h4 class="item">Hình thức</h4>
                         </div>
                         <div class="col-lg-4">
                             <div class="details d-flex">
@@ -199,11 +202,19 @@
                     <c:forEach items="${products}" var="p" >
 
                         <div class="row d-flex align-items-center">                   
-                            <div class="col-lg-4 d-flex align-items-center">
+                            <div class="col-lg-3 d-flex align-items-center">
                                 <div class="avatar"> <img src="${p[1]}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">${p[0]}</strong><span class="d-block">${p[2]} ${p[3]}</span></a>
                             </div>
-                            <div class="col-lg-4 text-center">
+                            <div class="col-lg-3 text-center">
                                 <div class="contributions">${p[6]}</div>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                <c:if test="${p[8] == 'Money'}">
+                                    <div class="contributions">Tiền mặt</div>
+                                </c:if>
+                                <c:if test="${p[8] == 'Momo'}">
+                                    <div class="contributions">Momo</div>
+                                </c:if>
                             </div>
                             <div class="col-lg-4">
                                 <div class="details d-flex">

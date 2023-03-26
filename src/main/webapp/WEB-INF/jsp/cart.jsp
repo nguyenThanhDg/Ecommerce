@@ -71,7 +71,6 @@
 
                                         <td class="cart-product-quantity">
                                             <div class="quant-input">
-
                                                 <input type="number" onblur="updateCart('${u}', this, ${cart.productId})" value="${cart.quantity}">
                                             </div>
                                         </td>
@@ -114,11 +113,11 @@
                                     <c:url value="/api/pay" var="u" />
                                     <div class="cart-checkout-btn pull-right">
                                         <button type="submit" onclick="pay('${u}')" class="btn btn-primary checkout-btn">Đặt hàng</button>
-                                        
+
                                     </div>
                                 </td>
-                        
-                        </tr>
+
+                            </tr>
                         </tbody><!-- /tbody -->
                     </table><!-- /table -->
                 </div><!-- /.cart-shopping-total -->

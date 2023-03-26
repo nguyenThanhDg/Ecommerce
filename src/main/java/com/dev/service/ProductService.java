@@ -32,4 +32,7 @@ public interface ProductService {
     Comment addComment(String content, int productId);
     boolean updateProduct(Product product, int id, User seller);
     long countProduct();
+    void decreaseQuantity(int idProduct,int quantity);
+    void creaseQuantity(int idProduct,int quantity);
+    int getQuantity(int id);
 }

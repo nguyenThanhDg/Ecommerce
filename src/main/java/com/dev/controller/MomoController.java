@@ -119,7 +119,7 @@ public class MomoController {
         // handle momo payment success 
         if (resultCode == 0) {
             // Set payment_status sang true
-            if (this.orderDetailService.waitOrder(myid) == false) {
+            if (this.orderDetailService.waitOrder(myid, "Momo") == false) {
                 errMsg = "Đã có lỗi xảy ra";
                 model.addAttribute("errMsg", errMsg);
                 return "redirect:/history";

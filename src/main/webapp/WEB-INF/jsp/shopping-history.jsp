@@ -54,9 +54,21 @@
                                         <td class="col-md-2">
                                             ${o[0]}
                                         </td>
-                                        <td class="col-md-2">
-                                            <a href="#" class="btn-upper btn btn-info">${o[3]}</a>
-                                        </td>
+                                        <c:if test="${(o[3] == ('Hoàn thành')) && o[7] == ('Money')}">
+                                            <td class="col-md-2">
+                                                <a href="#" class="btn-upper btn btn-info">Thanh toán bằng tiền mặt</a>
+                                            </td>
+                                        </c:if>
+                                        <c:if test="${(o[3] == ('Hoàn thành')) && o[7] == ('Momo')}">
+                                            <td class="col-md-2">
+                                                <a href="#" class="btn-upper btn btn-info">Thanh toán bằng Momo </a>
+                                            </td>
+                                        </c:if>
+                                        <c:if test="${o[3] != ('Hoàn thành')}" var="e">
+                                            <td class="col-md-2">
+                                                <a href="#" class="btn-upper btn btn-info">${o[3]}</a>
+                                            </td>
+                                        </c:if>
                                         <c:if test="${o[3] == ('Đang chờ')}" var="e">
                                             <td class="col-md-1">
                                     <btn class="btn btn-danger" onclick="cancelOrder('${endpoint1}')">Hủy</btn>

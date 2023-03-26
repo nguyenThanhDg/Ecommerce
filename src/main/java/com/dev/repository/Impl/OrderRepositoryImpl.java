@@ -96,7 +96,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         predicates.add(builder.equal(rootSo.get("customerId"), id));
         predicates.add(builder.equal(rootOd.get("orderId"), rootSo.get("id")));
         predicates.add(builder.equal(rootP.get("id"), rootOd.get("orderProduct")));
-        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("status"),rootP.get("image"),rootP.get("name"),rootOd.get("id"));
+        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("status"),rootP.get("image"),rootP.get("name"),rootOd.get("id"),rootOd.get("type"));
         query = query.orderBy(builder.desc(rootSo.get("createdDate")));
         query.where(predicates.toArray(new Predicate[] {}));
         Query q = session.createQuery(query);

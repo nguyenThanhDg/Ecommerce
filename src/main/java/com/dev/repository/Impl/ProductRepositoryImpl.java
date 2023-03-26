@@ -58,7 +58,8 @@ public class ProductRepositoryImpl implements ProductRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Product> query = builder.createQuery(Product.class);
         Root root = query.from(Product.class);
-        query = query.select(root);
+        Predicate p = builder.notEqual(root.get("quantity"), 0);
+        query = query.select(root).where(p);
         query.orderBy(builder.desc(root.get("id")));
         Query q = session.createQuery(query);
         int max = 5;
@@ -192,8 +193,8 @@ public class ProductRepositoryImpl implements ProductRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Product> query = builder.createQuery(Product.class);
         Root root = query.from(Product.class);
-        query = query.select(root);
-
+        Predicate quantity = builder.notEqual(root.get("quantity"), 0);
+        query = query.select(root).where(quantity);
         if (kw != null) {
             Predicate p = builder.like(root.get("name").as(String.class), String.format("%%%s%%", kw));
             query = query.where(p);
@@ -208,8 +209,8 @@ public class ProductRepositoryImpl implements ProductRepository {
         CriteriaBuilder b = session.getCriteriaBuilder();
         CriteriaQuery<Product> q = b.createQuery(Product.class);
         Root root = q.from(Product.class);
-        q.select(root);
-
+        Predicate quantity = b.notEqual(root.get("quantity"), 0);
+        q = q.select(root).where(quantity);
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
             String kw = params.get("kw");
@@ -301,8 +302,44 @@ public class ProductRepositoryImpl implements ProductRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Product> query = builder.createQuery(Product.class);
         Root root = query.from(Product.class);
-        query = query.select(root);
+        Predicate p = builder.notEqual(root.get("quantity"), 0);
+        query = query.select(root).where(p);
         Query q = session.createQuery(query);
         return q.getResultList();
+    }
+
+    @Override
+    public void decreaseQuantity(int idProduct,int quantity) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+
+            Product p = session.get(Product.class, idProduct);
+            int temp = p.getQuantity();
+            p.setQuantity(temp - quantity);
+            session.update(p);
+        } catch (HibernateException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    @Override
+    public void creaseQuantity(int idProduct,int quantity) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+
+            Product p = session.get(Product.class, idProduct);
+            int temp = p.getQuantity();
+            p.setQuantity(temp + quantity);
+            session.update(p);
+        } catch (HibernateException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public int getQuantity(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Product p = session.get(Product.class, id);
+        return p.getQuantity();
     }
 }

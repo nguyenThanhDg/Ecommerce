@@ -54,8 +54,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
      }
 
     @Override
-    public boolean waitOrder(int id) {
-        return this.orderDetailRepository.waitOrder(id);
+    public boolean waitOrder(int id, String type) {
+        return this.orderDetailRepository.waitOrder(id, type);
     }
 
     @Override

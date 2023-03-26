@@ -79,12 +79,13 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
     }
 
     @Override
-    public boolean waitOrder(int id) {
+    public boolean waitOrder(int id, String type) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
 
         try {
             OrderDetail p = session.get(OrderDetail.class, id);
             p.setStatus(OrderDetail.COMPLETE);
+            p.setType(type);
             session.save(p);
             return true;
         } catch (Exception ex) {

@@ -72,6 +72,8 @@ public class Product implements Serializable {
     @Size(max = 10)
     @Column(name = "status")
     private String status;
+    @Column(name = "quantity")
+    private Integer quantity;
     @Size(max = 2222)
     @Column(name = "description")
     private String description;
@@ -254,6 +256,20 @@ public class Product implements Serializable {
      */
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    /**
+     * @return the quantity
+     */
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * @param quantity the quantity to set
+     */
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
     
 }

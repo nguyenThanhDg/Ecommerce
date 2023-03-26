@@ -74,19 +74,29 @@
 
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Số lượng</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <form:input type="number" id="quantity" path="quantity" class="form-control" />
+                                                <form:errors path="quantity" cssClass="text-danger" element="div" />
+                                                <div class="input-group-append"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">Hình ảnh</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
-
                                             <form:input type="file" id="image" path="file" class="form-control form-control-lg" />
                                             <form:errors path="file" cssClass="text-danger" element="div" />
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="line"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-9 ml-auto">

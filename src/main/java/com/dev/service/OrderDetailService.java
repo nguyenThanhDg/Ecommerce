@@ -15,7 +15,7 @@ import java.util.List;
 public interface OrderDetailService {
     int getAmountProduct(User user);
     long totalRevenue(int id);
-    boolean waitOrder(int id);
+    boolean waitOrder(int id, String type);
     boolean cancelOrder(int id);
     boolean payOrder(int id);
     OrderDetail getOrderDetailById(int id);

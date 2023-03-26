@@ -132,4 +132,19 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getAllProducts() {
         return this.productRepository.getAllProducts();
     }
+
+    @Override
+    public void decreaseQuantity(int idProduct, int quantity) {
+        this.productRepository.decreaseQuantity(idProduct, quantity);
+    }
+    
+    @Override
+    public void creaseQuantity(int idProduct, int quantity) {
+        this.productRepository.creaseQuantity(idProduct, quantity);
+    }
+
+    @Override
+    public int getQuantity(int id) {
+        return this.productRepository.getQuantity(id);
+    }
 }

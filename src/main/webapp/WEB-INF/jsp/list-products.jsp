@@ -48,10 +48,11 @@
 
                         <div class="col-lg-5">
                             <div class="details d-flex">
-                                <h5 class="item">Đơn giá</h5>
-                                <h5 class="item">Danh mục</h5>
-                                <h5 class="item">Trạng thái</h5>
-                                <h5 class="item">Ngày đăng</h5>
+                                <h5 class="contributions">Đơn giá</h5>
+                                <h5 class="contributions">Danh mục</h5>
+                                <h5 class="contributions">Trạng thái</h5>
+                                <h5 class="contributions">Số lượng</h5>
+                                <h5 class="contributions">Ngày đăng</h5>
                             </div>
                         </div>
                        
@@ -68,7 +69,8 @@
                                     <div class="item"><strong>${p.price}</strong></div>
                                     <div class="item"><strong>${p.categoryId.name}</strong></div>
                                     <div class="item"><strong>${p.status}</strong></div>
-                                    <div class="item">${p.createdDate}</div>
+                                    <div class="item"><strong>${p.quantity}</strong></div>
+                                    <div class="item"><strong>${p.createdDate}</strong></div>
                                 </div>
                             </div>
                             <div class="col-lg-4 text-center">

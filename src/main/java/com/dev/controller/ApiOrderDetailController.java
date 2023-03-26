@@ -27,7 +27,7 @@ public class ApiOrderDetailController {
     @PostMapping("/orders/commit/{orderId}")
     @ResponseStatus(HttpStatus.OK)
     public void commit(@PathVariable(value = "orderId") int id) {
-        this.orderDetailService.waitOrder(id);
+        this.orderDetailService.waitOrder(id, "Money");
     }
     
     @PostMapping("/orders/cancel/{orderId}")
