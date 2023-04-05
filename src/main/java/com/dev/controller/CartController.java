@@ -22,8 +22,7 @@ public class CartController {
         else
             model.addAttribute("carts", null);
         
-        model.addAttribute("totalMoney", Utils.totalMoney(cart));
-            
+        model.addAttribute("totalMoney", Utils.totalMoney(cart));   
         return "cart";
     }
 }

@@ -61,12 +61,14 @@ public class OrderRepositoryImpl implements OrderRepository {
             session.save(o);
             
             for (Cart c : cart.values()) {
+                // giam quantity
+                this.productRepository.decreaseQuantity(c.getProductId(), c.getQuantity());
                 OrderDetail orderDetail = new OrderDetail();
                 orderDetail.setOrderId(o);
                 orderDetail.setOrderProduct(this.productRepository.getProductById(c.getProductId()));
                 orderDetail.setUnitPrice(c.getPrice());
                 orderDetail.setNum(c.getQuantity());
-                orderDetail.setStatus(OrderDetail.WAIT);
+                orderDetail.setStatus(OrderDetail.PAY);
                 session.save(orderDetail);
             }
             return true;
@@ -104,26 +106,26 @@ public class OrderRepositoryImpl implements OrderRepository {
         return q.getResultList();
     }
 
-    @Override
-    public List<Object[]> getWaitOrderBySeller(int id) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
-        Root rootSo = query.from(SaleOrder.class);
-        Root rootOd = query.from(OrderDetail.class);
-        Root rootP = query.from(Product.class);
-        Root rootU = query.from(User.class);
-        List<Predicate> predicates = new ArrayList<>();
-        predicates.add(builder.equal(rootOd.get("orderId"), rootSo.get("id")));
-        predicates.add(builder.equal(rootOd.get("status"), OrderDetail.WAIT));
-        predicates.add(builder.equal(rootU.get("id"), rootSo.get("customerId")));
-        predicates.add(builder.equal(rootP.get("id"), rootOd.get("orderProduct")));
-        predicates.add(builder.equal(rootP.get("sellerId"), id));
-        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("id"),rootP.get("image"),rootP.get("name"),rootU.get("firstName"),rootU.get("lastName"));
-        query = query.orderBy(builder.desc(rootSo.get("createdDate")));
-        query.where(predicates.toArray(new Predicate[] {}));
-        Query q = session.createQuery(query);
-        return q.getResultList();
-    }
+//    @Override
+//    public List<Object[]> getWaitOrderBySeller(int id) {
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+//        Root rootSo = query.from(SaleOrder.class);
+//        Root rootOd = query.from(OrderDetail.class);
+//        Root rootP = query.from(Product.class);
+//        Root rootU = query.from(User.class);
+//        List<Predicate> predicates = new ArrayList<>();
+//        predicates.add(builder.equal(rootOd.get("orderId"), rootSo.get("id")));
+//        predicates.add(builder.equal(rootOd.get("status"), OrderDetail.WAIT));
+//        predicates.add(builder.equal(rootU.get("id"), rootSo.get("customerId")));
+//        predicates.add(builder.equal(rootP.get("id"), rootOd.get("orderProduct")));
+//        predicates.add(builder.equal(rootP.get("sellerId"), id));
+//        query.multiselect(rootSo.get("createdDate"),rootOd.get("unitPrice"), rootOd.get("num"),rootOd.get("id"),rootP.get("image"),rootP.get("name"),rootU.get("firstName"),rootU.get("lastName"));
+//        query = query.orderBy(builder.desc(rootSo.get("createdDate")));
+//        query.where(predicates.toArray(new Predicate[] {}));
+//        Query q = session.createQuery(query);
+//        return q.getResultList();
+//    }
 
 }

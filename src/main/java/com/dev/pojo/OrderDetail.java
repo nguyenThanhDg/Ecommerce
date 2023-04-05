@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class OrderDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static String WAIT = "Đang chờ";
     public static String COMPLETE = "Hoàn thành";
     public static String CANCEL = "Đã hủy";
     public static String PAY = "Chờ thanh toán";

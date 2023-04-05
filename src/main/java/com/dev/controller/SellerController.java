@@ -55,7 +55,7 @@ public class SellerController {
         model.addAttribute("totalRevenue", this.orderDetailService.totalRevenue(seller.getId()));
         model.addAttribute("hotProducts", this.productService.getHotProducts(3,seller.getId()));
         model.addAttribute("chart", this.statsService.revenueStats(year,seller));
-        model.addAttribute("waitOd", this.orderService.getWaitOrderBySeller(seller.getId()));
+//        model.addAttribute("waitOd", this.orderService.getWaitOrderBySeller(seller.getId()));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String kw = params.getOrDefault("kw", null);
 

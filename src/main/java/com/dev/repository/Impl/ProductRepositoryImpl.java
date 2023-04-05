@@ -287,7 +287,9 @@ public class ProductRepositoryImpl implements ProductRepository {
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(builder.equal(rootP.get("sellerId"), id));
         predicates.add(builder.equal(rootOd.get("orderProduct"), rootP.get("id")));
-        query.multiselect(rootP.get("name"),rootP.get("image"), rootOd.get("unitPrice"),rootP.get("categoryId"),rootP.get("createdDate"),builder.sum(rootOd.get("num")),rootP.get("status"));
+        query.multiselect(rootP.get("name"),rootP.get("image"),
+                rootP.get("price"),rootP.get("categoryId"),
+                rootP.get("createdDate"),builder.sum(rootOd.get("num")),rootP.get("status"),rootP.get("id"));
         query = query.groupBy(rootP.get("id"));
         query = query.orderBy(builder.desc(builder.sum(rootOd.get("num"))));
         query.where(predicates.toArray(new Predicate[] {}));
@@ -326,7 +328,6 @@ public class ProductRepositoryImpl implements ProductRepository {
     public void creaseQuantity(int idProduct,int quantity) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try {
-
             Product p = session.get(Product.class, idProduct);
             int temp = p.getQuantity();
             p.setQuantity(temp + quantity);

@@ -61,55 +61,6 @@
     </section>
     <section class="no-padding-bottom">
         <div class="container-fluid">
-            <div class="public-user-block block">
-                <c:if test="${!waitOd.isEmpty()}">
-                    <div class="row d-flex align-items-center">                   
-                        <h1>Danh sach cho</h1>
-                    </div>
-                    <div class="row d-flex align-items-center">                   
-                        <div class="col-lg-4 d-flex align-items-center">
-                            <h4>Tên sản phẩm</h4>
-                        </div>
-                        <div class="col-lg-3 text-center">
-                            <h4>Ngày mua</h4>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="details d-flex">
-                                <h4 class="item">Đơn giá</h4>
-                                <h4 class="item">Số lượng</h4>
-                                <div class="item"></div>
-                                <div class="item"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <c:forEach items="${waitOd}" var="w" >
-                        <c:url value="/api/orders/pay/${w[3]}" var="endpoint1" />
-                        <c:url value="/api/orders/cancel/${w[3]}" var="endpoint2" />
-                        <div class="row d-flex align-items-center">                   
-                            <div class="col-lg-4 d-flex align-items-center">
-                                <div class="avatar"> <img src="${w[4]}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">${w[5]}</strong><span class="d-block">${w[6]} ${w[7]}</span></a>
-                            </div>
-                            <div class="col-lg-3 text-center">
-                                <div class="contributions">${w[0]}</div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="details d-flex">
-                                    <div class="item"><i class="icon-info"></i><strong>${w[1]}</strong></div>
-                                    <div class="item"><i class="fa fa-gg"></i><strong>${w[2]}</strong></div>
-
-                                    <div class="item"><button class="btn btn-success" onclick="payOrder('${endpoint1}')">Xác nhận</button></div>
-                                    <div class="item"><button class="btn btn-danger" onclick="cancelOrder('${endpoint2}')">Từ chối</button></div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                    </c:forEach>
-                </c:if>
-            </div>
-        </div>
-    </section>
-    <section class="no-padding-bottom">
-        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="line-cahrt block">

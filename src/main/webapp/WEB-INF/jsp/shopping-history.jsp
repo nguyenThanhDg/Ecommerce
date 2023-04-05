@@ -31,7 +31,6 @@
                             </thead>
                             <tbody>
                                 <c:forEach items="${orders}" var="o">
-                                    <c:url value="/api/orders/cancel/${o[6]}" var="endpoint1" />
                                     <c:url value="/api/orders/commit/${o[6]}" var="endpoint2" />
                                     <tr>
                                         <td class="col-md-2"><img src="${o[4]}" alt="phoro"></td>
@@ -69,30 +68,29 @@
                                                 <a href="#" class="btn-upper btn btn-info">${o[3]}</a>
                                             </td>
                                         </c:if>
-                                        <c:if test="${o[3] == ('Đang chờ')}" var="e">
+                                        <c:if test="${o[3] == ('Chờ thanh toán')}" var="e">
+                                            <c:url value="/api/orders/cancel/${o[6]}" var="endpoint1" />
                                             <td class="col-md-1">
-                                    <btn class="btn btn-danger" onclick="cancelOrder('${endpoint1}')">Hủy</btn>
-                                    </td>
-                                </c:if>
-                                <c:if test="${o[3] == ('Chờ thanh toán')}" var="e">
-                                    <td class="col-md-1">
-                                    <btn class="btn btn-success" onclick="commitOrder('${endpoint2}')">Thanh toán</btn>
-                                    </td>
-                                    <form action="pay-momo" method="post">
-                                        <input type="hidden" name="myorderId" value="${o[6]}"/>
-                                        <td class="col-md-1">
-                                            <button 
-                                                type="submit" 
-                                                class="btn btn-primary btn-block"
-                                                onclick="this.form.action = 'pay-momo';"
-                                                >
-                                                Momo
-                                            </button>
-                                        </td>
-                                    </form>
-                                </c:if>
-                                </tr>
-                            </c:forEach>
+                                                <btn class="btn btn-success" onclick="commitOrder('${endpoint2}')">Thanh toán</btn>
+                                            </td>
+                                            <form action="pay-momo" method="post">
+                                                <input type="hidden" name="myorderId" value="${o[6]}"/>
+                                                <td class="col-md-1">
+                                                    <button 
+                                                        type="submit" 
+                                                        class="btn btn-primary btn-block"
+                                                        onclick="this.form.action = 'pay-momo';"
+                                                        >
+                                                        Momo
+                                                    </button>
+                                                </td>
+                                            </form>
+                                            <td class="col-md-1">
+                                                <btn class="btn btn-danger" onclick="cancelOrder('${endpoint1}')">Hủy</btn>
+                                            </td>
+                                        </c:if>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

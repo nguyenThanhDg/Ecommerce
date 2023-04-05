@@ -101,6 +101,7 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         try {
             OrderDetail p = session.get(OrderDetail.class, id);
             p.setStatus(OrderDetail.CANCEL);
+            System.out.println("da hoan thanh");
             session.save(p);
             return true;
         } catch (Exception ex) {

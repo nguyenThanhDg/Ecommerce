@@ -38,9 +38,9 @@ public class OrderServiceImpl implements OrderService{
         return this.orderRepository.getOrderDetailById(id);
     }
 
-    @Override
-    public List<Object[]> getWaitOrderBySeller(int id) {
-        return this.orderRepository.getWaitOrderBySeller(id);
-    }
+//    @Override
+//    public List<Object[]> getWaitOrderBySeller(int id) {
+//        return this.orderRepository.getWaitOrderBySeller(id);
+//    }
     
 }

@@ -49,6 +49,8 @@ public class ApiCartController {
     @Autowired
     public ProductService productService;
     
+    
+//    them vao gio hang
     @PostMapping("/cart")
     public Map<String, String> addToCart(@RequestBody Cart params, HttpSession session) {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
@@ -61,7 +63,7 @@ public class ApiCartController {
         }else {
             cart.put(productId, params);
         }
-        this.productService.decreaseQuantity(productId, params.getQuantity());
+        
         session.setAttribute("cart", cart);
         return Utils.totalMoney(cart);
     }
@@ -96,7 +98,8 @@ public class ApiCartController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void pay(HttpSession session, Model model){
         User user = (User) model.getAttribute("currentUser");
-        if(this.orderService.addReceipt((Map<Integer, Cart>) session.getAttribute("cart"), user.getId()) == true)
+        Map<Integer, Cart> cart = (Map<Integer, Cart>)session.getAttribute("cart");
+        if(this.orderService.addReceipt(cart, user.getId()) == true)
         {
             session.removeAttribute("cart");
             SimpleMailMessage message = new SimpleMailMessage();
@@ -116,7 +119,6 @@ public class ApiCartController {
         User u = this.userService.findById(id);
         if (this.userService.acceptSeller(id) == true) {
             SimpleMailMessage message = new SimpleMailMessage();
-
             message.setTo(u.getEmail());
             message.setSubject("Thông báo trở thành người bán hàng");
             message.setText("Xin chào, thong tin của bạn đã được xác nhận. Bạn có thể đăng bán sản phảm");

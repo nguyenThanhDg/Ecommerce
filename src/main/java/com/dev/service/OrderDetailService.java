@@ -6,7 +6,6 @@ package com.dev.service;
 
 import com.dev.pojo.OrderDetail;
 import com.dev.pojo.User;
-import java.util.List;
 
 /**
  *
