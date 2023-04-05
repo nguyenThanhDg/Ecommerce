@@ -4,12 +4,21 @@
  */
 package com.dev.controller;
 
+import com.dev.pojo.Product;
+import com.dev.pojo.Rating;
+import com.dev.pojo.User;
+import com.dev.service.ProductService;
 import com.dev.service.RatingService;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,26 +30,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/rating")
 public class ApiRatingController {
+
     @Autowired
     private RatingService ratingService;
-    
-    @DeleteMapping("/products/{productId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable(value = "productId") int id) {
-//        this.ratingService.deleteProduct(id);
+
+    @Autowired
+    private ProductService productService;
+
+    @PostMapping(path = "/add-rating", produces = {
+        MediaType.APPLICATION_JSON_VALUE
+    })
+    public ResponseEntity<Rating> addRating(@RequestBody Map<String, String> params, HttpSession session) {
+        User u = (User) session.getAttribute("currentUser");
+        if (u != null)
+            try {
+            String rate = params.get("rate");
+            int productId = Integer.parseInt(params.get("shipperId"));
+            Product product = this.productService.getProductById(productId);
+            if (this.ratingService.checkUserAndPro(u,product).isEmpty()) {
+                Rating r = this.ratingService.insertRating(rate, u, product);
+                return new ResponseEntity<>(r, HttpStatus.CREATED);
+            } else {
+                Rating r = this.ratingService.updateRating(this.ratingService.checkUserAndPro(u, product).get(0).getId(), rate);
+                return new ResponseEntity<>(r, HttpStatus.OK);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    
-    @PostMapping("/products/{productId}")
-    @ResponseStatus(HttpStatus.OK)
-    public void pauseProduct(@PathVariable(value = "productId") int id) {
-//        this.ratingService.pauseProduct(id);
-    }
-    
-//    @PostMapping("/orders/cancel/{orderId}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public void (@PathVariable(value = "orderId") int id) {
-//        OrderDetail od = this.orderDetailService.getOrderDetailById(id);
-//        this.productService.creaseQuantity(od.getOrderProduct().getId(), od.getNum());
-//        this.orderDetailService.cancelOrder(id);
-//    }
 }

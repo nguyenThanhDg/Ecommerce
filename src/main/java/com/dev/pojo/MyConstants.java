@@ -6,6 +6,5 @@ package com.dev.pojo;
 
 public class MyConstants {
     public static final String MY_EMAIL = "tinas15102016@gmail.com";
-
-    public static final String MY_PASSWORD = "xpurimzgflyxjldd";
+    public static final String MY_PASSWORD = "munyqubhyoisaqsf";
 }

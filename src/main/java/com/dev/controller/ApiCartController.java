@@ -37,43 +37,45 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ApiCartController {
+
     @Autowired
     private OrderService orderService;
-    
+
     @Autowired
     public JavaMailSender emailSender;
-    
+
     @Autowired
     public UserService userService;
-    
+
     @Autowired
     public ProductService productService;
-    
-    
+
 //    them vao gio hang
     @PostMapping("/cart")
     public Map<String, String> addToCart(@RequestBody Cart params, HttpSession session) {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
-        if(cart == null)
+        if (cart == null) {
             cart = new HashMap<>();
+        }
         int productId = params.getProductId();
-        if(cart.containsKey(productId) == true) {
+        if (cart.containsKey(productId) == true) {
             Cart c = cart.get(productId);
             c.setQuantity(c.getQuantity() + 1);
-        }else {
+        } else {
             cart.put(productId, params);
         }
-        
+
         session.setAttribute("cart", cart);
         return Utils.totalMoney(cart);
     }
-    
+
     @PutMapping("/cart")
     public ResponseEntity<Map<String, String>> updateCartItem(@RequestBody Cart params, HttpSession session) {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
-        if (cart == null)
+        if (cart == null) {
             cart = new HashMap<>();
-        
+        }
+
         int productId = params.getProductId();
         if (cart.containsKey(productId) == true) {
             Cart c = cart.get(productId);
@@ -82,7 +84,7 @@ public class ApiCartController {
         session.setAttribute("cart", cart);
         return new ResponseEntity<>(Utils.totalMoney(cart), HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/cart/{productId}")
     public ResponseEntity<Map<String, String>> deleteCartItem(@PathVariable(value = "productId") int id, HttpSession session) {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
@@ -92,25 +94,40 @@ public class ApiCartController {
         }
         return new ResponseEntity<>(Utils.totalMoney(cart), HttpStatus.OK);
     }
-    
+
     @ResponseBody
     @PostMapping("/pay")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void pay(HttpSession session, Model model){
+    public void pay(HttpSession session, Model model) {
         User user = (User) model.getAttribute("currentUser");
-        Map<Integer, Cart> cart = (Map<Integer, Cart>)session.getAttribute("cart");
-        if(this.orderService.addReceipt(cart, user.getId()) == true)
-        {
-            session.removeAttribute("cart");
+        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        String htmlMsg = "Chào mừng " + user.getLastName() + ",<br><br>"
+                + "Bạn đã đặt hàng thành công với các thông tin sản phẩm như sau:<br>"
+                + "<table>"
+                + "<tr><th>Tên sản phẩm</th><th>Giá sản phẩm</th><th>Số lượng</th><th>Thành tiền</th></tr>";
+        if (this.orderService.addReceipt(cart, user.getId()) == true) {
+            for (Map.Entry<Integer, Cart> entry : cart.entrySet()) {
+                Cart cartItem = entry.getValue();
+                String productName = cartItem.getProductName();
+                int productQuantity = cartItem.getQuantity();
+                double productPrice = cartItem.getPrice();
+                double totalPrice = productQuantity * productPrice;
+                htmlMsg += "<td>" + productName + "</td>"
+                        + "<td>" + productPrice + "</td>"
+                        + "<td>" + productQuantity + "</td>"
+                        + "<td>" + totalPrice + "</td>"
+                        + " Cảm ơn bạn đã mua hàng của chúng tôi.";
+            }   
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(user.getEmail());
             message.setSubject("Xác nhận mua hàng");
-            message.setText("Xin chào, đơn hàng của bạn đã được xác nhận. Cám ơn bạn đã đến !!!");
+            message.setText(htmlMsg);
+            session.removeAttribute("cart");
             // Send Message!
             this.emailSender.send(message);
         }
     }
-    
+
     @ResponseBody
     @PostMapping("/sellerConfirm/{sellerId}/accept")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -126,7 +143,7 @@ public class ApiCartController {
             this.emailSender.send(message);
         }
     }
-    
+
     @ResponseBody
     @PostMapping("/sellerConfirm/{sellerId}/cancel")
     @ResponseStatus(HttpStatus.NO_CONTENT)

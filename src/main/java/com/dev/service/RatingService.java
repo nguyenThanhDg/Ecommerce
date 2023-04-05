@@ -4,14 +4,20 @@
  */
 package com.dev.service;
 
+import com.dev.pojo.Product;
+import com.dev.pojo.Rating;
+import com.dev.pojo.User;
+import java.util.List;
+
 /**
  *
  * @author Hi
  */
 public interface RatingService {
-    void insertRating();
-    void selectRatingByUser();
-    void selectRatingByProduct();
-    void removeRating(int id);
-    void updateRating(int id);
+     Rating insertRating(String content, User user, Product product);
+    void selectRatingByUser(int userId);
+    void selectRatingByProduct(int productId);
+    Rating updateRating(int id, String content);
+    long avgRating(int id);
+    List<Rating> checkUserAndPro(User user, Product product);
 }
