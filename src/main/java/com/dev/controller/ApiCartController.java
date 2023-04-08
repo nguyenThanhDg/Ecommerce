@@ -13,12 +13,15 @@ import com.dev.service.ProductService;
 import com.dev.utils.Utils;
 import java.util.HashMap;
 import java.util.Map;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -95,12 +98,51 @@ public class ApiCartController {
         return new ResponseEntity<>(Utils.totalMoney(cart), HttpStatus.OK);
     }
 
+//    @ResponseBody
+//    @PostMapping("/pay")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void pay(HttpSession session, Model model) {
+//        User user = (User) model.getAttribute("currentUser");
+//        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+//        String htmlMsg = "Chào mừng " + user.getLastName() + ",<br><br>"
+//                + "Bạn đã đặt hàng thành công với các thông tin sản phẩm như sau:<br>"
+//                + "<table>"
+//                + "<tr><th>Tên sản phẩm</th><th>Giá sản phẩm</th><th>Số lượng</th><th>Thành tiền</th></tr>";
+//        if (this.orderService.addReceipt(cart, user.getId()) == true) {
+//            for (Map.Entry<Integer, Cart> entry : cart.entrySet()) {
+//                Cart cartItem = entry.getValue();
+//                String productName = cartItem.getProductName();
+//                int productQuantity = cartItem.getQuantity();
+//                double productPrice = cartItem.getPrice();
+//                double totalPrice = productQuantity * productPrice;
+//                htmlMsg += "<td>" + productName + "</td>"
+//                        + "<td>" + productPrice + "</td>"
+//                        + "<td>" + productQuantity + "</td>"
+//                        + "<td>" + totalPrice + "</td>"
+//                        + " Cảm ơn bạn đã mua hàng của chúng tôi.";
+//            }   
+//            SimpleMailMessage message = new SimpleMailMessage();
+//            message.setTo(user.getEmail());
+//            message.setSubject("Xác nhận mua hàng");
+//            message.setText(htmlMsg);
+//            session.removeAttribute("cart");
+//            // Send Message!
+//            this.emailSender.send(message);
+//        }
+//    }
+    
     @ResponseBody
     @PostMapping("/pay")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void pay(HttpSession session, Model model) {
+    public void pay(HttpSession session, Model model) throws MessagingException {
         User user = (User) model.getAttribute("currentUser");
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        // Gửi email thông báo đặt hàng thành công và hiển thị thông tin sản phẩm
+        String recipientEmail = user.getEmail();
+        String subject = "Đặt hàng thành công";
+        // Tạo email HTML
+        MimeMessage message = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
         String htmlMsg = "Chào mừng " + user.getLastName() + ",<br><br>"
                 + "Bạn đã đặt hàng thành công với các thông tin sản phẩm như sau:<br>"
                 + "<table>"
@@ -111,18 +153,32 @@ public class ApiCartController {
                 String productName = cartItem.getProductName();
                 int productQuantity = cartItem.getQuantity();
                 double productPrice = cartItem.getPrice();
-                double totalPrice = productQuantity * productPrice;
-                htmlMsg += "<td>" + productName + "</td>"
+                double total = productQuantity * productPrice;
+//                double total = 0;
+                
+
+                htmlMsg +="<tr><td>" + productName + "</td>"
                         + "<td>" + productPrice + "</td>"
                         + "<td>" + productQuantity + "</td>"
-                        + "<td>" + totalPrice + "</td>"
-                        + " Cảm ơn bạn đã mua hàng của chúng tôi.";
-            }   
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(user.getEmail());
-            message.setSubject("Xác nhận mua hàng");
-            message.setText(htmlMsg);
+                        + "<td>" + total+ "</td></tr>";
+                        
+            }
+            Long total = 0l;
+            Map<String, String> totalPrice = Utils.totalMoney(cart);
+            htmlMsg += "</table>" 
+                    + "<br>"
+//                    + "Tổng tiền: " + totalPrice.put("total", String.valueOf(total))
+                    +" Cảm ơn bạn đã mua hàng của chúng tôi.";
+
+//            SimpleMailMessage message = new SimpleMailMessage();
+//            message.setTo(user.getEmail());
+//            message.setSubject("Xác nhận mua hàng");
+//            message.setText(htmlMsg);
+            helper.setTo(recipientEmail);
+            helper.setSubject(subject);
+            helper.setText(htmlMsg, true);
             session.removeAttribute("cart");
+
             // Send Message!
             this.emailSender.send(message);
         }
