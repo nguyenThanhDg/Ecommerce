@@ -10,6 +10,8 @@ import java.util.Map;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Hex;
@@ -19,35 +21,42 @@ import org.apache.commons.codec.binary.Hex;
  * @author DELL
  */
 public class Utils {
-    public static int countCart(Map<Integer,Cart> cart){
+
+    public static int countCart(Map<Integer, Cart> cart) {
         int count = 0;
-        if(cart != null) // nếu cart khác null
+        if (cart != null) // nếu cart khác null
         {
-            for(Cart c: cart.values()) //Trả ra danh sách các giá trị của giỏ
+            for (Cart c : cart.values()) //Trả ra danh sách các giá trị của giỏ
+            {
                 count += c.getQuantity();
+            }
         }
         return count;
     }
-    
-    public static Map<String, String> totalMoney(Map<Integer,Cart> cart)
-    {
+
+    public static Map<String, String> totalMoney(Map<Integer, Cart> cart) {
         Long total = 0l;
         int count = 0;
-        
-        if(cart!=null)
-        {
-            for (Cart c: cart.values()){
+
+        if (cart != null) {
+            for (Cart c : cart.values()) {
                 count += c.getQuantity();
-                total += c.getQuantity()* c.getPrice();
+                total += c.getQuantity() * c.getPrice();
             }
         }
         Map<String, String> result = new HashMap<>();
         result.put("total", String.valueOf(total));
         result.put("quantity", String.valueOf(count));
-        
+
         return result;
     }
-    
+
+    public static String convertPrice(double price) {
+        Locale locale = new Locale("vi", "VN");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+        return currencyFormatter.format(price);
+    }
+
     public static String toSHA256(String secretkey, String data) {
         try {
             Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
@@ -56,7 +65,7 @@ public class Utils {
 
             return Hex.encodeHexString(sha256_HMAC.doFinal(data.getBytes(StandardCharsets.UTF_8)));
 
-        } catch (NoSuchAlgorithmException | InvalidKeyException  e) {
+        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
             e.printStackTrace();
         }
 

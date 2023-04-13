@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Hi
  */
 @RestController
-@RequestMapping("/api/rating")
+@RequestMapping("/api")
 public class ApiRatingController {
 
     @Autowired
@@ -45,9 +45,10 @@ public class ApiRatingController {
         if (u != null)
             try {
             String rate = params.get("rate");
-            int productId = Integer.parseInt(params.get("shipperId"));
+            int productId = Integer.parseInt(params.get("productId"));
             Product product = this.productService.getProductById(productId);
-            if (this.ratingService.checkUserAndPro(u,product).isEmpty()) {
+                System.err.println("toiday");
+            if (this.ratingService.checkUserAndPro(u, product).isEmpty()) {
                 Rating r = this.ratingService.insertRating(rate, u, product);
                 return new ResponseEntity<>(r, HttpStatus.CREATED);
             } else {
@@ -57,7 +58,6 @@ public class ApiRatingController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

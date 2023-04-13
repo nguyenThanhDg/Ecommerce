@@ -131,4 +131,17 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.getAdmin();
     }
 
+    @Override
+    public boolean addUGoogleUser(User user) {
+        try {
+            user.setCreatedDate(new Date());
+            return this.userRepository.addUser(user);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
 }

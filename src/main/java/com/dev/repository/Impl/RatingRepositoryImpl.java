@@ -52,11 +52,11 @@ public class RatingRepositoryImpl implements RatingRepository{
     @Override
     public long avgRating(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("Select avg(rate) From Rating r where r.product.id = :product");
+        Query q = session.createQuery("Select avg(rate) From Rating r where r.productId.id = :product");
         q.setParameter("product", id);
         if (q.getSingleResult() != null){
             long a = Math.round((double) q.getSingleResult());
-        return a ;}
+        return a;}
         else
             return 5;
     }
@@ -76,8 +76,8 @@ public class RatingRepositoryImpl implements RatingRepository{
         CriteriaQuery<Rating> query = builder.createQuery(Rating.class);
         Root root = query.from(Rating.class);
         query = query.select(root);
-        Predicate p1 = builder.equal(root.get("customer_id"), user.getId());
-        Predicate p2 = builder.equal(root.get("product_id"), product.getId());
+        Predicate p1 = builder.equal(root.get("customerId"), user.getId());
+        Predicate p2 = builder.equal(root.get("productId"), product.getId());
         query.where(builder.and(p1, p2));
         Query q = session.createQuery(query);
         return q.getResultList();

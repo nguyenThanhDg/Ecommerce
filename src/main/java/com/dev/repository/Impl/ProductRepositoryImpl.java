@@ -343,4 +343,21 @@ public class ProductRepositoryImpl implements ProductRepository {
         Product p = session.get(Product.class, id);
         return p.getQuantity();
     }
+
+    @Override
+    public long countComment(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Comment> q = b.createQuery(Comment.class);
+        Root root = q.from(Comment.class);
+        q.select(root);
+
+        q.where(b.equal(root.get("productId"), id));
+
+        Query query = session.createQuery(q);
+        if (query.getResultList().isEmpty()){
+            return 0;
+        }
+        return Long.parseLong(query.getResultList().toString());
+    }
 }

@@ -17,7 +17,8 @@
       </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->
   </div><!-- /.breadcrumb -->
-
+  <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Ecommerce/login-google&response_type=code
+		   &client_id=133679092311-p7g2vnlmj7jcvi6hrio54qekmf3dln4n.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>
   <div class="body-content">
     <div class="container">
       <div class="sign-in-page">

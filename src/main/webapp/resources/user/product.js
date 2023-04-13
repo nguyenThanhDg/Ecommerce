@@ -39,3 +39,29 @@ function addComment(endpoint, proId) {
         document.getElementById("contentId").value = "";
     });
 }
+
+function addRating(endpoint, productId) {
+    var selectedSize;
+    const radioB = document.querySelectorAll('input[name="myrating"]');
+    for (const radioButton of radioB) {
+        if (radioButton.checked) {
+            selectedSize = radioButton.value;
+        }
+    }
+    console.log(productId)
+    fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify({
+            "rate": selectedSize,
+            "productId": productId
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function(res) {
+        
+        return res.json();
+    }).then(function(data) {
+       console.log('Success:', data);
+    });
+}

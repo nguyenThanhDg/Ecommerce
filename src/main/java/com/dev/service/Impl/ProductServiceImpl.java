@@ -147,4 +147,9 @@ public class ProductServiceImpl implements ProductService{
     public int getQuantity(int id) {
         return this.productRepository.getQuantity(id);
     }
+
+    @Override
+    public long countComment(int id) {
+         return this.productRepository.countComment(id);
+    }
 }

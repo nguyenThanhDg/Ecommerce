@@ -22,5 +22,4 @@ public interface UserRepository {
     boolean cancelSeller(int id);
     boolean checkSuperAdmin(int id);
     List<User> getAdmin();
-    
 }

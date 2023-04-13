@@ -31,6 +31,7 @@ public interface ProductRepository {
     List<Object[]> getHotProducts(int num, int id);
     boolean updateProduct(Product product, int id, User seller);
     long countProduct();
+    long countComment(int id);
     void decreaseQuantity(int idProduct,int quantity);
     void creaseQuantity(int idProduct,int quantity);
     int getQuantity(int id);

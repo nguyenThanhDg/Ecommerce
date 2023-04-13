@@ -72,7 +72,7 @@ public class Rating implements Serializable {
     public Rating(Integer id, int rate, Date createdDate) {
         this.id = id;
         this.rate = rate;
-        this.createdDate = createdDate;
+        this.createdDate = new Date();
     }
 
     public Integer getId() {
