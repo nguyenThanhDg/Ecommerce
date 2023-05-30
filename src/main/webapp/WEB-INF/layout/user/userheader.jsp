@@ -123,7 +123,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="dropdown"> <a href="<c:url value="/" />">Trang chủ</a> </li>
                                 <li class="dropdown"> <a href="<c:url value="/products" />">Danh sách</a> </li>
-                                <li class="dropdown mega-menu">
+<!--                                <li class="dropdown mega-menu">
                                     <a href="category.html" data-hover="dropdown" class="dropdown-toggle"
                                        data-toggle="dropdown">Điện tử <span class="menu-label hot-menu hidden-xs">hot</span> </a>
                                     <ul class="dropdown-menu container">
@@ -142,7 +142,7 @@
                                                             <li><a href="#">Acer</a></li>
                                                         </ul>
                                                     </div>
-                                                    <!-- /.col -->
+                                                     /.col 
 
                                                     <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
                                                         <h2 class="title">Phụ kiện</h2>
@@ -159,7 +159,7 @@
                                                             <li><a href="#">Headphones</a></li>
                                                         </ul>
                                                     </div>
-                                                    <!-- /.col -->
+                                                     /.col 
 
                                                     <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
                                                         <h2 class="title">Máy ảnh</h2>
@@ -176,7 +176,7 @@
                                                             <li><a href="#">Tripods</a></li>
                                                         </ul>
                                                     </div>
-                                                    <!-- /.col -->
+                                                     /.col 
                                                     <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
                                                         <h2 class="title">Di động</h2>
                                                         <ul class="links">
@@ -192,15 +192,15 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner"> <a href="#"><img alt=""
                                                                                                                                        src="<c:url value="/user/assets/images/banners/top-menu-banner1.jpg"/>"></a> </div>
                                                 </div>
-                                                <!-- /.row -->
+                                                 /.row 
                                             </div>
-                                            <!-- /.yamm-content -->
+                                             /.yamm-content 
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="dropdown hidden-sm"> <a href="category.html">Giày <span
                                             class="menu-label new-menu hidden-xs">new</span> </a> </li>
-                                <li class="dropdown hidden-sm"> <a href="category.html">Đồng hồ</a> </li>
+                                <li class="dropdown hidden-sm"> <a href="category.html">Đồng hồ</a> </li>-->
                                
                                 
 <!--                                <li class="dropdown  navbar-right special-menu"> <a href="#">Get 30% off on selected items</a> </li>-->

@@ -9,11 +9,16 @@
 <nav class="navbar navbar-expand-lg main-navbar sticky">
     <div class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
-                   collapse-btn"> <i data-feather="align-justify"></i></a></li>
-            <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
-                    <i data-feather="maximize"></i>
-                </a></li>
+            <!--            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+                               collapse-btn"> <i data-feather="align-justify"></i></a></li>
+                        <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+                                <i data-feather="maximize"></i>
+                            </a></li>-->
+            <li>
+                <a href="index.html"> <img alt="image" src="<c:url value="/adminpage/assets/img/favicon_logo.png"/>" class="header-logo" /> <span
+                        class="logo-name">Marazzo</span>
+                </a>
+            </li> 
             <li>
                 <form class="form-inline mr-auto">
                     <div class="search-element">
@@ -27,7 +32,7 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+<!--        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                                                      class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
                 <span class="badge headerBadge1">
                     6 </span> </a>
@@ -136,26 +141,24 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li>
-        <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png"
-                                                                             class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
+        </li>-->
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown"                
+            class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
+            <img alt="image" src="${currentUser.avatar}"
+            class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-                <div class="dropdown-title">Hello Sarah Smith</div>
-                <a href="profile.html" class="dropdown-item has-icon"> <i class="far
-                                                                          fa-user"></i> Hồ sơ
-                </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                    Hoạt động
-                </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                    Cài đặt
-                </a>
-                <div class="dropdown-divider"></div>
+                <div class="dropdown-title">${currentUser.lastName}</div>
+                <!--                <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+                                                                                          fa-user"></i> Hồ sơ
+                                </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
+                                    Hoạt động
+                                </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+                                    Cài đặt
+                                </a>
+                                <div class="dropdown-divider"></div>-->
                 <a href="<c:url value="/logout" />" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-<<<<<<< HEAD
                     Đăng xuất
-=======
-                    Logout
->>>>>>> 1eaea73e4cbd17e4fd47fcca37dea7ca2b39844a
                 </a>
             </div>
         </li>

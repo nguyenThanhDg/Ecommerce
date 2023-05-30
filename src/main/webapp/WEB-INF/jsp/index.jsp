@@ -37,7 +37,7 @@
 
 
                 <!-- ============================================== PRODUCT TAGS ============================================== -->
-                <div class="sidebar-widget product-tag">
+<!--                <div class="sidebar-widget product-tag">
                     <h3 class="section-title">Sản phẩm nổi bật</h3>
                     <div class="sidebar-widget-body outer-top-xs">
                         <div class="tag-list"> <a class="item" title="Phone" href="category.html">Phone</a> 
@@ -49,10 +49,10 @@
                             <a class="item" title="Toys" href="category.html">Tai nghe</a>
                             <a class="item" title="Rose" href="category.html">Nước hoa</a>
                         </div>
-                        <!-- /.tag-list -->
+                         /.tag-list 
                     </div>
-                    <!-- /.sidebar-widget-body -->
-                </div>
+                     /.sidebar-widget-body 
+                </div>-->
                 <!-- /.sidebar-widget -->
                 <!-- ============================================== PRODUCT TAGS : END ============================================== -->
                 <!-- ============================================== NEWSLETTER ============================================== -->
@@ -116,9 +116,9 @@
                         <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
                         <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
                             <li class="active"><a href="<c:url value="/products" />">Tất cả</a></li>
-                            <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Quần áo</a></li>
+<!--                            <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Quần áo</a></li>
                             <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Điện tử</a></li>
-                            <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Giày</a></li>
+                            <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Giày</a></li>-->
                         </ul>
                         <!-- /.nav-tabs -->
                     </div>

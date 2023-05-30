@@ -57,7 +57,7 @@ function updateCart(endpoint, obj, productId) {
 }
 
 function deleteCartItem(productId) {
-    if (confirm("Ban chac chan xoa san pham nay khong?") === true) {
+    if (confirm("Bạn có chắc chắn xóa sản phẩm này không?") === true) {
         fetch(`/Ecommerce/api/cart/${productId}`, {
             method: "delete"
         }).then(function (res) {
@@ -77,7 +77,7 @@ function deleteCartItem(productId) {
 
 function pay(endpoint) {
     event.preventDefault();
-    if (confirm("Ban chac chan dat hang") === true) {
+    if (confirm("Bạn chắc chắn đặt hàng chứ!") === true) {
         fetch(endpoint, {
             method: "post"
         }).then(function (res) {
@@ -86,7 +86,7 @@ function pay(endpoint) {
             console.info(code);
             location.reload();
         });
-        alert("Bạn đã dat mua hàng thành công");
+        alert("Bạn đã đặt hàng thành công");
     } else
         alert("Bạn chưa đặt hàng!!!");
 }
