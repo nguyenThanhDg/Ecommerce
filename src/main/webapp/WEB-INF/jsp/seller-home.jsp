@@ -7,6 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="page-content">
     <div class="page-header">
         <div class="container-fluid">
@@ -49,7 +51,9 @@
                             <div class="title">
                                 <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Doanh thu</strong>
                             </div>
-                            <div class="number dashtext-3">${totalRevenue}</div>
+                            <fmt:formatNumber var="formattedSalary2" value="${totalRevenue}" type="currency" currencyCode="VND" />
+                            <c:set var="trimmedSalary2" value="${fn:replace(formattedSalary2, '.00', '')}" /> 
+                            <div class="number dashtext-3">${trimmedSalary2}</div>
                         </div>
                         <div class="progress progress-template">
                             <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
@@ -94,7 +98,9 @@
                                 <h3 class="h5">${p[5]}</h3><span>${p[0]}</span></a>
                             <div class="contributions">${p[4]}</div>
                             <div class="details d-flex">
-                                <div class="item"><strong>${p[2]}</strong></div>
+                                <fmt:formatNumber var="formattedSalary2" value="${p[2]}" type="currency" currencyCode="VND" />
+                                <c:set var="trimmedSalary2" value="${fn:replace(formattedSalary2, '.00', '')}" /> 
+                                <div class="item"><strong>${trimmedSalary2}</strong></div>
                                 <div class="item"><strong>${p[3].name}</strong></div>
                                 <div class="item"><strong>${p[6]}</strong></div>
                             </div>
@@ -136,10 +142,10 @@
                             <h4>Tên sản phẩm</h4>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center">
-                                <h4 class="item">Ngày mua</h4>
+                            <h4 class="item">Ngày mua</h4>
                         </div>
                         <div class="col-lg-2 d-flex align-items-center">
-                                <h4 class="item">Hình thức</h4>
+                            <h4 class="item">Hình thức</h4>
                         </div>
                         <div class="col-lg-4">
                             <div class="details d-flex">
@@ -167,11 +173,16 @@
                                     <div class="contributions">Momo</div>
                                 </c:if>
                             </div>
+                            <fmt:setLocale value="vi_VN" />
+                            <fmt:formatNumber var="formattedSalary" value="${p[4]}" type="currency" currencyCode="VND" />
+                            <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" /> 
+                            <fmt:formatNumber var="formattedSalary1" value="${p[7]}" type="currency" currencyCode="VND" />
+                            <c:set var="trimmedSalary1" value="${fn:replace(formattedSalary1, '.00', '')}" /> 
                             <div class="col-lg-4">
                                 <div class="details d-flex">
-                                    <div class="item"><i class="icon-info"></i><strong>${p[4]}</strong></div>
+                                    <div class="item"><i class="icon-info"></i><strong>${trimmedSalary}</strong></div>
                                     <div class="item"><i class="fa fa-gg"></i><strong>${p[5]}</strong></div>
-                                    <div class="item"><i class="icon-flow-branch"></i><strong>${p[7]}</strong></div>
+                                    <div class="item"><i class="icon-flow-branch"></i><strong>${trimmedSalary1}</strong></div>
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<fmt:setLocale value="vi_VN" />
+
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-inner">
@@ -45,7 +49,7 @@
                                             </a>
                                         </td>
                                         <td class="cart-image">
-                                            <a class="entry-thumbnail" href="detail.html">
+                                            <a class="entry-thumbnail" href="#">
                                                 <img src="${cart.image}" alt="">
                                             </a>
                                         </td>
@@ -74,7 +78,9 @@
                                                 <input type="number" onblur="updateCart('${u}', this, ${cart.productId})" value="${cart.quantity}">
                                             </div>
                                         </td>
-                                        <td class="cart-product-sub-total"><span class="cart-sub-total-price">${cart.price} VND</span></td>
+                                        <fmt:formatNumber var="formattedSalary1" value="${cart.price}" type="currency" currencyCode="VND" />
+                                        <c:set var="trimmedSalary1" value="${fn:replace(formattedSalary1, '.00', '')}" /> 
+                                        <td class="cart-product-sub-total"><span class="cart-sub-total-price">${trimmedSalary1}</span></td>
                                     </tr>
                                 </c:forEach>
                             </tbody><!-- /tbody -->
@@ -100,9 +106,10 @@
                         <thead>
                             <tr >
                                 <th>
-
+                                    <fmt:formatNumber var="formattedSalary" value="${totalMoney.total}" type="currency" currencyCode="VND" />
+                                    <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" /> 
                                     <div class="cart-grand-total" id="totalCart">
-                                        Tổng tiền<span class="inner-left-md">${totalMoney.total} VND</span>
+                                        Tổng tiền<span class="inner-left-md">${trimmedSalary}</span>
                                     </div>
                                 </th>
                             </tr>
