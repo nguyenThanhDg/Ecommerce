@@ -8,7 +8,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <section class="section">
-    <div class="row ">
+    
+<!--    <div class="row ">
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="card">
                 <div class="card-statistic-4">
@@ -98,7 +99,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <c:if test="${currentUser.userRole == 'superadmin'}" >
         
     <div class="row">
@@ -106,7 +107,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Danh sách quản trị viên</h4>
-                    <div class="card-header-form">
+<!--                    <div class="card-header-form">
                         <form>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -115,7 +116,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -166,7 +167,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Danh sách người bán chờ xác nhận</h4>
-                    <div class="card-header-form">
+<!--                    <div class="card-header-form">
                         <form>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -175,7 +176,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -225,7 +226,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Danh sách người bán đã đăng ký</h4>
-                    <div class="card-header-form">
+<!--                    <div class="card-header-form">
                         <form>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -234,7 +235,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">

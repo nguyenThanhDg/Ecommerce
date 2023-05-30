@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-        <title>marazzo - Admin Dashboard </title>
+        <title>Marazzo - Admin Dashboard </title>
         <!-- General CSS Files -->
         <link rel="stylesheet" href="<c:url value="/adminpage/assets/css/app.min.css"/>">
         <!-- Template CSS -->
@@ -24,12 +24,12 @@
         <link rel="stylesheet" href="<c:url value="/adminpage/assets/css/components.css"/>">
         <!-- Custom style CSS -->
         <link rel="stylesheet" href="<c:url value="/adminpage/assets/css/custom.css"/>">
-        <link rel='shortcut icon' type='image/x-icon' href='<c:url value="/adminpage/assets/img/favicon.ico"/>' />
+        <link rel='shortcut icon' type='image/x-icon' href='<c:url value="/adminpage/assets/img/favicon_logo.png"/>' />
     </head>
     <body>
         <div class="loader"></div>
         <div id="app">
-            <div class="main-wrapper main-wrapper-1">
+            <div>
                 <tiles:insertAttribute name="header" />
                 <tiles:insertAttribute name="nav" />
                 <div class="main-content">

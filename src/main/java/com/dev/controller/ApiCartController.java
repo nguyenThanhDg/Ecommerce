@@ -160,15 +160,14 @@ public class ApiCartController {
                 htmlMsg +="<tr><td>" + productName + "</td>"
                         + "<td>" + productPrice + "</td>"
                         + "<td>" + productQuantity + "</td>"
-                        + "<td>" + total+ "</td></tr>";
+                        + "<td>" + total + "</td></tr>";
                         
             }
             Long total = 0l;
             Map<String, String> totalPrice = Utils.totalMoney(cart);
             htmlMsg += "</table>" 
                     + "<br>"
-//                    + "Tổng tiền: " + totalPrice.put("total", String.valueOf(total))
-                    +"Tổng tiền: " + totalPrice.put("total", String.valueOf(total))
+                    + "Tổng tiền: " + totalPrice.put("total", String.valueOf(total))
                     + "<br>"
                     +" Cảm ơn bạn đã mua hàng của chúng tôi.";
 

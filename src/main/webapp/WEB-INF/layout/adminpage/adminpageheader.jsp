@@ -6,10 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="main-sidebar sidebar-style-2">
+<!--<div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="<c:url value="/adminpage/assets/img/logo.png"/>" class="header-logo" /> <span
+            <a href="index.html"> <img alt="image" src="<c:url value="/adminpage/assets/img/favicon_logo.png"/>" class="header-logo" /> <span
                     class="logo-name">marazzo</span>
             </a>
         </div>
@@ -214,4 +214,4 @@
             </li>
         </ul>
     </aside>
-</div>
+</div>-->
