@@ -35,4 +35,5 @@ public interface ProductService {
     void decreaseQuantity(int idProduct,int quantity);
     void creaseQuantity(int idProduct,int quantity);
     int getQuantity(int id);
+    long countComment(int id);
 }

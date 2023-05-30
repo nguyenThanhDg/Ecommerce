@@ -35,7 +35,8 @@ import org.springframework.web.servlet.view.JstlView;
     "com.dev.repository",
     "com.dev.controller",
     "com.dev.service",
-    "com.dev.validator"
+    "com.dev.validator",
+    "com.dev.utils"
 })
 public class WebAppContextConfig implements WebMvcConfigurer {
 

@@ -31,11 +31,13 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="pull-left">
-                                    <div class="rating rateit-small"></div>
+                                    <c:forEach var = "i" begin = "1" end = "${avg}">
+                                        <span class="fa fa-star checked"></span>
+                                    </c:forEach>
                                 </div>
                                 <div class="pull-left">
                                     <div class="reviews">
-                                        <a href="#" class="lnk">(13 đánh giá)</a>
+                                        <a href="#product-tabs" class="lnk">(${amountComment} đánh giá)</a>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +57,7 @@
 
                             <div class="col-sm-6 col-xs-6">
                                 <div class="price-box">
-                                    <span class="priced price">${product.price} VND</span>
+                                    <span class="priced price">${product.price} VNĐ</span>
                                 </div>
                             </div>
 
@@ -82,12 +84,12 @@
                     <div class="quantity-container info-container">
                         <div class="row">
                             <c:url value="/api/cart" var="u" />
-                                <div class="add-btn1">
-                                    <a href="javascript:;"
-                                       onclick="addToCart('${u}',${product.id}, '${product.name}', '${product.price}', '${product.image}')"
-                                       class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO GIỎ
-                                    </a>
-                                </div>
+                            <div class="add-btn1">
+                                <a href="javascript:;"
+                                   onclick="addToCart('${u}',${product.id}, '${product.name}', '${product.price}', '${product.image}')"
+                                   class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO GIỎ
+                                </a>
+                            </div>
                         </div><!-- /.row -->
                     </div><!-- /.quantity-container -->
                 </div>
@@ -121,7 +123,7 @@
 
                                 <div class="product-add-review">
                                     <sec:authorize access="isAuthenticated()">
-                                        <h4 class="title">Viết nhận xét của bạn</h4>
+                                        <h4 class="title">Đánh giá cho sản phẩm</h4>
                                         <div class="review-table">
                                             <div class="table-responsive">
                                                 <table class="table">
@@ -136,13 +138,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
+                                                        <c:url value="/api/add-rating" var="endpoint" />
+                                                        <tr onchange="addRating('${endpoint}',${product.id})">
                                                             <td class="cell-label">Chất lượng</td>
-                                                            <td><input type="radio" name="quality" class="radio" value="1"></td>
-                                                            <td><input type="radio" name="quality" class="radio" value="2"></td>
-                                                            <td><input type="radio" name="quality" class="radio" value="3"></td>
-                                                            <td><input type="radio" name="quality" class="radio" value="4"></td>
-                                                            <td><input type="radio" name="quality" class="radio" value="5"></td>
+                                                            <td><input type="radio" name="myrating" value="1" id="1"></td>
+                                                            <td><input type="radio" name="myrating" value="2" id="2"></td>
+                                                            <td><input type="radio" name="myrating" value="3" id="3"></td>
+                                                            <td><input type="radio" name="myrating" value="4" id="4"></td>
+                                                            <td><input type="radio" name="myrating" value="5" id="5"></td>
                                                         </tr>
 
                                                     </tbody>
@@ -158,7 +161,7 @@
                                                     <div class="row">
                                                         <div class="form-group">
                                                             <label for="exampleInputReview">Nhận xét <span class="astk">*</span></label>
-                                                            <textarea class="form-control txt txt-review" placeholder="Nhap noi dung binh luan" id="contentId"></textarea>
+                                                            <textarea class="form-control txt txt-review" placeholder="Nhập vào nội dung bình luận của bạn" id="contentId"></textarea>
                                                         </div><!-- /.form-group -->                                       
                                                     </div><!-- /.row -->
                                                     <c:url value="/api/products/${product.id}/comments" var="endpoint" />
@@ -191,7 +194,7 @@
 
 
     <sec:authorize access="!isAuthenticated()">
-        <strong>Vui long <a href="<c:url value="/login" />">dang nhap</a> de binh luan!!!</strong>
+        <strong>Vui lòng <a href="<c:url value="/login" />">đăng nhập</a> để bình luận!!!</strong>
     </sec:authorize>
 
 
@@ -201,5 +204,6 @@
     <script>
         window.onload = function () {
             loadComments('${endpoint}');
+            document.getElementById(${rate}).checked = true;
         };
     </script>

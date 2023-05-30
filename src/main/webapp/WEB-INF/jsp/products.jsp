@@ -149,7 +149,7 @@
                                 <ul class="list-inline list-unstyled">
                                     <c:forEach begin="1" end="${Math.ceil(counter/8)}" var="i" >
                                         <li><a href="<c:url value="/products" />?page=${i}">${i}</a></li>
-                                    </c:forEach>
+                                        </c:forEach>
 
                                 </ul>
                                 <!-- /.list-inline --> 

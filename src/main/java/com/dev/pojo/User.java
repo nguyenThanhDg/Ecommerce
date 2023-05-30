@@ -57,7 +57,6 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "first_name")
     private String firstName;
@@ -74,17 +73,14 @@ public class User implements Serializable {
     private String email;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "phone")
     private String phone;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "password")
     private String password;
@@ -97,8 +93,10 @@ public class User implements Serializable {
     @Size(max = 100)
     @Column(name = "avatar")
     private String avatar;
+    @Size(max = 45)
+    @Column(name = "google_id")
+    private String googleId;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "user_role")
     private String userRole;
     @Transient
@@ -314,6 +312,20 @@ public class User implements Serializable {
      */
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    /**
+     * @return the googleId
+     */
+    public String getGoogleId() {
+        return googleId;
+    }
+
+    /**
+     * @param googleId the googleId to set
+     */
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
     }
     
 }

@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="<c:url value="/user/assets/css/animate.min.css"/>">
         <link rel="stylesheet" href="<c:url value="/user/assets/css/rateit.css"/>">
         <link rel="stylesheet" href="<c:url value="/user/assets/css/bootstrap-select.min.css"/>">
+        
 
         <!-- Icons/Glyphs -->
         <link rel="stylesheet" href="<c:url value="/user/assets/css/font-awesome.css"/>">

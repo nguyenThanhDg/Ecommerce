@@ -27,4 +27,7 @@ public interface UserService extends UserDetailsService {
     boolean cancelSeller(int id);
     boolean checkSuperAdmin(int id);
     List<User> getAdmin();
+    boolean addUGoogleUser(User user);
+    boolean checkGoogleUser(String googleId);
+    User getUserByGoogleId(String googleId);
 }
