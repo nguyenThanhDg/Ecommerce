@@ -42,10 +42,12 @@
                 <div class="sidebar-widget product-tag outer-top-vs">
                     <h3 class="section-title">Sản phẩm nổi bật</h3>
                     <div class="sidebar-widget-body outer-top-xs">
-                        <div class="tag-list"> <a class="item" title="Phone" href="products/?cateId=1">Điện thoại</a> 
-                            <a class="item" title="Vest" href="products/?cateId=1">Laptop</a>
-                            <a class="item" title="Smartphone" href="products/?cateId=1">Máy tính bảng</a>
-                            <a class="item" title="Furniture" href="products/?cateId=1">Máy tính</a>
+                        <div class="tag-list">
+                            <c:forEach items="${category}" var="c" >
+                                <a class="item" title="Phone" href="<c:url value="/products/" >
+                                       <c:param name="cateId" value="${c.id}" />
+                                   </c:url>"">${c.name}</a>
+                            </c:forEach>
                         </div>
                         <!-- /.tag-list --> 
                     </div>

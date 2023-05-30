@@ -57,10 +57,12 @@
                         <div class="sidebar-widget product-tag outer-top-vs">
                             <h3 class="section-title">Sản phẩm nổi bật</h3>
                             <div class="sidebar-widget-body outer-top-xs">
-                                <div class="tag-list"> <a class="item" title="Phone" href="category.html">Điện thoại</a> 
-                                    <a class="item" title="Vest" href="category.html">Laptop</a>
-                                    <a class="item" title="Smartphone" href="category.html">Máy tính bảng</a>
-                                    <a class="item" title="Furniture" href="category.html">Máy tính</a>
+                                <div class="tag-list">
+                                    <c:forEach items="${category}" var="c" >
+                                        <a class="item" title="Phone" href="<c:url value="/products/" >
+                                               <c:param name="cateId" value="${c.id}" />
+                                           </c:url>"">${c.name}</a>
+                                    </c:forEach>
                                 </div>
                                 <!-- /.tag-list --> 
                             </div>
@@ -116,8 +118,6 @@
                                                     </a>
                                                 </div>
                                                 <!-- /.image -->
-
-                                                <div class="tag new"><span>mới</span></div>
                                             </div>
                                             <!-- /.product-image -->
 
@@ -143,10 +143,8 @@
                                                                         class="fa fa-shopping-cart"></i> </button>
                                                                 <button class="btn btn-primary cart-btn" type="button">Thêm vào giỏ</button>
                                                             </li>
-                                                            <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist">
+                                                            <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Yêu thích">
                                                                     <i class="icon fa fa-heart"></i> </a> </li>
-                                                            <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i
-                                                                        class="fa fa-signal"></i> </a> </li>
                                                         </ul>
                                                     </div>
                                                     <!-- /.action -->

@@ -202,10 +202,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown hidden-sm"> <a href="category.html">Giày <span
-                                            class="menu-label new-menu hidden-xs">new</span> </a> </li>
-                                <li class="dropdown hidden-sm"> <a href="category.html">Đồng hồ</a> </li>
-
 
                                 <!--                                <li class="dropdown  navbar-right special-menu"> <a href="#">Get 30% off on selected items</a> </li>-->
                             </ul>
