@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- ============================================== HEADER : END ============================================== -->
-<div class="breadcrumb">
+<!--<div class="breadcrumb">
     <div class="container">
         <div class="col-md-3">
         <a class="btn btn-outline-dark"
@@ -18,8 +18,8 @@
             Login with Google
         </a>
     </div>
-    </div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+    </div> /.container 
+</div> /.breadcrumb -->
 <div class="body-content">
     <div class="container">
         <div class="sign-in-page">
@@ -49,14 +49,15 @@
                             <label class="info-title" for="exampleInputPassword1">Mật khẩu<span>*</span></label>
                             <input type="password" class="form-control unicase-form-control text-input" name="password">
                         </div>
-                        <div class="radio outer-xs">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Nhớ mật khẩu
-                            </label>
-                            <a href="#" class="forgot-password pull-right">Quên mật khẩu</a>
-                        </div>
                         <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập</button>
                     </form>
+                        <br>
+                    <div class="btn-upper btn btn-default checkout-page-button">
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Ecommerce/login-google&response_type=code&client_id=133679092311-p7g2vnlmj7jcvi6hrio54qekmf3dln4n.apps.googleusercontent.com&approval_prompt=force"
+                           role="button"  class="pull-right">
+                            <img width="20px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                            Đăng nhập bằng google</a>
+                    </div>
                 </div>
                 <!-- Sign-in -->
             </div><!-- /.row -->

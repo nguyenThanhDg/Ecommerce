@@ -135,8 +135,8 @@ public class UserServiceImpl implements UserService {
     public boolean addUGoogleUser(User user) {
         try {
             user.setCreatedDate(new Date());
+            user.setUsername(user.getEmail());
             return this.userRepository.addUser(user);
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -6,6 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="breadcrumb">
@@ -46,18 +48,18 @@
 
                     <div class="description-container m-t-20">
                         <p>${product.description}</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.</p>
+                       
                     </div><!-- /.description-container -->
 
                     <div class="price-container info-container m-t-30">
                         <div class="row">
 
-
                             <div class="col-sm-6 col-xs-6">
                                 <div class="price-box">
-                                    <span class="priced price">${product.price} VNĐ</span>
+                                    <fmt:setLocale value="vi_VN" />
+                                    <fmt:formatNumber var="formattedSalary" value="${product.price}" type="currency" currencyCode="VND" />
+                                    <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" />
+                                    <span class="priced price">${trimmedSalary}</span>
                                 </div>
                             </div>
 
@@ -66,14 +68,6 @@
                                     <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist"
                                        href="#">
                                         <i class="fa fa-heart"></i>
-                                    </a>
-                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare"
-                                       href="#">
-                                        <i class="fa fa-signal"></i>
-                                    </a>
-                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail"
-                                       href="#">
-                                        <i class="fa fa-envelope"></i>
                                     </a>
                                 </div>
                             </div>
@@ -98,87 +92,47 @@
         <br>
         <div class="product-tabs inner-bottom-xs">
             <div class="row">
-                <div class="col-sm-12 col-md-3 col-lg-3"> 
-                    <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-                        <a data-toggle="tab" href="#review">Bình luận</a>
-                    </ul>
-                </div>
-                <div class="col-sm-12 col-md-9 col-lg-9">
-                    <div class="tab-content">
-                        <div id="review" class="tab-pane">
-                            <div class="product-tab">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="product-tab">
 
-                                <div class="product-reviews">
-                                    <h4 class="title">Đánh giá của khách hàng</h4>
+                        <div class="product-reviews">
+                            <h4 class="title">Đánh giá của khách hàng</h4>
 
-                                    <div class="reviews">
-                                        <div class="review"
-                                             <ul id="comments" class="list-group"">
-                                            </ul>
-                                        </div>
+                            <div class="reviews">
+                                <div class="review"
+                                     <ul id="comments" class="list-group"">
+                                    </ul>
+                                </div>
 
-                                    </div><!-- /.reviews -->
-                                </div><!-- /.product-reviews -->
+                            </div><!-- /.reviews -->
+                        </div><!-- /.product-reviews -->
 
 
-                                <div class="product-add-review">
-                                    <sec:authorize access="isAuthenticated()">
-                                        <h4 class="title">Đánh giá cho sản phẩm</h4>
-                                        <div class="review-table">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="cell-label">&nbsp;</th>
-                                                            <th>1 star</th>
-                                                            <th>2 stars</th>
-                                                            <th>3 stars</th>
-                                                            <th>4 stars</th>
-                                                            <th>5 stars</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <c:url value="/api/add-rating" var="endpoint" />
-                                                        <tr onchange="addRating('${endpoint}',${product.id})">
-                                                            <td class="cell-label">Chất lượng</td>
-                                                            <td><input type="radio" name="myrating" value="1" id="1"></td>
-                                                            <td><input type="radio" name="myrating" value="2" id="2"></td>
-                                                            <td><input type="radio" name="myrating" value="3" id="3"></td>
-                                                            <td><input type="radio" name="myrating" value="4" id="4"></td>
-                                                            <td><input type="radio" name="myrating" value="5" id="5"></td>
-                                                        </tr>
+                        <div class="product-add-review">
+                            <sec:authorize access="isAuthenticated()">
+                                <div class="review-form">
+                                    <div class="form-container">
+                                        <form class="cnt-form">
 
-                                                    </tbody>
-                                                </table><!-- /.table .table-bordered -->
-                                            </div><!-- /.table-responsive -->
-                                        </div><!-- /.review-table -->
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label for="exampleInputReview">Nhận xét <span class="astk">*</span></label>
+                                                    <textarea class="form-control txt txt-review" placeholder="Nhập vào nội dung bình luận của bạn" id="contentId"></textarea>
+                                                </div><!-- /.form-group -->                                       
+                                            </div><!-- /.row -->
+                                            <c:url value="/api/products/${product.id}/comments" var="endpoint" />
+                                            <div class="action text-right">
+                                                <button class="btn btn-primary btn-upper" onclick="addComment('${endpoint}', ${product.id})">Thêm nhận xét</button>
+                                            </div><!-- /.action -->
 
-                                        <div class="review-form">
-                                            <div class="form-container">
+                                        </form><!-- /.cnt-form -->
 
-                                                <form class="cnt-form">
+                                    </div><!-- /.form-container -->
+                                </div><!-- /.review-form -->
+                            </sec:authorize>
+                        </div><!-- /.product-add-review -->
 
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label for="exampleInputReview">Nhận xét <span class="astk">*</span></label>
-                                                            <textarea class="form-control txt txt-review" placeholder="Nhập vào nội dung bình luận của bạn" id="contentId"></textarea>
-                                                        </div><!-- /.form-group -->                                       
-                                                    </div><!-- /.row -->
-                                                    <c:url value="/api/products/${product.id}/comments" var="endpoint" />
-                                                    <div class="action text-right">
-                                                        <button class="btn btn-primary btn-upper" onclick="addComment('${endpoint}', ${product.id})">Thêm nhận xét</button>
-                                                    </div><!-- /.action -->
-
-                                                </form><!-- /.cnt-form -->
-
-                                            </div><!-- /.form-container -->
-                                        </div><!-- /.review-form -->
-                                    </sec:authorize>
-                                </div><!-- /.product-add-review -->
-
-                            </div><!-- /.product-tab -->
-                        </div><!-- /.tab-pane -->
-                    </div>
+                    </div><!-- /.product-tab -->
                 </div>
 
             </div>

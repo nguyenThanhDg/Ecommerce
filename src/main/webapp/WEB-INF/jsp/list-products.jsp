@@ -6,6 +6,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="page-content">
     <div class="page-header">
         <div class="container-fluid">
@@ -63,10 +65,12 @@
                             <div class="col-lg-3 d-flex align-items-center">
                                 <div class="avatar"> <img src="${p.image}" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">${p.name}</strong><span class="d-block"></span></a>
                             </div>
-
+                            <fmt:setLocale value="vi_VN" />
+                            <fmt:formatNumber var="formattedSalary" value="${p.price}" type="currency" currencyCode="VND" />
+                            <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" /> 
                             <div class="col-lg-5">
                                 <div class="details d-flex">
-                                    <div class="item"><strong>${p.price}</strong></div>
+                                    <div class="item"><strong>${trimmedSalary}</strong></div>
                                     <div class="item"><strong>${p.categoryId.name}</strong></div>
                                     <div class="item"><strong>${p.status}</strong></div>
                                     <div class="item"><strong>${p.quantity}</strong></div>

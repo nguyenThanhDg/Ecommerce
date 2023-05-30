@@ -3,7 +3,8 @@
     Created on : Oct 15, 2022, 9:53:43 PM
     Author     : Admin
 --%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -43,8 +44,11 @@
                                                 <i class="fa fa-star rate"></i>
                                                 <i class="fa fa-star non-rate"></i>
                                             </div>
+                                            <fmt:setLocale value="vi_VN" />
+                                            <fmt:formatNumber var="formattedSalary" value="${o[1]}" type="currency" currencyCode="VND" />
+                                            <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" /> 
                                             <div class="price">
-                                                ${o[1]}
+                                                ${trimmedSalary}
                                             </div>
                                         </td>
                                         <td class="col-md-2 price">
@@ -71,26 +75,26 @@
                                         <c:if test="${o[3] == ('Chờ thanh toán')}" var="e">
                                             <c:url value="/api/orders/cancel/${o[6]}" var="endpoint1" />
                                             <td class="col-md-1">
-                                                <btn class="btn btn-success" onclick="commitOrder('${endpoint2}')">Thanh toán</btn>
-                                            </td>
-                                            <form action="pay-momo" method="post">
-                                                <input type="hidden" name="myorderId" value="${o[6]}"/>
-                                                <td class="col-md-1">
-                                                    <button 
-                                                        type="submit" 
-                                                        class="btn btn-primary btn-block"
-                                                        onclick="this.form.action = 'pay-momo';"
-                                                        >
-                                                        Momo
-                                                    </button>
-                                                </td>
-                                            </form>
-                                            <td class="col-md-1">
-                                                <btn class="btn btn-danger" onclick="cancelOrder('${endpoint1}')">Hủy</btn>
-                                            </td>
-                                        </c:if>
-                                    </tr>
-                                </c:forEach>
+                                    <btn class="btn btn-success" onclick="commitOrder('${endpoint2}')">Thanh toán</btn>
+                                    </td>
+                                    <form action="pay-momo" method="post">
+                                        <input type="hidden" name="myorderId" value="${o[6]}"/>
+                                        <td class="col-md-1">
+                                            <button 
+                                                type="submit" 
+                                                class="btn btn-primary btn-block"
+                                                onclick="this.form.action = 'pay-momo';"
+                                                >
+                                                Momo
+                                            </button>
+                                        </td>
+                                    </form>
+                                    <td class="col-md-1">
+                                    <btn class="btn btn-danger" onclick="cancelOrder('${endpoint1}')">Hủy</btn>
+                                    </td>
+                                </c:if>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

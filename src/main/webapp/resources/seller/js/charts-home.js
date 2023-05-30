@@ -20,7 +20,7 @@ function chart1 (labels, data2) {
             labels: labels,
             datasets: [
                 {
-                    label: "Thong ke doanh thu theo thang",
+                    label: "Thống kê doanh thu theo tháng",
                     fill: true,
                     lineTension: 0.2,
                     backgroundColor: "transparent",
@@ -69,7 +69,7 @@ function chart2(labels, data2){
             labels: labels,
             datasets: [
                 {
-                    label: "San pham ban duoc",
+                    label: "Thống kê số lượng sản phẩm bán được",
                     fill: true,
                     lineTension: 0.3,
                     backgroundColor: "transparent",

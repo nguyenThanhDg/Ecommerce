@@ -7,6 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <header class="header-style-1">
 
     <!-- ============================================== TOP MENU ============================================== -->
@@ -19,7 +21,7 @@
                             <li class="login"><a href="<c:url value="/history" />"><span>Lịch sử mua hàng</span></a></li>
                             <li class="myaccount"><a href="#"><span>${pageContext.request.userPrincipal.name}</span></a></li>
                                     </c:if>
-                            <c:if test="${pageContext.request.userPrincipal.name == null}">
+                                    <c:if test="${pageContext.request.userPrincipal.name == null}">
                             <li class="login"><a href="<c:url value="/login" />"><span>Đăng nhập</span></a></li>
                             <li class="login"><a href="<c:url value="/register" />"><span>Đăng ký</span></a></li>
                             </c:if>
@@ -80,13 +82,15 @@
 
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 animate-dropdown top-cart-row">
                     <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
-
+                    <fmt:setLocale value="vi_VN" />
+                    <fmt:formatNumber var="formattedSalary" value="${cartTotal.total}" type="currency" currencyCode="VND" />
+                    <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" /> 
                     <div class=" dropdown-cart"> <a href="<c:url value="/cart"/>" class="dropdown-toggle lnk-cart">
                             <div class="items-cart-inner">
                                 <div class="basket">
                                     <div class="basket-item-count"><span class="count" id="cartCounter">${cartCounter}</span></div>
                                     <div class="total-price-basket"> <span class="lbl">Giỏ hàng</span>
-                                        <span class="value"  id="cartTotal">${cartTotal.total}</span>
+                                        <span class="value"  id="cartTotal">${trimmedSalary}</span>
                                     </div>
                                 </div>
                             </div>
@@ -185,8 +189,8 @@
                                                             <li><a href="#">Huawei</a></li>
                                                             <li><a href="#">Asus</a></li>
                                                             <li><a href="#">Xiaomi</a></li>
-                                                           
-                                                            
+
+
                                                         </ul>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner"> <a href="#"><img alt=""
@@ -201,9 +205,9 @@
                                 <li class="dropdown hidden-sm"> <a href="category.html">Giày <span
                                             class="menu-label new-menu hidden-xs">new</span> </a> </li>
                                 <li class="dropdown hidden-sm"> <a href="category.html">Đồng hồ</a> </li>
-                               
-                                
-<!--                                <li class="dropdown  navbar-right special-menu"> <a href="#">Get 30% off on selected items</a> </li>-->
+
+
+                                <!--                                <li class="dropdown  navbar-right special-menu"> <a href="#">Get 30% off on selected items</a> </li>-->
                             </ul>
                             <!-- /.navbar-nav -->
                             <div class="clearfix"></div>

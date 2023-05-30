@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="body-content outer-top-vs" id="top-banner-and-menu">
     <div class="container">
         <div class="row">
@@ -37,21 +39,17 @@
 
 
                 <!-- ============================================== PRODUCT TAGS ============================================== -->
-                <div class="sidebar-widget product-tag">
+                <div class="sidebar-widget product-tag outer-top-vs">
                     <h3 class="section-title">Sản phẩm nổi bật</h3>
                     <div class="sidebar-widget-body outer-top-xs">
-                        <div class="tag-list"> <a class="item" title="Phone" href="category.html">Phone</a> 
-                            <a class="item" title="Vest" href="category.html">Laptop</a>
-                            <a class="item" title="Smartphone" href="category.html">Máy tính bảng</a>
-                            <a class="item" title="Furniture" href="category.html">Quần áo</a>
-                            <a class="item" title="Sweatpants" href="category.html">Đồng hồ</a>
-                            <a class="item" title="Sneaker" href="category.html">Giày</a>
-                            <a class="item" title="Toys" href="category.html">Tai nghe</a>
-                            <a class="item" title="Rose" href="category.html">Nước hoa</a>
+                        <div class="tag-list"> <a class="item" title="Phone" href="products/?cateId=1">Điện thoại</a> 
+                            <a class="item" title="Vest" href="products/?cateId=1">Laptop</a>
+                            <a class="item" title="Smartphone" href="products/?cateId=1">Máy tính bảng</a>
+                            <a class="item" title="Furniture" href="products/?cateId=1">Máy tính</a>
                         </div>
-                        <!-- /.tag-list -->
+                        <!-- /.tag-list --> 
                     </div>
-                    <!-- /.sidebar-widget-body -->
+                    <!-- /.sidebar-widget-body --> 
                 </div>
                 <!-- /.sidebar-widget -->
                 <!-- ============================================== PRODUCT TAGS : END ============================================== -->
@@ -150,7 +148,10 @@
                                                         <h3 class="name"><a href="<c:url value="/products/${p.id}"/>">${p.name}</a></h3>
                                                         <div class="rating rateit-small"></div>
                                                         <div class="description"></div>
-                                                        <div class="product-price"> <span class="price"> ${p.price} </span> 
+                                                        <fmt:setLocale value="vi_VN" />
+                                                        <fmt:formatNumber var="formattedSalary" value="${p.price}" type="currency" currencyCode="VND" />
+                                                        <c:set var="trimmedSalary" value="${fn:replace(formattedSalary, '.00', '')}" /> 
+                                                        <div class="product-price"> <span class="price"> ${trimmedSalary} </span> 
                                                         </div>
                                                         <!-- /.product-price -->
 
@@ -159,7 +160,7 @@
                                                     <c:url value="/api/cart" var="u" />
                                                     <div class="cart clearfix animate-effect">
                                                         <div class="action">
-                                                            
+
                                                             <ul class="list-unstyled">
                                                                 <li class="add-cart-button btn-group">  
                                                                     <button onclick="addToCart('${u}',${p.id}, '${p.name}', ${p.price}, '${p.image}')" data-toggle="tooltip" class="btn btn-primary icon" type="button"
