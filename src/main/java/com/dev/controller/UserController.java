@@ -62,23 +62,23 @@ public class UserController {
             return "redirect:/login?message=google_error";
         }
         String accessToken = googleUtils.getToken(code);
-
         Google googlePojo = googleUtils.getUserInfo(accessToken);
-//        if (this.userDetailsService.findById(Integer.parseInt(googlePojo.getId())) == null) {
-//            User user = new User();
-//            user.setAvatar(googlePojo.getPicture());
-//            user.setId(Integer.parseInt(googlePojo.getId()));
-//            user.setEmail(googlePojo.getEmail());
-//            user.setFirstName(googlePojo.getFamily_name());
-//            user.setLastName(googlePojo.getGiven_name());
-////            this.userDetailsService.addUGoogleUser(user);
-//        }
-        
+        if (this.userDetailsService.checkGoogleUser(googlePojo.getId()) == true) {
+            User user = new User();
+            user.setAvatar(googlePojo.getPicture());
+            user.setGoogleId(googlePojo.getId());
+            user.setEmail(googlePojo.getEmail());
+            user.setFirstName(googlePojo.getFamily_name());
+            user.setLastName(googlePojo.getGiven_name());
+            this.userDetailsService.addUGoogleUser(user);
+        }
+        User user = this.userDetailsService.getUserByGoogleId(googlePojo.getId());
+        request.getSession().setAttribute("currentUser", user);
         UserDetails userDetail = googleUtils.buildUser(googlePojo);
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetail, null,
                 userDetail.getAuthorities());
-//        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
+        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 //                String name = request.getUserPrincipal().getName();
 //        System.out.print(name + " dayne");
         return "redirect:/";

@@ -47,7 +47,7 @@ public class GoogleConfig {
         String response = Request.Get(link).execute().returnContent().asString();
         ObjectMapper mapper = new ObjectMapper();
         Google googlePojo = mapper.readValue(response, Google.class);
-        System.out.println(googlePojo + "dayne");
+        System.out.println(googlePojo.getId() + "dayne");
         return googlePojo;
     }
 
@@ -57,7 +57,7 @@ public class GoogleConfig {
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("seller"));
+        authorities.add(new SimpleGrantedAuthority("customer"));
         UserDetails userDetail = new User(googlePojo.getEmail(),
                 "", enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
                 System.out.println(userDetail + "dayne2");

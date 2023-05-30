@@ -51,7 +51,7 @@ public class ProductController {
         Product product = this.productService.getProductById(productId);
         model.addAttribute("product", product);
         model.addAttribute("avg", this.ratingService.avgRating(productId));
-        model.addAttribute("amountComment", this.productService.countComment(productId));
+//        model.addAttribute("amountComment", this.productService.countComment(productId));
         if (user != null) {
             List<Rating> rate = this.ratingService.checkUserAndPro(user, product);
             if (rate.isEmpty()) {

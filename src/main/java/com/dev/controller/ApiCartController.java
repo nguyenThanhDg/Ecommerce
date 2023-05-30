@@ -168,6 +168,8 @@ public class ApiCartController {
             htmlMsg += "</table>" 
                     + "<br>"
 //                    + "Tổng tiền: " + totalPrice.put("total", String.valueOf(total))
+                    +"Tổng tiền: " + totalPrice.put("total", String.valueOf(total))
+                    + "<br>"
                     +" Cảm ơn bạn đã mua hàng của chúng tôi.";
 
 //            SimpleMailMessage message = new SimpleMailMessage();

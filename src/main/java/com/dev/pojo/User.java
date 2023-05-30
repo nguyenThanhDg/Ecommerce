@@ -93,6 +93,9 @@ public class User implements Serializable {
     @Size(max = 100)
     @Column(name = "avatar")
     private String avatar;
+    @Size(max = 45)
+    @Column(name = "google_id")
+    private String googleId;
     @Basic(optional = false)
     @Column(name = "user_role")
     private String userRole;
@@ -309,6 +312,20 @@ public class User implements Serializable {
      */
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    /**
+     * @return the googleId
+     */
+    public String getGoogleId() {
+        return googleId;
+    }
+
+    /**
+     * @param googleId the googleId to set
+     */
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
     }
     
 }

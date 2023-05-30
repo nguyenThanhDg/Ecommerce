@@ -144,4 +144,14 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public boolean checkGoogleUser(String string) {
+        return this.userRepository.checkGoogleUser(string);
+    }
+
+    @Override
+    public User getUserByGoogleId(String string) {
+        return this.userRepository.getUserByGoogleId(string);
+    }
+
 }

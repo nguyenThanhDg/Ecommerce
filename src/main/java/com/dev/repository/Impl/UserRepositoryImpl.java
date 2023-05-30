@@ -103,6 +103,18 @@ public class UserRepositoryImpl implements UserRepository {
             return true;
         }
     }
+    
+    @Override
+    public boolean checkGoogleUser(String googleId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT count(*) FROM User u WHERE u.googleId = :googleId");
+        q.setParameter("googleId", googleId);
+        if (Long.parseLong(q.getSingleResult().toString()) > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     @Override
     public User getUserByUsername(String username) {
@@ -218,6 +230,20 @@ public class UserRepositoryImpl implements UserRepository {
         
         Query query = session.createQuery(q);
         return query.getResultList();
+    }
+
+    @Override
+    public User getUserByGoogleId(String googleId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<User> q = b.createQuery(User.class);
+        Root root = q.from(User.class);
+        q.select(root);
+        
+        q.where(b.equal(root.get("googleId"), googleId));
+       
+        Query query = session.createQuery(q);
+        return (User) query.getSingleResult();
     }
 
 }
